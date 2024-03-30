@@ -13,12 +13,13 @@ namespace LightCurrencySystem
 
         private void Start()
         {
-            _material = GetComponent<Material>();
+            _material = GetComponent<MeshRenderer>().material;
         }
 
         public void LitUp()
         {
             _material.color = enabledColor;
+            isLitUp = true;
         }
 
         public void Highlight()
