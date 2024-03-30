@@ -835,7 +835,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 3afdee2a824a30f4d9c115ec80ec0410, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -907,6 +907,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1691ad5de7cec1d4190827df250b3f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boostDuration: 10
+  smallRegenAmount: 5
+  medRegenAmount: 10
+  bigRegenAmount: 15
+  attackSpeedBoost: 0.2
+  jumpSpeedBoost: 5
+  attackBoost: 0
+  defBoost: 0
+  lightEmissionBoost: 0
+  lightObtentionBoost: 0
+  lightLightRegen: 100
+  medLightRegen: 200
+  bigLightRegen: 100
+  runSpeedBoost: 3
   walkingSpeed: 7.5
   runningSpeed: 11.5
   jumpSpeed: 8
@@ -914,6 +928,13 @@ MonoBehaviour:
   playerCamera: {fileID: 8824533037936593292}
   lookSpeed: 2
   lookXLimit: 45
+  attackVal: 0
+  defVal: 0
+  lightEmission: 0
+  lightObtention: 0
+  ownedLights: {fileID: 0}
+  attack: {fileID: 0}
+  lightAmountDisplay: {fileID: 0}
   DeathVirtualCamera: {fileID: 3776412025497476724}
   canMove: 1
 --- !u!114 &226801654053930007
@@ -928,6 +949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a60b4b8dcbc2f40bbdc82865aea2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeHitBoxDuration: 1.1
+  startUpDuration: 0.7
   _hitBox: {fileID: 4026667918258236768}
 --- !u!1 &2296627328330671122
 GameObject:

@@ -36,6 +36,7 @@ public class FPSController : MonoBehaviour
     public float defVal;
     public float lightEmission;
     public float lightObtention;
+    private float movementDirectionY;
     
     
     float curSpeedX = 0;
@@ -157,13 +158,13 @@ public class FPSController : MonoBehaviour
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
         curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
-
+        movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
     }
 
     private void JumpAndGravity()
     {
-        float movementDirectionY = moveDirection.y;
+        
         // Jump
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
