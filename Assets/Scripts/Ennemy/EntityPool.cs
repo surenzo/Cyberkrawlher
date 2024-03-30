@@ -41,18 +41,20 @@ public class EntityPool : MonoBehaviour
 
 
 
-    public void MakeLum(int lumQuantity, Transform lumTransform)
+    public void MakeLum(int lumQuantity, Vector3 lumTransform)
     {
-        Instantiate(_lum, lumTransform);
-        _lum.GetComponent<LumItem>().lumQuantity = lumQuantity;
+        Debug.Log("Luuuumiere");
+        GameObject lum = Instantiate(_lum, lumTransform, Quaternion.identity);
+        lum.SetActive(true);
+        lum.GetComponent<LumItem>().lumQuantity = lumQuantity;
+        lum.transform.parent = lum.transform.parent.parent;
+
+        Debug.Log(lum);
     }
 
 
     public void GoBack(GameObject entity)
     {
-        Debug.Log("pool size : " + ShooterPool.Count);
-        Debug.Log("usedPool size" + UsedShooterPool.Count);
-
         entity.SetActive(false);
 
         if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.shooter)
@@ -65,23 +67,18 @@ public class EntityPool : MonoBehaviour
             UsedBoxerPool.Remove(entity);
             BoxerPool.Add(entity);
         }
-
-        Debug.Log("new pool size : " + ShooterPool.Count);
-        Debug.Log("new usedPool size" + UsedShooterPool.Count);
         return;
     }
 
 
     public void Make(AbstractEntityBehaviour.entityType type, Vector3 pos)
     {
-        Debug.Log("Current pool size : " + ShooterPool.Count);
         if(ShooterPool.Count < 2 || BoxerPool.Count < 2)
         {
             for (int i = 0; i < 30; i++)
             {
                 IncrementPoolSize();
             }
-            Debug.Log("new pool size : " + ShooterPool.Count);
         }
 
         
@@ -96,8 +93,6 @@ public class EntityPool : MonoBehaviour
             UsedShooterPool.Add(entity);
             entity.transform.position = pos;
             entity.gameObject.SetActive(true);
-            Debug.Log("pool size after spawned : " + ShooterPool.Count);
-            Debug.Log("usedPool size" + UsedShooterPool.Count);
             return;
         }
         if (type == AbstractEntityBehaviour.entityType.boxer)
@@ -122,7 +117,7 @@ public class EntityPool : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            GoBack(UsedShooterPool[0]);
+            UsedShooterPool[0].GetComponent<ShooterEntityBehaviour>().Damage(5, FPSController.Instance.transform, 1);
             Debug.Log("killed");
         }
     }
