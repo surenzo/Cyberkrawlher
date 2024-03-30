@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using LightCurrencySystem;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 public class FPSController : MonoBehaviour
@@ -48,8 +48,9 @@ public class FPSController : MonoBehaviour
 
     private Animator characterAnimator;
     private HealthSystem _healthSystem;
-    [SerializeField] private OwnedLights _ownedLights;
+    [SerializeField] private OwnedLights ownedLights;
     [SerializeField] private Attack attack;
+    [SerializeField] private TMP_Text lightAmountDisplay;
 
     [SerializeField] private CinemachineVirtualCamera DeathVirtualCamera;
     [HideInInspector] public bool canMove = true;
@@ -103,13 +104,16 @@ public class FPSController : MonoBehaviour
                     _healthSystem.Heal(bigRegenAmount);
                     break;
                 case Item.ItemEffects.LightLightRegen:
-                    _ownedLights.lightsInPossession += lightLightRegen;
+                    ownedLights.lightsInPossession += lightLightRegen;
+                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
                     break;
                 case Item.ItemEffects.MedLightRegen:
-                    _ownedLights.lightsInPossession += medLightRegen;
+                    ownedLights.lightsInPossession += medLightRegen;
+                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
                     break;
                 case Item.ItemEffects.BigLightRegen:
-                    _ownedLights.lightsInPossession += bigLightRegen;
+                    ownedLights.lightsInPossession += bigLightRegen;
+                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
                     break;
                 case Item.ItemEffects.SpeedBoost:
                     StartCoroutine(SpeedBoost());
