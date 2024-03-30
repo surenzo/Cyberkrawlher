@@ -1,6 +1,7 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -17,6 +18,12 @@ public class FPSController : MonoBehaviour
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
+    
+    [SerializeField] private Animator characterAnimator;
+    private HealthSystem _healthSystem;
+    
+    [SerializeField] private CinemachineVirtualCamera VirtualCamera;
+    
 
     [HideInInspector]
     public bool canMove = true;
@@ -24,7 +31,8 @@ public class FPSController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
+        _healthSystem = GetComponent<HealthSystem>();
+        
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -41,7 +49,19 @@ public class FPSController : MonoBehaviour
         float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-
+        
+        // Move Animation
+        if (curSpeedX != 0 || curSpeedY != 0)
+        {
+            float speed = Math.Abs(( moveDirection.x  + moveDirection.z ) / runningSpeed);
+            characterAnimator.SetFloat("Speed",speed);
+        }
+        else
+        {
+            characterAnimator.SetFloat("Speed",0);
+        }
+        
+        // Jump
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
@@ -70,5 +90,28 @@ public class FPSController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+        
+        // Death
+        if (_healthSystem._isDead)
+        {
+            characterAnimator.SetTrigger("isDead");
+            canMove = false;
+            _healthSystem._isDead = false;
+            StartCoroutine(Death());
+
+        }
+    }
+    
+    IEnumerator Death()
+    {
+        VirtualCamera.Priority = 10;
+        var deathTime = 1.9f;
+        var timer = 0f;
+        while (timer < deathTime)
+        {
+            timer += Time.deltaTime;
+            characterController.height -= Time.deltaTime;
+        }
+        yield return new WaitForSeconds(3);
     }
 }
