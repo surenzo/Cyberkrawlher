@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 519681196626652635}
   - component: {fileID: 5198790610343644555}
   - component: {fileID: 3644078652738581190}
+  - component: {fileID: 399176228173835052}
   m_Layer: 0
   m_Name: KB3D_MTM_PropSmallStairs_B_Main
   m_TagString: Untagged
@@ -91,6 +92,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &399176228173835052
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164795435044513246}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 8550ab16f3882db4eab027d98c25244d, type: 2}
 --- !u!1 &3746348634106234843
 GameObject:
   m_ObjectHideFlags: 0

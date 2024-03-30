@@ -69,13 +69,18 @@ namespace LightCurrencySystem
                     _target.Highlight();
                     costDisplay.enabled = true;
                     isAimingAtLightable = true;
-                    if (ownedLights.lightsInPossession >= _target.lightCost)
+                    if (ownedLights.lightsInPossession >= _target.lightCost && !_target.isLitUp)
                     {
                         costDisplay.text = $"Cost: {_target.lightCost} \n{_inputActions.Player.ToggleLight.GetBindingDisplayString()} to light up";
                     }
-                    else
+                    else if(!_target.isLitUp)
                     {
                         costDisplay.text = $"Cost: {_target.lightCost} \nNot enough light";
+                    }
+                    else
+                    {
+                        _target.Highlight();
+                        costDisplay.enabled = false;
                     }
                 }
             }
