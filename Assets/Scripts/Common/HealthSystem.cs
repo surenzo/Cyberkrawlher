@@ -6,6 +6,9 @@ public class HealthSystem : MonoBehaviour
 {
     public float _maxLife;
     public float _health;
+    public float maxStamina;
+    public float stamina;
+    public float staminaThreshold;
     
     internal bool _isDead = false;
 

@@ -24,6 +24,7 @@ public class FPSController : MonoBehaviour
     public int lightLightRegen = 100;
     public int medLightRegen = 200;
     public int bigLightRegen = 100;
+    public float walkSpeedBoost = 4f;
     public float runSpeedBoost = 3f;
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -37,6 +38,9 @@ public class FPSController : MonoBehaviour
     public float lightEmission;
     public float lightObtention;
     private float movementDirectionY;
+    public float staminaLossFactor;
+    public float staminaGainFactor;
+    private bool _emptyStamina;
     
     
     float curSpeedX = 0;
@@ -156,10 +160,31 @@ public class FPSController : MonoBehaviour
 
         // Press Left Shift to run
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-        curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
+        curSpeedX = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
+        curSpeedY = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        if (isRunning && !_emptyStamina)
+        {
+            _healthSystem.stamina -= staminaLossFactor * Time.deltaTime;
+            if (_healthSystem.stamina < 0)
+            {
+                _healthSystem.stamina = 0;
+                _emptyStamina = true;
+            }
+        }
+        else
+        {
+            _healthSystem.stamina += staminaGainFactor * Time.deltaTime;
+            if (_healthSystem.stamina > _healthSystem.staminaThreshold)
+            {
+                _emptyStamina = false;
+                if (_healthSystem.stamina > _healthSystem.maxStamina)
+                {
+                    _healthSystem.stamina = _healthSystem.maxStamina;
+                }
+            }
+        }
     }
 
     private void JumpAndGravity()
@@ -242,16 +267,18 @@ public class FPSController : MonoBehaviour
     {
         jumpSpeed += runSpeedBoost;
         runningSpeed += jumpSpeedBoost;
+        walkingSpeed += walkSpeedBoost;
         if (attack.startUpDuration > attackSpeedBoost && attack.activeHitBoxDuration > attackSpeedBoost)
         {
             attack.startUpDuration -= attackSpeedBoost;
             attack.activeHitBoxDuration -= attackSpeedBoost;
             yield return new WaitForSeconds(boostDuration);
-            jumpSpeed -= runSpeedBoost;
-            runningSpeed -= runSpeedBoost;
             attack.startUpDuration += attackSpeedBoost;
             attack.activeHitBoxDuration += attackSpeedBoost;
         }
+        walkingSpeed -= walkSpeedBoost;
+        jumpSpeed -= runSpeedBoost;
+        runningSpeed -= runSpeedBoost;
     }
 
     IEnumerator DefBoost()
