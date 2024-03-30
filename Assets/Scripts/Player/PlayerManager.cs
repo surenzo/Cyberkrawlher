@@ -15,12 +15,13 @@ namespace Player
         [SerializeField] private new Light light;
         [SerializeField] private float maxIntensity;
         [SerializeField] private float intensitySpeed;
-        [SerializeField] private HealthSystem healthSystem;
+        [SerializeField] public HealthSystem healthSystem;
         [SerializeField] private OwnedLights ownedLights;
         [SerializeField] private FPSController FPSController;
         [SerializeField] private float remainingHealthWarning = 0.2f;
         [SerializeField] private Color normalColor;
         [SerializeField] private Color warningColor;
+        [SerializeField] public int damage { get; private set; }
         private float _startTime;
         private float _lastHealth = 0;
         private float _barRange;
@@ -51,5 +52,7 @@ namespace Player
             
             //TODO implement the same for stamina when it exists;
         }
+
+
     }
 }

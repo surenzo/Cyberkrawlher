@@ -41,15 +41,20 @@ public class EntityPool : MonoBehaviour
 
 
 
-    public void MakeLum(int lumQuantity, Vector3 lumTransform)
+    public void MakeLum(Vector3 lumPos)
     {
         Debug.Log("Luuuumiere");
-        GameObject lum = Instantiate(_lum, lumTransform, Quaternion.identity);
+        GameObject lum = Instantiate(_lum, lumPos + 0.75f*Vector3.up, Quaternion.identity);
         lum.SetActive(true);
-        lum.GetComponent<LumItem>().lumQuantity = lumQuantity;
-        lum.transform.parent = lum.transform.parent.parent;
+        Item lumItem = lum.GetComponent<Item>();
 
-        Debug.Log(lum);
+        int r = Random.Range(0, 3);
+        switch (r)
+        {
+            case 0: lumItem.effect = Item.ItemEffects.LightLightRegen; break;
+            case 1: lumItem.effect = Item.ItemEffects.MedLightRegen; break;
+            case 2: lumItem.effect = Item.ItemEffects.BigLightRegen; break;
+        }
     }
 
 

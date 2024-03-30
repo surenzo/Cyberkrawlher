@@ -1,5 +1,7 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class AbstractEntityBehaviour : MonoBehaviour
@@ -20,6 +22,10 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 
     [SerializeField] protected int _speed;
     [SerializeField] protected float _distanceToPlayer;
+
+    private GameObject _player;
+    private GameObject _playerPunch;
+    protected PlayerManager _playerManager;
 
 
     public entityType Type { get; protected set; }
@@ -51,17 +57,19 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 
     public void Damage(int damage, Transform DamageSource, float knockback)
     {
-        _damageTimer = _damageCooldown;
-        _rb.velocity += knockback * _knockbackCoeff * new Vector3(transform.position.x - DamageSource.position.x, 0, transform.position.y - DamageSource.position.y);
-        _currentHealth -= damage;
-
-        if (_currentHealth <= 0)
+        if(_damageTimer < 0)
         {
-            EntityPool.Instance.MakeLum(_lightLootQuantity, transform.position);
-            //EntityPool.Instance.GoBack(gameObject);
-            gameObject.name = "Jean eude";
-            gameObject.SetActive(false);
+            _damageTimer = _damageCooldown;
+            _rb.velocity += knockback * _knockbackCoeff * new Vector3(transform.position.x - DamageSource.position.x, 0, transform.position.y - DamageSource.position.y);
+            _currentHealth -= damage;
+
+            if (_currentHealth <= 0)
+            {
+                EntityPool.Instance.MakeLum(transform.position);
+                EntityPool.Instance.GoBack(gameObject);
+            }
         }
+
     }
 
 
@@ -71,12 +79,17 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _currentHealth = _maxHealth;
+        _player = FPSController.Instance.gameObject;
+        _playerManager = _player.GetComponent<PlayerManager>();
+        //_playerPunch = _player.GetComponent<Attack>().hitBox; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_betweenAttackTimer < 0)
+        if (Vector3.Distance(transform.position, _player.transform.position) > 300) Destroy(gameObject);
+
+        if (_betweenAttackTimer < 0)
         {
             Attacks();
             _betweenAttackTimer = _attackFrequency + _attackDuration;
@@ -91,8 +104,18 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         {
             isAttacking = false;
         }
-        _damageTimer -= Time.deltaTime;
-        _betweenAttackTimer -= Time.deltaTime;
-        _attackTimer -= Time.deltaTime;
+        if(_damageTimer > -1) _damageTimer -= Time.deltaTime;
+        if (_betweenAttackTimer > -1) _betweenAttackTimer -= Time.deltaTime;
+        if (_attackTimer > -1) _attackTimer -= Time.deltaTime;
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == _playerPunch)
+        {
+            Damage(_playerManager.damage, _player.transform, 1);
+        }
+    }
+
 }

@@ -24,6 +24,8 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
         go.transform.SetParent(transform.parent, true);
         go.SetActive(true);
         go.GetComponent<Bullet>().direction = FPSController.Instance.transform.position - transform.position;
+        go.GetComponent<Bullet>().manager = _playerManager;
+
         return true;
     }
 
