@@ -52,25 +52,13 @@ public class EntityPool : MonoBehaviour
     {
         Debug.Log("pool size : " + ShooterPool.Count);
         Debug.Log("usedPool size" + UsedShooterPool.Count);
-        if (entity == null) {
-            Debug.Log("get nulled lol");
-            return;
-        }
 
         entity.SetActive(false);
 
         if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.shooter)
         {
-            if (!UsedShooterPool.Contains(entity))
-            {
-                Debug.Log("Bizarre !!");
-                return;
-            }
-            else
-            {
-                UsedShooterPool.Remove(entity);
-                ShooterPool.Add(entity);
-            }
+            UsedShooterPool.Remove(entity);
+            ShooterPool.Add(entity);  
         }
         if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.boxer)
         {
