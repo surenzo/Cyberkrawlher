@@ -66,7 +66,10 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             if (_currentHealth <= 0)
             {
                 EntityPool.Instance.MakeLum(transform.position);
+                Debug.Log("lum créée");
                 EntityPool.Instance.GoBack(gameObject);
+                Debug.Log("entité rangée");
+
             }
         }
 

@@ -27,7 +27,6 @@ public class EntityPool : MonoBehaviour
         {
             IncrementPoolSize();
         }
-        Debug.Log("Shooter Pool number : " + ShooterPool.Count);
     }
 
 
@@ -43,7 +42,6 @@ public class EntityPool : MonoBehaviour
 
     public void MakeLum(Vector3 lumPos)
     {
-        Debug.Log("Luuuumiere");
         GameObject lum = Instantiate(_lum, lumPos + 0.75f*Vector3.up, Quaternion.identity);
         lum.SetActive(true);
         Item lumItem = lum.GetComponent<Item>();
