@@ -80,7 +80,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             _attackTimer = _attackDuration;
             isAttacking = true;
         }
-        else if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > _distanceToPlayer)
+        else 
         {
             Move();
         }

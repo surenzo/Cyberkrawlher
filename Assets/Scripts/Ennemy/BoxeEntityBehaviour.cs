@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BoxeEntityBehaviour : AbstractEntityBehaviour
 {
-
-
     private void Start()
     {
         Type = entityType.boxer;
@@ -20,6 +18,7 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
     {
         Vector3 PlayerPos = FPSController.Instance.transform.position;
         _rb.velocity = PlayerPos - transform.position;
+        
     }
 
 }
