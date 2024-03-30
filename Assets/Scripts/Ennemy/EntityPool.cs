@@ -52,24 +52,35 @@ public class EntityPool : MonoBehaviour
     {
         Debug.Log("pool size : " + ShooterPool.Count);
         Debug.Log("usedPool size" + UsedShooterPool.Count);
-        if (entity == null) { return; }
-        else
-        {
-            if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.shooter)
-            {
-                UsedShooterPool.Remove(entity.gameObject);
-                ShooterPool.Add(entity.gameObject);
-            }
-            if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.boxer)
-            {
-                UsedBoxerPool.Remove(entity.gameObject);
-                BoxerPool.Add(entity.gameObject);
-            }
-            entity.gameObject.SetActive(false);
-            Debug.Log("pool size : " + ShooterPool.Count);
-            Debug.Log("usedPool size" + UsedShooterPool.Count);
+        if (entity == null) {
+            Debug.Log("get nulled lol");
             return;
         }
+
+        entity.SetActive(false);
+
+        if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.shooter)
+        {
+            if (!UsedShooterPool.Contains(entity))
+            {
+                Debug.Log("Bizarre !!");
+                return;
+            }
+            else
+            {
+                UsedShooterPool.Remove(entity);
+                ShooterPool.Add(entity);
+            }
+        }
+        if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.boxer)
+        {
+            UsedBoxerPool.Remove(entity);
+            BoxerPool.Add(entity);
+        }
+
+        Debug.Log("new pool size : " + ShooterPool.Count);
+        Debug.Log("new usedPool size" + UsedShooterPool.Count);
+        return;
     }
 
 
@@ -123,7 +134,7 @@ public class EntityPool : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            GoBack(ShooterPool[0]);
+            GoBack(UsedShooterPool[0]);
             Debug.Log("killed");
         }
     }
