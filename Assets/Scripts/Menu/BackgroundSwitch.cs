@@ -27,6 +27,7 @@ public class BackgroundSwitch : MonoBehaviour
     
     public void SwitchBackground()
     {
+        _backgrounds[_currentBackground].LeanAlpha(0, 0.4f);
         
         _backgrounds[_currentBackground].transform.localPosition = new Vector3(0, 0, 0);
         _currentBackground++;
@@ -34,12 +35,6 @@ public class BackgroundSwitch : MonoBehaviour
         {
             _currentBackground = 0;
         }
-    }
-    
-    IEnumerator BackgroundSwitchCoroutine()
-    {
-        
-        _backgrounds[_currentBackground].alpha = 0;
-        yield return new WaitForSeconds(0.7f);
+        _backgrounds[_currentBackground].LeanAlpha(1, 0.4f);
     }
 }
