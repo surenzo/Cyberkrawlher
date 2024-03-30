@@ -43,6 +43,6 @@ Material:
     - _QueueControl: 0
     m_Colors:
     - _Fresnel_color: {r: 0, g: 16.966568, b: 12.408158, a: 1}
-    - _HologramTiling: {r: 16, g: 16, b: 0, a: 0}
+    - _HologramTiling: {r: 80, g: 80, b: 0, a: 0}
     - _MainColor: {r: 0, g: 3.5558214, b: 4.759381, a: 1}
   m_BuildTextureStacks: []
