@@ -57,7 +57,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         if (_currentHealth <= 0)
         {
             EntityPool.Instance.MakeLum(_lightLootQuantity, transform);
-            EntityPool.Instance.GoBack(this);
+            EntityPool.Instance.GoBack(gameObject);
         }
     }
 

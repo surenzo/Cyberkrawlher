@@ -17,7 +17,6 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
         go.transform.SetParent(transform, true);
         go.SetActive(true);
         go.GetComponent<Bullet>().direction = FPSController.Instance.transform.position - transform.position;
-        Debug.Log("BULLET");
         return true;
     }
 

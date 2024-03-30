@@ -19,7 +19,6 @@ public class Bullet : MonoBehaviour
         {
             /* Damage player */
         }
-        Debug.Log(other.gameObject.name);
         Destroy(gameObject);
     }
 }

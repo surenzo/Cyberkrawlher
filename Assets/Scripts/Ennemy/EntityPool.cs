@@ -9,17 +9,37 @@ public class EntityPool : MonoBehaviour
 
     [SerializeField] private GameObject _lum;
 
-    [SerializeField] private List<ShooterEntityBehaviour> ShooterPool = new List<ShooterEntityBehaviour>();
-    [SerializeField] private List<BoxeEntityBehaviour> BoxerPool = new List<BoxeEntityBehaviour>();
+    [SerializeField] private GameObject shooter;
+    private List<GameObject> ShooterPool = new List<GameObject>();
+    private List<GameObject> UsedShooterPool = new List<GameObject>();
 
-    private List<ShooterEntityBehaviour> UsedShooterPool = new List<ShooterEntityBehaviour>();
-    private List<BoxeEntityBehaviour> UsedBoxerPool = new List<BoxeEntityBehaviour>();
+
+    [SerializeField] private GameObject boxer;
+    private List<GameObject> BoxerPool = new List<GameObject>();
+    private List<GameObject> UsedBoxerPool = new List<GameObject>();
 
 
     private void Awake()
     {
         Instance = this;
+
+        for(int i = 0; i < 30; i++)
+        {
+            IncrementPoolSize();
+        }
+        Debug.Log("Shooter Pool number : " + ShooterPool.Count);
     }
+
+
+    private void IncrementPoolSize()
+    {
+        GameObject go = Instantiate(shooter);
+        ShooterPool.Add(go);
+        GameObject go2 = Instantiate(boxer);
+        BoxerPool.Add(go2);
+    }
+
+
 
     public void MakeLum(int lumQuantity, Transform lumTransform)
     {
@@ -28,22 +48,26 @@ public class EntityPool : MonoBehaviour
     }
 
 
-    public void GoBack(AbstractEntityBehaviour entity)
+    public void GoBack(GameObject entity)
     {
+        Debug.Log("pool size : " + ShooterPool.Count);
+        Debug.Log("usedPool size" + UsedShooterPool.Count);
         if (entity == null) { return; }
         else
         {
-            if (entity.Type == AbstractEntityBehaviour.entityType.shooter)
+            if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.shooter)
             {
-                UsedShooterPool.Remove((ShooterEntityBehaviour)entity);
-                ShooterPool.Add((ShooterEntityBehaviour)entity);
+                UsedShooterPool.Remove(entity.gameObject);
+                ShooterPool.Add(entity.gameObject);
             }
-            if (entity.Type == AbstractEntityBehaviour.entityType.shooter)
+            if (entity.GetComponent<AbstractEntityBehaviour>().Type == AbstractEntityBehaviour.entityType.boxer)
             {
-                UsedBoxerPool.Remove((BoxeEntityBehaviour)entity);
-                BoxerPool.Add((BoxeEntityBehaviour)entity);
+                UsedBoxerPool.Remove(entity.gameObject);
+                BoxerPool.Add(entity.gameObject);
             }
             entity.gameObject.SetActive(false);
+            Debug.Log("pool size : " + ShooterPool.Count);
+            Debug.Log("usedPool size" + UsedShooterPool.Count);
             return;
         }
     }
@@ -51,51 +75,56 @@ public class EntityPool : MonoBehaviour
 
     public void Make(AbstractEntityBehaviour.entityType type, Vector3 pos)
     {
-        AbstractEntityBehaviour entity = null;
+        Debug.Log("Current pool size : " + ShooterPool.Count);
+        if(ShooterPool.Count < 2 || BoxerPool.Count < 2)
+        {
+            for (int i = 0; i < 30; i++)
+            {
+                IncrementPoolSize();
+            }
+            Debug.Log("new pool size : " + ShooterPool.Count);
+        }
+
+        
+
+
+        GameObject entity;
         if (type == AbstractEntityBehaviour.entityType.shooter)
         {
-            if(ShooterPool.Count < 2)
-            {
-                GameObject go = new GameObject(ShooterPool[0].gameObject.name);
-                entity = go.GetComponent<AbstractEntityBehaviour>();
-                ShooterPool.Add((ShooterEntityBehaviour)entity);
-            }
-            else
-            {
-                 entity = ShooterPool[0];
-            }
-            ShooterPool.Remove((ShooterEntityBehaviour)entity);
-            UsedShooterPool.Add((ShooterEntityBehaviour)entity);
-
+            entity = ShooterPool[0];
+            
+            ShooterPool.Remove(entity);
+            UsedShooterPool.Add(entity);
+            entity.transform.position = pos;
+            entity.gameObject.SetActive(true);
+            Debug.Log("pool size after spawned : " + ShooterPool.Count);
+            Debug.Log("usedPool size" + UsedShooterPool.Count);
+            return;
         }
         if (type == AbstractEntityBehaviour.entityType.boxer)
         {
-            if (BoxerPool.Count < 2)
-            {
-                GameObject go = new GameObject(ShooterPool[0].gameObject.name);
-                entity = go.GetComponent<AbstractEntityBehaviour>();
-                BoxerPool.Add((BoxeEntityBehaviour)entity);
-            }
-            else
-            {
-                entity = ShooterPool[0];
-            }
-            BoxerPool.Remove((BoxeEntityBehaviour)entity);
-            UsedBoxerPool.Add((BoxeEntityBehaviour)entity);
+            entity = ShooterPool[0];
 
+            BoxerPool.Remove(entity);
+            UsedBoxerPool.Add(entity);
+            entity.transform.position = pos;
+            entity.gameObject.SetActive(true);
+            return;
         }
-        entity.transform.position = pos;
-        entity.gameObject.SetActive(true);
-        return;
-
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetButtonDown("Jump"))
         {
             Make(AbstractEntityBehaviour.entityType.shooter, Vector3.zero);
+            Debug.Log("made");
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GoBack(ShooterPool[0]);
+            Debug.Log("killed");
         }
     }
 
