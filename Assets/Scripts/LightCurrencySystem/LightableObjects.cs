@@ -14,6 +14,7 @@ namespace LightCurrencySystem
         private void Start()
         {
             _material = GetComponent<MeshRenderer>().material;
+            _material.color = isLitUp ? enabledColor : disabledColor;
         }
 
         public void LitUp()
