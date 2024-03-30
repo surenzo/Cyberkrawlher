@@ -871,6 +871,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLife: 100
   _health: 100
+  maxStamina: 100
+  stamina: 100
+  staminaThreshold: 10
 --- !u!143 &2972922292300563780
 CharacterController:
   m_ObjectHideFlags: 0
@@ -922,6 +925,7 @@ MonoBehaviour:
   lightLightRegen: 100
   medLightRegen: 200
   bigLightRegen: 100
+  walkSpeedBoost: 4
   runSpeedBoost: 3
   walkingSpeed: 7.5
   runningSpeed: 11.5
@@ -934,6 +938,8 @@ MonoBehaviour:
   defVal: 0
   lightEmission: 0
   lightObtention: 0
+  staminaLossFactor: 15
+  staminaGainFactor: 15
   ownedLights: {fileID: 11400000, guid: fb63f3fe06c7b42e7875100b413ecc5c, type: 2}
   attack: {fileID: 0}
   lightAmountDisplay: {fileID: 0}
