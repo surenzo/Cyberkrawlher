@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1203445287
+--- !u!1001 &200658632
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,6 +131,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3804968974366180645, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 3b715921036cf46468e4f88ceee08274, type: 3}
     - target: {fileID: 4294658979980828460, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_IsActive
@@ -144,17 +149,72 @@ PrefabInstance:
     - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4752615067486680084, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7046062
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.059415128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.059415128
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7046062
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
@@ -163,18 +223,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
+      propertyPath: hologramMesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 3b715921036cf46468e4f88ceee08274, type: 3}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
       propertyPath: hologramSize.x
-      value: 0.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: hologramSize.y
-      value: 0.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: hologramSize.z
-      value: 0.8
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramRotation.x
+      value: 9.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramRotation.z
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6085896215333849443, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
@@ -233,13 +318,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9089285436256271747, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
-      propertyPath: prewarm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9089285436256271747, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 5
+      propertyPath: InitialModule.startSize.scalar
+      value: 3.52
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -721,4 +801,4 @@ SceneRoots:
   - {fileID: 1368723902}
   - {fileID: 1680098830}
   - {fileID: 1971884211}
-  - {fileID: 1203445287}
+  - {fileID: 200658632}
