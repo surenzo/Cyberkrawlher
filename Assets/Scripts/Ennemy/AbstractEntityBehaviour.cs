@@ -49,15 +49,18 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         _currentHealth += n;
     }
 
-    private void Damage(int damage, Transform DamageSource, float knockback)
+    public void Damage(int damage, Transform DamageSource, float knockback)
     {
         _damageTimer = _damageCooldown;
         _rb.velocity += knockback * _knockbackCoeff * new Vector3(transform.position.x - DamageSource.position.x, 0, transform.position.y - DamageSource.position.y);
+        _currentHealth -= damage;
 
         if (_currentHealth <= 0)
         {
-            EntityPool.Instance.MakeLum(_lightLootQuantity, transform);
-            EntityPool.Instance.GoBack(gameObject);
+            EntityPool.Instance.MakeLum(_lightLootQuantity, transform.position);
+            //EntityPool.Instance.GoBack(gameObject);
+            gameObject.name = "Jean eude";
+            gameObject.SetActive(false);
         }
     }
 
