@@ -20,21 +20,25 @@ namespace LightCurrencySystem
         {
             _camTransform = Camera.main.transform;
         }
+
         private void Awake()
         {
             _inputActions = new CyberCrawlerInputActions();
             lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
         }
+
         private void OnEnable()
         {
             _inputActions.Player.ToggleLight.Enable();
             _inputActions.Player.ToggleLight.performed += OnToggleLight;
         }
+
         private void OnDisable()
         {
             _inputActions.Player.ToggleLight.Disable();
             _inputActions.Player.ToggleLight.performed -= OnToggleLight;
         }
+
         private void OnToggleLight(InputAction.CallbackContext callbackContext)
         {
             //Debug.Log("Got there");
@@ -42,16 +46,17 @@ namespace LightCurrencySystem
             {
                 ActivateLight();
                 lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
-                costDisplay.enabled = false;
             }
         }
+
         private void FixedUpdate()
         {
             //Debug.DrawRay(_camTransform.position, _camTransform.forward * 1000, Color.yellow);
             if (Physics.Raycast(_camTransform.position, _camTransform.forward, out _raycastHit, rayLength))
             {
                 if (_raycastHit.collider.gameObject.layer == 7 &&
-                    (!isAimingAtLightable || _target != _raycastHit.collider.gameObject.GetComponent<LightableObjects>()))
+                    (!isAimingAtLightable ||
+                     _target != _raycastHit.collider.gameObject.GetComponent<LightableObjects>()))
                 {
                     //Debug.Log("Found new target");
                     //Debug.Log(_raycastHit.collider.gameObject.GetComponent<LightableObjects>());
@@ -59,11 +64,19 @@ namespace LightCurrencySystem
                     {
                         _target.UnHighLight(); //stops highlighting the previous one in case there was a change between 2 neons without a pause 
                     }
+
                     _target = _raycastHit.collider.gameObject.GetComponent<LightableObjects>();
                     _target.Highlight();
                     costDisplay.enabled = true;
-                    costDisplay.text = $"Cost: {_target.lightCost} \nL to light up";
                     isAimingAtLightable = true;
+                    if (ownedLights.lightsInPossession >= _target.lightCost)
+                    {
+                        costDisplay.text = $"Cost: {_target.lightCost} \nL to light up";
+                    }
+                    else
+                    {
+                        costDisplay.text = $"Cost: {_target.lightCost} \nNot enough light";
+                    }
                 }
             }
             else
@@ -73,6 +86,7 @@ namespace LightCurrencySystem
                     _target.UnHighLight();
                     costDisplay.enabled = false;
                 }
+
                 isAimingAtLightable = false;
             }
         }
@@ -86,6 +100,7 @@ namespace LightCurrencySystem
             {
                 _target.LitUp();
                 ownedLights.lightsInPossession -= _target.lightCost;
+                costDisplay.enabled = false;
             }
         }
     }
