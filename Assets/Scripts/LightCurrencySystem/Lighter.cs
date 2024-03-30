@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,13 +6,15 @@ namespace LightCurrencySystem
 {
     public class Lighter : MonoBehaviour
     {
-        private CyberCrawlerInputActions _inputActions;
-        private static Transform _camTransform;
+        [SerializeField] private TMP_Text costDisplay;
+        [SerializeField] private TMP_Text lightAmountDisplay;
+        [SerializeField] private OwnedLights ownedLights;
         [SerializeField] private float rayLength;
         public bool isAimingAtLightable;
+        private static Transform _camTransform;
+        private CyberCrawlerInputActions _inputActions;
         private LightableObjects _target;
         private RaycastHit _raycastHit;
-        [SerializeField] private OwnedLights ownedLights;
 
         private void Start()
         {
@@ -20,6 +23,7 @@ namespace LightCurrencySystem
         private void Awake()
         {
             _inputActions = new CyberCrawlerInputActions();
+            lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
         }
         private void OnEnable()
         {
@@ -37,10 +41,10 @@ namespace LightCurrencySystem
             if (isAimingAtLightable)
             {
                 ActivateLight();
+                lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
+                costDisplay.enabled = false;
             }
         }
-        
-
         private void FixedUpdate()
         {
             //Debug.DrawRay(_camTransform.position, _camTransform.forward * 1000, Color.yellow);
@@ -52,15 +56,23 @@ namespace LightCurrencySystem
                     //Debug.Log("Found new target");
                     //Debug.Log(_raycastHit.collider.gameObject.GetComponent<LightableObjects>());
                     if (_target != null)
+                    {
                         _target.UnHighLight(); //stops highlighting the previous one in case there was a change between 2 neons without a pause 
+                    }
                     _target = _raycastHit.collider.gameObject.GetComponent<LightableObjects>();
                     _target.Highlight();
+                    costDisplay.enabled = true;
+                    costDisplay.text = $"Cost: {_target.lightCost} \nL to light up";
                     isAimingAtLightable = true;
                 }
             }
             else
             {
-                if (isAimingAtLightable) _target.UnHighLight();
+                if (isAimingAtLightable)
+                {
+                    _target.UnHighLight();
+                    costDisplay.enabled = false;
+                }
                 isAimingAtLightable = false;
             }
         }
