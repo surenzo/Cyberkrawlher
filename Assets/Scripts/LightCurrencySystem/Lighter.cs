@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace LightCurrencySystem
 {
     public class Lighter : MonoBehaviour
     {
+        private CyberCrawlerInputActions _inputActions;
         private static Transform _camTransform;
         [SerializeField] private float rayLength;
         public bool isAimingAtLightable;
@@ -15,6 +17,29 @@ namespace LightCurrencySystem
         {
             _camTransform = Camera.main.transform;
         }
+        private void Awake()
+        {
+            _inputActions = new CyberCrawlerInputActions();
+        }
+        private void OnEnable()
+        {
+            _inputActions.Player.ToggleLight.Enable();
+            _inputActions.Player.ToggleLight.performed += OnToggleLight;
+        }
+        private void OnDisable()
+        {
+            _inputActions.Player.ToggleLight.Disable();
+            _inputActions.Player.ToggleLight.performed -= OnToggleLight;
+        }
+        private void OnToggleLight(InputAction.CallbackContext callbackContext)
+        {
+            //Debug.Log("Got there");
+            if (isAimingAtLightable)
+            {
+                ActivateLight();
+            }
+        }
+        
 
         private void FixedUpdate()
         {
@@ -38,17 +63,12 @@ namespace LightCurrencySystem
                 if (isAimingAtLightable) _target.UnHighLight();
                 isAimingAtLightable = false;
             }
-
-            if (isAimingAtLightable) //TODO change to implement button press
-            {
-                ActivateLight();
-            }
         }
 
         private void ActivateLight()
         {
             //Debug.Log("Activating light");
-            if (_target == null) return;
+            if (_target == null || !isAimingAtLightable) return;
             if (_target.isLitUp) return;
             if (ownedLights.lightsInPossession >= _target.lightCost)
             {
