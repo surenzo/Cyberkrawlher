@@ -3,26 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
 public class Chest : MonoBehaviour
 {
-    
-    [SerializeField] private GameObject hologram;
-    [SerializeField] private GameObject rayHologram;
+    [Header("Hologram")]
     [SerializeField] private Mesh hologramMesh;
+    [ColorUsage(true,true)] [SerializeField] private Color hologramColor;
+    [ColorUsage(true,true)] [SerializeField] private Color hologramOutlineColor;
+    
+    
+    [Header("Hologram transform settings")]
     [SerializeField] private Vector3 hologramSize = new Vector3(1, 1, 1);
     [SerializeField] private Vector3 hologramRotation = new Vector3(0, 0, 0);
     [SerializeField] private Vector3 hologramPosition = new Vector3(0, 0, 0);
-    [SerializeField] private bool isOpen = false;
+    
+    [Header("Hologram movement settings")]
     [SerializeField] private float hologramSpeedRotation = 50f;
     [SerializeField] private float hologramAmplitudeMovement = 0.2f;
     [SerializeField] private float hologramSpeedMovement = 2f;
+    
+    [Header("Chest Settings")]
+    [SerializeField] private bool isOpen = false;
+    
+    [Header("References")]
+    [SerializeField] private GameObject hologram;
+    [SerializeField] private GameObject rayHologram;
 
     private GameObject hologramMeshObject;
     
 
     private float initialY;
+    private static readonly int FresnelColor = Shader.PropertyToID("FresnelColor");
+    private static readonly int MainColor = Shader.PropertyToID("MainColor");
 
     private void OnValidate()
     {
@@ -33,19 +47,18 @@ public class Chest : MonoBehaviour
         hologramMeshObject.transform.localRotation = Quaternion.Euler(hologramRotation);
         hologram.transform.localPosition = hologramPosition;
         hologram.GetComponentInChildren<MeshFilter>().mesh = hologramMesh;
-        
+        hologram.GetComponentInChildren<Light>().color = hologramColor.gamma;
+        hologram.GetComponentInChildren<Light>().intensity = hologramColor.maxColorComponent/5;
+        hologram.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("_FresnelColor", hologramOutlineColor); 
+        hologram.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("_MainColor", hologramColor);
+        var mainModule = rayHologram.GetComponent<ParticleSystem>().main;
+        mainModule.startColor = hologramColor;
     }
 
     void Start()
     {
-        hologram.SetActive(isOpen);
-        rayHologram.SetActive(isOpen);
-        hologramMeshObject = hologram.GetComponentInChildren<MeshFilter>().gameObject;
+        OnValidate();
         initialY = hologram.transform.position.y;
-        hologram.transform.localScale = hologramSize;
-        hologramMeshObject.transform.localRotation = Quaternion.Euler(hologramRotation);
-        hologram.transform.position = hologramPosition;
-        hologram.GetComponentInChildren<MeshFilter>().mesh = hologramMesh;
     }
     
     private void Update()

@@ -136,10 +136,25 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 3b715921036cf46468e4f88ceee08274, type: 3}
+    - target: {fileID: 4120428309103249617, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4294658979980828460, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321992483139089853, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4321992483139089853, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4366168123594391986, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
@@ -199,22 +214,22 @@ PrefabInstance:
     - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7046062
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.059415128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.059415128
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4809197976436254371, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7046062
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
@@ -243,13 +258,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
+      propertyPath: hologramColor.b
+      value: 4.167885
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramColor.r
+      value: 4.7593803
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
       propertyPath: hologramPosition.y
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: hologramRotation.x
-      value: 9.64
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
@@ -259,7 +289,52 @@ PrefabInstance:
     - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: hologramRotation.z
-      value: 90
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramOutlineColor.b
+      value: 6.160361
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramOutlineColor.g
+      value: 0.09374351
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142374251136679980, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: hologramOutlineColor.r
+      value: 6.624553
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402441331910893066, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Range
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402441331910893066, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1.913286
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402441331910893066, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402441331910893066, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 2.0322516
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402441331910893066, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.95187604
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402441331910893066, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6085896215333849443, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
@@ -316,16 +391,97 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate
       objectReference: {fileID: 0}
+    - target: {fileID: 6887356965161967126, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887356965161967126, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887356965161967126, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 646801433}
     - target: {fileID: 9089285436256271747, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 3.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089285436256271747, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 4.167885
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089285436256271747, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9089285436256271747, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 4.7593803
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aaf0ffc74c409f43be0ab487fbe9e97, type: 3}
+--- !u!21 &646801433
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hologram Blue (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: 64e0d0714d044f0418df6ce0b6c61742,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 2
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HologramScanLines:
+        m_Texture: {fileID: 2800000, guid: 47a1e26e1b458cf409452f10f777ed89, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _ScrollSpeed: 0.05
+    m_Colors:
+    - _FresnelColor: {r: 6.624553, g: 0.09374351, b: 6.160361, a: 1}
+    - _Fresnel_color: {r: 0, g: 16.966568, b: 12.408158, a: 1}
+    - _HologramTiling: {r: 80, g: 80, b: 0, a: 0}
+    - _MainColor: {r: 4.7593803, g: 0, b: 4.167885, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1368723900
 GameObject:
   m_ObjectHideFlags: 0
