@@ -4,16 +4,17 @@ namespace LightCurrencySystem
 {
     public class LightableObjects : MonoBehaviour
     {
-        public int lightCost = 100;
         [SerializeField] private Color disabledColor;
         [SerializeField] private Color highlightColor;
         [SerializeField] private Color enabledColor;
         private Material _material;
         public bool isLitUp;
+        public int lightCost = 100;
 
         private void Start()
         {
             _material = GetComponent<MeshRenderer>().material;
+            _material.color = isLitUp ? enabledColor : disabledColor;
         }
 
         public void LitUp()
