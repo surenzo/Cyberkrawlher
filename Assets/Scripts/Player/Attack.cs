@@ -6,6 +6,8 @@ public class Attack : MonoBehaviour
 {
     private static readonly int Attacking = Animator.StringToHash("isAttacking");
     private Animator _characterAnimator;
+    public float activeHitBoxDuration = 1.1f;
+    public float startUpDuration = 0.7f;
     
     [SerializeField] private GameObject _hitBox;
     
@@ -25,9 +27,9 @@ public class Attack : MonoBehaviour
     IEnumerator AttackCoroutine()
     {
         _characterAnimator.SetTrigger(Attacking);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(startUpDuration);
         _hitBox.SetActive(true);
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(activeHitBoxDuration);
         _hitBox.SetActive(false);
     }
 }
