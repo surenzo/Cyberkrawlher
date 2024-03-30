@@ -71,7 +71,7 @@ namespace LightCurrencySystem
                     isAimingAtLightable = true;
                     if (ownedLights.lightsInPossession >= _target.lightCost)
                     {
-                        costDisplay.text = $"Cost: {_target.lightCost} \nL to light up";
+                        costDisplay.text = $"Cost: {_target.lightCost} \n{_inputActions.Player.ToggleLight.GetBindingDisplayString()} to light up";
                     }
                     else
                     {
