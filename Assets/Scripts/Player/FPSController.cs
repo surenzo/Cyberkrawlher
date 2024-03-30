@@ -8,7 +8,8 @@ using Cinemachine;
 public class FPSController : MonoBehaviour
 {
     #region Variables
-    
+
+    public static FPSController Instance;
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
@@ -35,8 +36,13 @@ public class FPSController : MonoBehaviour
     private static readonly int Speed = Animator.StringToHash("Speed");
 
     #endregion
-    
+
     #region Initialisation
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         // Get Components
