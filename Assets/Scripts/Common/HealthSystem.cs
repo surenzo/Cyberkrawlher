@@ -39,31 +39,4 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    public float GetHealth()
-    { return _health; }
-
-    public void SetMaxLife(float maxLife)
-    {
-        _maxLife = maxLife;
-    }
-    
-    public void Running(float stamina)
-    {
-        this.stamina -= stamina;
-        if (this.stamina <= 0)
-        {
-            this.stamina = 0;
-        }
-    }
-    
-    public void Recovering(float stamina)
-    {
-        this.stamina += stamina;
-        if (this.stamina > maxStamina)
-        {
-            this.stamina = maxStamina;
-        }
-    }
-    
-    
 }

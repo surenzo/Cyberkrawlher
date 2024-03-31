@@ -6,7 +6,9 @@ public class HUDSlider : MonoBehaviour
 {
     private Slider _slider;
     [SerializeField] private Image _backgroundSlider;
-    public float waitTime = 0.6f;
+    
+    private float timerRegen = 0.6f;
+    private float timerRegenCounter = 0f;
     
     // Start is called before the first frame update
     void Start()
@@ -16,30 +18,18 @@ public class HUDSlider : MonoBehaviour
 
     public void ChangeValue()
     {
-        StartCoroutine(ChangeValueCoroutine());
-    }
-    
-    IEnumerator ChangeValueCoroutine()
-    {
         var value = _slider.value;
-        if (_backgroundSlider.fillAmount <= value - 0.05f)
+        while (_backgroundSlider.fillAmount <= value - 0.05f)
         {
-            while (_backgroundSlider.fillAmount <= value - 0.05f)
-            {
-                _backgroundSlider.fillAmount = Mathf.Lerp(_backgroundSlider.fillAmount, value, Time.deltaTime);
-            }
+            _backgroundSlider.fillAmount = Mathf.Lerp(_backgroundSlider.fillAmount, value, Time.deltaTime);
+            timerRegenCounter = 0f;
         }
-        else if (_backgroundSlider.fillAmount >= value)
-        {
-            yield return new WaitForSeconds(0.6f);
-            while (_backgroundSlider.fillAmount >= value)
+        while (_backgroundSlider.fillAmount >= value - 0.05f){
+            timerRegenCounter += Time.deltaTime;
+            if (timerRegenCounter >= timerRegen)
             {
                 _backgroundSlider.fillAmount = Mathf.Lerp(_backgroundSlider.fillAmount, value - 0.05f, Time.deltaTime);
             }
         }
-
-        yield return null;
     }
-    
-    
 }

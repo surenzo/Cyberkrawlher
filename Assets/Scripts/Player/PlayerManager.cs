@@ -12,8 +12,6 @@ namespace Player
         [SerializeField] private Slider staminaBar;
         
         
-        [SerializeField] private float minBarLength = 0.27f;
-        [SerializeField] private float maxBarLength = 0.75f;
         [SerializeField] private float lightMultiplicator = 0.3f;
         [SerializeField] private new Light light;
         [SerializeField] private float maxIntensity;
@@ -28,12 +26,8 @@ namespace Player
         private float _startTime;
         private float _lastHealth;
         private float _lastStamina;
-        private float _barRange;
 
-        private void Start()
-        {
-            _barRange = maxBarLength - minBarLength;
-        }
+       
 
         private void Update()
         {
@@ -51,15 +45,13 @@ namespace Player
             if (healthSystem._health != _lastHealth)
             {
                 _lastHealth = healthSystem._health;
-                if (hpBar.IsUnityNull()) return;
-                hpBar.value = healthSystem._health / healthSystem._maxLife * _barRange + minBarLength;
+                hpBar.value = healthSystem._health / healthSystem._maxLife;
             }
 
             if (healthSystem.stamina != _lastStamina)
             {
                 _lastStamina = healthSystem.stamina;
-                if (staminaBar.IsUnityNull()) return;
-                staminaBar.value = healthSystem.stamina / healthSystem.maxStamina * _barRange + minBarLength;
+                staminaBar.value = healthSystem.stamina / healthSystem.maxStamina;
             }
         }
 

@@ -42,7 +42,14 @@ public class FPSController : MonoBehaviour
     public float staminaRegenBoost;
     public float staminaLossBoost;
     private bool _emptyStamina;
+    
+    private float timeUntilStaminaRegen = 0.8f;
+    private float timeUntilStaminaRegenCounter = 0;
+    
+    
     private float movementDirectionY;
+    private bool isRunning = false;
+    private bool staminaCoroutineOnGoing = false;
 
 
     float curSpeedX = 0;
@@ -165,15 +172,16 @@ public class FPSController : MonoBehaviour
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         // Press Left Shift to run
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        isRunning = Input.GetKey(KeyCode.LeftShift);
         curSpeedX = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
         curSpeedY = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-        if (isRunning && !_emptyStamina && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) ||
-                                            Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) ||
-                                            Input.GetKey(KeyCode.W)         || Input.GetKey(KeyCode.S) || 
-                                            Input.GetKey(KeyCode.A)         || Input.GetKey(KeyCode.D)))
+        bool condition = isRunning && !_emptyStamina && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) ||
+                                                         Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) ||
+                                                         Input.GetKey(KeyCode.W)         || Input.GetKey(KeyCode.S) || 
+                                                         Input.GetKey(KeyCode.A)         || Input.GetKey(KeyCode.D));
+        if ( condition )
         {
             _healthSystem.stamina -= staminaLossFactor * Time.deltaTime;
             if (_healthSystem.stamina < 0)
@@ -181,8 +189,35 @@ public class FPSController : MonoBehaviour
                 _healthSystem.stamina = 0;
                 _emptyStamina = true;
             }
+            timeUntilStaminaRegenCounter = 0;
         }
         else
+        {
+            timeUntilStaminaRegenCounter += Time.deltaTime;
+            if (timeUntilStaminaRegenCounter > timeUntilStaminaRegen)
+            {
+                _healthSystem.stamina += staminaGainFactor * Time.deltaTime;
+                if (_healthSystem.stamina > _healthSystem.staminaThreshold)
+                {
+                    _emptyStamina = false;
+                    if (_healthSystem.stamina > _healthSystem.maxStamina)
+                    {
+                        _healthSystem.stamina = _healthSystem.maxStamina;
+                    }
+                }
+            }
+            
+            
+            
+        }
+    }
+
+    IEnumerator StaminaModifying()
+    {
+        
+        
+        yield return new WaitForSeconds(0.5f);
+        while (!isRunning && _emptyStamina)
         {
             _healthSystem.stamina += staminaGainFactor * Time.deltaTime;
             if (_healthSystem.stamina > _healthSystem.staminaThreshold)
@@ -194,7 +229,11 @@ public class FPSController : MonoBehaviour
                 }
             }
         }
+        staminaCoroutineOnGoing = false;
+        yield return null;
     }
+    
+    
 
     private void JumpAndGravity()
     {
