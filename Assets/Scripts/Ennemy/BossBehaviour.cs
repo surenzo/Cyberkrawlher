@@ -108,10 +108,8 @@ public class BossBehaviour : AbstractEntityBehaviour
 
     protected override bool Attacks()
     {
-        agent.isStopped = true;
-
-        shotTimer = shotFrequency;
-        currentChargeur = 0;
+        int r = Random.Range(0, 3);
+        if()
 
         return true;
     }
