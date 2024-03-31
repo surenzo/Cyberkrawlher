@@ -26,7 +26,8 @@ public class Bullet : MonoBehaviour
         {
             manager.healthSystem.Damage(damage);
         }
-        Destroy(gameObject);
+        if(other.gameObject.layer != 7) { Destroy(gameObject); }
+        
     }
     private void OnCollisionEnter(Collision other)
     {
@@ -34,6 +35,6 @@ public class Bullet : MonoBehaviour
         {
             manager.healthSystem.Damage(damage);
         }
-        Destroy(gameObject);
+        if (other.gameObject.layer != 7) { Destroy(gameObject); }
     }
 }
