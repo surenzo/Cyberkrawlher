@@ -1031,9 +1031,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tags:
-  - room1
+  - downward
   CreatesTags:
-  - room1
+  - forward
+  - downward
+  - boss
   Exits: {fileID: 7338191530174500179}
   Bounds: {fileID: 8044434785172692071}
   DeadEndChance: 0

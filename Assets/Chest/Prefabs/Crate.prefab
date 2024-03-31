@@ -106,18 +106,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hologramMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   itemMeshes:
-  - {fileID: 8792586484180348971, guid: 9f283fc816731fc479c17fcc04dae07e, type: 3}
-  - {fileID: -3452864701041505249, guid: f7694aa97b2cf924ba978e326ab7068b, type: 3}
-  - {fileID: 5436350606746273392, guid: 4b17199607ef6b640882e97ed67c0920, type: 3}
-  - {fileID: 4300000, guid: cac9db9a08d95304cb6173bcf7057157, type: 3}
-  - {fileID: -2432090755550338912, guid: 8d7556145943c8e428a4bbdcdeede375, type: 3}
-  - {fileID: 4300000, guid: 9a3b57f0a1248be419dd9c4d54748512, type: 3}
-  - {fileID: 1583307445410897789, guid: e7e0a9650257e5f47818cd70694ce099, type: 3}
-  - {fileID: 4300000, guid: 2681d1ae61ffe4b0ab792259fa7cf760, type: 3}
-  - {fileID: 6936688605405757633, guid: e8c4fc4e8302dc843956efa3bd3876b4, type: 3}
-  - {fileID: 6120876757838911453, guid: b28e5575e3202624fa2b95781ad85ee4, type: 3}
-  - {fileID: 1432246392341830790, guid: 32a9149c75e94874388fbc79977bb452, type: 3}
-  - {fileID: -3672883215288560188, guid: 6f7141b276fa52e42b202933cdf58cc7, type: 3}
+  - {fileID: 1889521764167429711, guid: d8a020753e2fe4cadbde26442f59cc0a, type: 3}
+  - {fileID: 3447131144810373883, guid: 20005f0d840ee49f3b94c41e97bcf465, type: 3}
+  - {fileID: 4190569516115425513, guid: a7289fbc145874914b0bf222038588e2, type: 3}
+  - {fileID: 8176140075555713834, guid: 76f244fe162884e8798940faf2f27caa, type: 3}
+  - {fileID: 217071573177670405, guid: 3209d823b843045b99fc12e21a2317ec, type: 3}
+  - {fileID: 6425299901342344239, guid: 212465c6551784173b00a5b3e76d86f2, type: 3}
+  - {fileID: 3989689482405607237, guid: be2d59f41219f497ba738e4cd3b1b04f, type: 3}
+  - {fileID: 2670118034550686682, guid: f5b7426529fe843a5ada32075effab74, type: 3}
   hologramColor: {r: 0, g: 3.5558214, b: 4.759381, a: 1}
   hologramOutlineColor: {r: 0, g: 16.966568, b: 12.408158, a: 1}
   hologramSize: {x: 1, y: 1, z: 1}
@@ -268,6 +264,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473562343512607217, guid: 0d105982411ab0648b8ba6693f8bd099,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473562343512607217, guid: 0d105982411ab0648b8ba6693f8bd099,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473562343512607217, guid: 0d105982411ab0648b8ba6693f8bd099,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2473562343512607217, guid: 0d105982411ab0648b8ba6693f8bd099,
         type: 3}
