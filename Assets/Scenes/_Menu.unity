@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 0
+  priority: 10
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: f22413ac5e332e342ad34f3c119942ee, type: 2}
@@ -501,6 +501,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[MAIN MENU]'
       objectReference: {fileID: 0}
+    - target: {fileID: 1010490598477654080, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2492801606438686881, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
         type: 3}
       propertyPath: m_Pivot.x
@@ -600,6 +605,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8617232970118864137, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.57254905
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
