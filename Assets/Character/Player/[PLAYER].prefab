@@ -914,9 +914,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostDuration: 10
-  smallRegenAmount: 5
-  medRegenAmount: 10
-  bigRegenAmount: 15
+  smallRegenAmount: 10
+  medRegenAmount: 20
+  bigRegenAmount: 40
   attackSpeedBoost: 0
   jumpSpeedBoost: 5
   attackBoost: 0
@@ -925,9 +925,9 @@ MonoBehaviour:
   lightObtentionBoost: 0
   lightLightRegen: 100
   medLightRegen: 200
-  bigLightRegen: 100
-  walkSpeedBoost: 0
-  runSpeedBoost: 0
+  bigLightRegen: 300
+  walkSpeedBoost: 3
+  runSpeedBoost: 4
   walkingSpeed: 7.5
   runningSpeed: 11.5
   jumpSpeed: 8
@@ -948,7 +948,7 @@ MonoBehaviour:
   _HUD: {fileID: 0}
   deathScreen: {fileID: 0}
   ownedLights: {fileID: 11400000, guid: fb63f3fe06c7b42e7875100b413ecc5c, type: 2}
-  attack: {fileID: 0}
+  attack: {fileID: 226801654053930007}
   lightAmountDisplay: {fileID: 0}
   chestPrompt: {fileID: 0}
   DeathVirtualCamera: {fileID: 3776412025497476724}

@@ -106,9 +106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hologramMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   itemMeshes:
+  - {fileID: 1889521764167429711, guid: d8a020753e2fe4cadbde26442f59cc0a, type: 3}
   - {fileID: 3447131144810373883, guid: 20005f0d840ee49f3b94c41e97bcf465, type: 3}
   - {fileID: 4190569516115425513, guid: a7289fbc145874914b0bf222038588e2, type: 3}
-  - {fileID: 1889521764167429711, guid: d8a020753e2fe4cadbde26442f59cc0a, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

@@ -399,8 +399,8 @@ public class FPSController : MonoBehaviour
 
     IEnumerator SpeedBoost()
     {
-        jumpSpeed += runSpeedBoost;
-        runningSpeed += jumpSpeedBoost;
+        jumpSpeed += jumpSpeedBoost;
+        runningSpeed += runSpeedBoost;
         walkingSpeed += walkSpeedBoost;
         if (attack.startUpDuration > attackSpeedBoost && attack.activeHitBoxDuration > attackSpeedBoost)
         {
