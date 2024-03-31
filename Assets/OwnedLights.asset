@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c4daff24ac94c6aae0e0060ba8dcfe, type: 3}
   m_Name: OwnedLights
   m_EditorClassIdentifier: 
-  lightsInPossession: 300
+  lightsInPossession: 1000
