@@ -1,3 +1,4 @@
+using EzSoundManager;
 using Player;
 using UnityEngine;
 using UnityEngine.AI;
@@ -109,6 +110,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             {
                 var damage = other.gameObject.GetComponentInParent<Attack>().damage;
                 _healthSystem.Damage(damage);
+                SoundManager.RaiseRandomSoundAmongCategory("SFX/Player/PunchHit", gameObject, false);
             }
             
             if (_healthSystem._isDead)
