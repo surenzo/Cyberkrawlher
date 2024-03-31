@@ -142,9 +142,8 @@ public class FPSController : MonoBehaviour
                     StartCoroutine(StaminaBoost());
                     break;
             }
+            GameObject.Destroy(other.gameObject);
         }
-
-        GameObject.Destroy(other.gameObject);
     }
 
     #endregion
