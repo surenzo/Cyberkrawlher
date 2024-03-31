@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 7473645356824176348}
   - component: {fileID: 4183353014981016397}
   m_Layer: 0
-  m_Name: Room (1) 2
+  m_Name: SpawnRoom
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -256,8 +256,7 @@ MonoBehaviour:
   Tags:
   - spawn
   CreatesTags:
-  - room1
-  - corridor
+  - forward
   Exits: {fileID: 3484317203857507346}
   Bounds: {fileID: 3173366464883022496}
   DeadEndChance: 0

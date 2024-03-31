@@ -605,10 +605,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tags:
-  - corridor
+  - upward
   CreatesTags:
-  - corridor
-  - room1
+  - forward
+  - upward
+  - boss
   Exits: {fileID: 5497706910587374581}
   Bounds: {fileID: 614078808773515237}
   DeadEndChance: 0

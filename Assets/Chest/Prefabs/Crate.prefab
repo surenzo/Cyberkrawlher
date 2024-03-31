@@ -109,9 +109,9 @@ MonoBehaviour:
   - {fileID: 1889521764167429711, guid: d8a020753e2fe4cadbde26442f59cc0a, type: 3}
   - {fileID: 3447131144810373883, guid: 20005f0d840ee49f3b94c41e97bcf465, type: 3}
   - {fileID: 4190569516115425513, guid: a7289fbc145874914b0bf222038588e2, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8176140075555713834, guid: 76f244fe162884e8798940faf2f27caa, type: 3}
+  - {fileID: 217071573177670405, guid: 3209d823b843045b99fc12e21a2317ec, type: 3}
+  - {fileID: 6425299901342344239, guid: 212465c6551784173b00a5b3e76d86f2, type: 3}
   - {fileID: 3989689482405607237, guid: be2d59f41219f497ba738e4cd3b1b04f, type: 3}
   - {fileID: 2670118034550686682, guid: f5b7426529fe843a5ada32075effab74, type: 3}
   hologramColor: {r: 0, g: 3.5558214, b: 4.759381, a: 1}

@@ -232,10 +232,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tags:
-  - room1
+  - forward
   CreatesTags:
-  - room1
-  - corridor
+  - forward
+  - upward
+  - downward
+  - boss
   Exits: {fileID: 3484317203857507346}
   Bounds: {fileID: 3173366464883022496}
   DeadEndChance: 0

@@ -4394,6 +4394,26 @@ PrefabInstance:
       propertyPath: m_NavMeshData
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4183353014981016397, guid: c9c21e1c48785964c8a03edd823e20ea,
+        type: 3}
+      propertyPath: Tags.Array.data[0]
+      value: downward
+      objectReference: {fileID: 0}
+    - target: {fileID: 4183353014981016397, guid: c9c21e1c48785964c8a03edd823e20ea,
+        type: 3}
+      propertyPath: CreatesTags.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4183353014981016397, guid: c9c21e1c48785964c8a03edd823e20ea,
+        type: 3}
+      propertyPath: CreatesTags.Array.data[1]
+      value: downward
+      objectReference: {fileID: 0}
+    - target: {fileID: 4183353014981016397, guid: c9c21e1c48785964c8a03edd823e20ea,
+        type: 3}
+      propertyPath: CreatesTags.Array.data[2]
+      value: boss
+      objectReference: {fileID: 0}
     - target: {fileID: 4277291777641231662, guid: c9c21e1c48785964c8a03edd823e20ea,
         type: 3}
       propertyPath: m_Name
