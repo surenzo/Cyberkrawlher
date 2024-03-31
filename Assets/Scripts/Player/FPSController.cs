@@ -367,6 +367,13 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    public void Win()
+    {
+
+        StartCoroutine(WinScreen());
+
+    }
+
     IEnumerator Death()
     {
         deathScreen.GetComponentInParent<Pause>().enabled = false;
@@ -386,10 +393,24 @@ public class FPSController : MonoBehaviour
         Cursor.visible = true;
         deathScreen.LeanAlpha(1, 0.7f).setOnComplete(() => Time.timeScale = 0); 
 
+    }
 
+    IEnumerator WinScreen()
+    {
+        deathScreen.GetComponentInParent<Pause>().enabled = false;
+        canMove = false;
+        gameObject.GetComponent<CharacterController>().enabled = false;
 
+        DeathVirtualCamera.gameObject.SetActive(true);
+        yield return new WaitForSeconds(3f);
 
+        canMove = false;
+        _HUD.LeanAlpha(0, 0.2f);
+        deathScreen.gameObject.SetActive(true);
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        deathScreen.LeanAlpha(1, 0.7f).setOnComplete(() => Time.timeScale = 0);
 
     }
 
