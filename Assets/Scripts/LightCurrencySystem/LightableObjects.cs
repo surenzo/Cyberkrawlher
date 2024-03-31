@@ -25,13 +25,6 @@ namespace LightCurrencySystem
                 enabledNeon.SetActive(false);
                 neonLight.SetActive(false);
                 neonLight.GetComponent<Light>().color = enabledColor;
-                if (isLitUp)
-                {
-                    GetComponent<MeshRenderer>().enabled = false;
-                    enabledNeon.SetActive(true);
-                    neonLight.SetActive(true);
-                    
-                }
             }
         }
 

@@ -917,7 +917,7 @@ MonoBehaviour:
   smallRegenAmount: 5
   medRegenAmount: 10
   bigRegenAmount: 15
-  attackSpeedBoost: 0
+  attackSpeedBoost: 0.2
   jumpSpeedBoost: 5
   attackBoost: 0
   defBoost: 0
@@ -926,8 +926,8 @@ MonoBehaviour:
   lightLightRegen: 100
   medLightRegen: 200
   bigLightRegen: 100
-  walkSpeedBoost: 0
-  runSpeedBoost: 0
+  walkSpeedBoost: 4
+  runSpeedBoost: 3
   walkingSpeed: 7.5
   runningSpeed: 11.5
   jumpSpeed: 8
@@ -939,7 +939,7 @@ MonoBehaviour:
   defVal: 0
   lightEmission: 0
   lightObtention: 0
-  staminaLossFactor: 30
+  staminaLossFactor: 15
   staminaGainFactor: 15
   staminaRegenBoost: 5
   staminaLossBoost: 5
@@ -962,8 +962,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeHitBoxDuration: 1.1
   startUpDuration: 0.7
-  damage: 10
-  hitBox: {fileID: 4026667918258236768}
   combos:
   - combo: 000000000100000000000000
   - combo: 000000000100000000000000
@@ -1557,7 +1555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2099138649430583157
 Transform:
   m_ObjectHideFlags: 0
@@ -1567,7 +1565,7 @@ Transform:
   m_GameObject: {fileID: 4026667918258236768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.41, z: 0.69}
+  m_LocalPosition: {x: 0, y: 1.149, z: 0.938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1588,11 +1586,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8, y: 1, z: 0.8}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4048583981991536032
 GameObject:
@@ -2805,7 +2803,7 @@ Transform:
   m_GameObject: {fileID: 7739602404556227418}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.72, z: 0.07}
+  m_LocalPosition: {x: 0, y: 1.68, z: 0}
   m_LocalScale: {x: 0.9090908, y: 0.90909094, z: 0.9090908}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2829,7 +2827,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 15.638705
+  m_FocalLength: 17.137775
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -2842,9 +2840,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.12
   far clip plane: 1000
-  field of view: 75
+  field of view: 70.00001
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

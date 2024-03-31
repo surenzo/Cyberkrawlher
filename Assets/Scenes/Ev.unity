@@ -186,6 +186,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[PLAYER]'
       objectReference: {fileID: 0}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: runSpeedBoost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: walkSpeedBoost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: attackSpeedBoost
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

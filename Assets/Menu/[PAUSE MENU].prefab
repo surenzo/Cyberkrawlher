@@ -421,8 +421,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Lights: 1000'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 792b215e2ab28f34abc106638d94b845, type: 2}
+  m_sharedMaterial: {fileID: -9201394067502913786, guid: 792b215e2ab28f34abc106638d94b845,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -912,8 +913,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 792b215e2ab28f34abc106638d94b845, type: 2}
+  m_sharedMaterial: {fileID: -9201394067502913786, guid: 792b215e2ab28f34abc106638d94b845,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

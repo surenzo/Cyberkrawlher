@@ -7,18 +7,15 @@ using UnityEngine.UIElements;
 public class BoxeEntityBehaviour : AbstractEntityBehaviour
 {
     [SerializeField] private GameObject punchHitBox;
-    
+
     private float punchTimer;
-    private HealthSystem _healthSystem;
+
 
     private void Start()
     {
-        Type = entityType.boxer;
+        Type = entityType.shooter;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        _healthSystem = GetComponent<HealthSystem>();
-        
-        
     }
     private void LateUpdate()
     {
@@ -43,7 +40,5 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
 
         return true;
     }
-    
-    
 
 }
