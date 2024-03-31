@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class AbstractEntityBehaviour : MonoBehaviour
 {
     [SerializeField] protected float _attackFrequency;
-    [SerializeField] private float _attackDuration;
+    [SerializeField] protected float _attackDuration;
     private float _attackTimer;
 
     [SerializeField] protected int _maxHealth;
@@ -88,7 +88,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         Debug.Log(_betweenAttackTimer);
         if (Vector3.Distance(transform.position, _player.transform.position) > 300) Destroy(gameObject);

@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,7 @@ namespace LightCurrencySystem
         private void Awake()
         {
             _inputActions = new CyberCrawlerInputActions();
+            if (lightAmountDisplay.IsUnityNull()) return;
             lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
         }
 

@@ -1,5 +1,6 @@
 using System;
 using LightCurrencySystem;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,12 +49,14 @@ namespace Player
             if (healthSystem._health != _lastHealth)
             {
                 _lastHealth = healthSystem._health;
+                if (hpBar.IsUnityNull()) return;
                 hpBar.fillAmount = healthSystem._health / healthSystem._maxLife * _barRange + minBarLength;
             }
 
             if (healthSystem.stamina != _lastStamina)
             {
                 _lastStamina = healthSystem.stamina;
+                if (staminaBar.IsUnityNull()) return;
                 staminaBar.fillAmount = healthSystem.stamina / healthSystem.maxStamina * _barRange + minBarLength;
             }
         }

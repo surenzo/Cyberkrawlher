@@ -84,9 +84,6 @@ public class EntityPool : MonoBehaviour
             }
         }
 
-        
-
-
         GameObject entity;
         if (type == AbstractEntityBehaviour.entityType.shooter)
         {
@@ -100,7 +97,7 @@ public class EntityPool : MonoBehaviour
         }
         if (type == AbstractEntityBehaviour.entityType.boxer)
         {
-            entity = ShooterPool[0];
+            entity = BoxerPool[0];
 
             BoxerPool.Remove(entity);
             UsedBoxerPool.Add(entity);
@@ -111,6 +108,8 @@ public class EntityPool : MonoBehaviour
     }
 
 
+    /* ============== DEBUG POOL =============== */
+    /*
     private void Update()
     {
         if (Input.GetButtonDown("Jump"))
@@ -124,5 +123,5 @@ public class EntityPool : MonoBehaviour
             Debug.Log("killed");
         }
     }
-
+    */
 }

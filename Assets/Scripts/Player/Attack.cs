@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    private static readonly int LeftAttacking = Animator.StringToHash("isLeftAttacking");
-    private static readonly int RightAttacking = Animator.StringToHash("isRightAttacking");
+    private static readonly int LeftPunch = Animator.StringToHash("LeftPunch");
+    private static readonly int RightPunch = Animator.StringToHash("RightPunch");
     private bool _inCombat;
     private Animator _characterAnimator;
     public float activeHitBoxDuration = 1.1f;
@@ -37,7 +37,7 @@ public class Attack : MonoBehaviour
     
     IEnumerator AttackCoroutine()
     {
-        _characterAnimator.SetTrigger(Random.Range(0, 2) == 0 ? LeftAttacking : RightAttacking);
+        
         yield return new WaitForSeconds(startUpDuration);
         _hitBox.SetActive(true);
         yield return new WaitForSeconds(activeHitBoxDuration);
