@@ -13,12 +13,16 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
     [SerializeField] private float shotFrequency;
     private float shotTimer;
+    
+    private HealthSystem _healthSystem;
+    
 
     private void Start()
     {
         Type = entityType.shooter;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        _healthSystem = GetComponent<HealthSystem>();
     }
     private void LateUpdate()
     {

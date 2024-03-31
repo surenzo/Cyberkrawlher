@@ -172,6 +172,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &19109270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3776708081199938043, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 520458022938188153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &19109275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19109270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b488d94993f9e48a06de803a068967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neonUiso: {fileID: 11400000, guid: eb6d106b689c97f4a8568b15a92fa985, type: 2}
+--- !u!114 &19109276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19109270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 19109275}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StartPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 19109275}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StopPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &155307707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -496,6 +560,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490280853}
   m_CullTransparentMesh: 1
+--- !u!1 &501054715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6563527043560413438, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 520458022938188153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &501054720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501054715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b488d94993f9e48a06de803a068967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neonUiso: {fileID: 11400000, guid: eb6d106b689c97f4a8568b15a92fa985, type: 2}
+--- !u!114 &501054721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501054715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 501054720}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StartPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 501054720}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StopPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &667953939
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +972,199 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!1 &955577362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7974927351437582413, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 520458022938188153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &955577367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955577362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b488d94993f9e48a06de803a068967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neonUiso: {fileID: 11400000, guid: eb6d106b689c97f4a8568b15a92fa985, type: 2}
+--- !u!114 &955577368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955577362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 955577367}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StartPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 955577367}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StopPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1024444372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1024444373}
+  - component: {fileID: 1024444374}
+  m_Layer: 0
+  m_Name: music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1024444373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024444372}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1580672438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1024444374
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024444372}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -5815921436505767575, guid: 7bec162ac8a77fd498579a25d0af2db1,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 44258143ac7710541a5a593d3c93efba, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1166178794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1180,6 +1501,210 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1284594488}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1400944859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400944860}
+  - component: {fileID: 1400944865}
+  - component: {fileID: 1400944864}
+  - component: {fileID: 1400944863}
+  - component: {fileID: 1400944862}
+  - component: {fileID: 1400944861}
+  m_Layer: 5
+  m_Name: Main Menu - Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1400944860
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400944859}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6000001, y: 1.6000001, z: 1.6000001}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1435942684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -449.00006, y: -395.00003}
+  m_SizeDelta: {x: 614, y: 77}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1400944861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400944859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b488d94993f9e48a06de803a068967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neonUiso: {fileID: 11400000, guid: eb6d106b689c97f4a8568b15a92fa985, type: 2}
+--- !u!114 &1400944862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400944859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1400944861}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StartPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1400944861}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StopPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1400944863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400944859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0, g: 1, b: 0.8950312, a: 1}
+    m_PressedColor: {r: 0, g: 0.56406975, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1400944864}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1400944861}
+        m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+        m_MethodName: StopPlaying
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1688100225}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: MainMenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1400944864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400944859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 22677f469f24c5241a5785239bfe94b3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1400944865
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400944859}
+  m_CullTransparentMesh: 1
 --- !u!1 &1433022539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1298,12 +1823,126 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!224 &1435942684 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3134435311199132830, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 520458022938188153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1467809110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 817804502904252273, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 520458022938188153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1467809116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467809110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1467809117}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StartPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1467809117}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StopPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1467809117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467809110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b488d94993f9e48a06de803a068967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neonUiso: {fileID: 11400000, guid: eb6d106b689c97f4a8568b15a92fa985, type: 2}
 --- !u!224 &1526168071 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6157073184107246124, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
     type: 3}
   m_PrefabInstance: {fileID: 520458022938188153}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1580672437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1580672438}
+  m_Layer: 0
+  m_Name: '[AUDIO]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1580672438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580672437}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 937.2724, y: 557.66595, z: 93.24639}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1024444373}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1688100225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5102718245406784913, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 520458022938188153}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 459a246e5fd56de4cbac7c259c17e3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1822585232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,6 +2186,70 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1994926405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2012153140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2861178469202582429, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 520458022938188153}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2012153145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012153140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b488d94993f9e48a06de803a068967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neonUiso: {fileID: 11400000, guid: eb6d106b689c97f4a8568b15a92fa985, type: 2}
+--- !u!114 &2012153146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012153140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2012153145}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StartPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2012153145}
+          m_TargetAssemblyTypeName: Menu.NeonButton, Assembly-CSharp
+          m_MethodName: StopPlaying
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &520458022938188153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1559,6 +2262,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[MAIN MENU]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 817804502904252273, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010490598477654080, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1208159101721514989, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
         type: 3}
@@ -1589,6 +2302,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1467809117}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1688100225}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopPlaying
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Menu.NeonButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365355052168112392, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2492801606438686881, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
         type: 3}
@@ -1690,6 +2453,106 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 955577367}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1688100225}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopPlaying
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Menu.NeonButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443187368281804011, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 19109275}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1688100225}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopPlaying
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OptionsMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Menu.NeonButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3919281812248100738, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5263596863294599387, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1705,6 +2568,56 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2012153145}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1688100225}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopPlaying
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CreditMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Menu.NeonButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666814618152864474, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6512561881450421871, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
         type: 3}
       propertyPath: m_Value
@@ -1714,6 +2627,56 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main - Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 501054720}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1688100225}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StopPlaying
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: MainMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Menu.NeonButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180098596405892538, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8878007450315028856, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
         type: 3}
@@ -1731,8 +2694,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5735910350370099360, guid: abbdd5b8ef50e3b46893cd6d0327d2ee, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3134435311199132830, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1400944860}
     - targetCorrespondingSourceObject: {fileID: 6157073184107246124, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
         type: 3}
       insertIndex: -1
@@ -1753,7 +2721,47 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 667953940}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6563527043560413438, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 501054721}
+    - targetCorrespondingSourceObject: {fileID: 6563527043560413438, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 501054720}
+    - targetCorrespondingSourceObject: {fileID: 817804502904252273, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1467809116}
+    - targetCorrespondingSourceObject: {fileID: 817804502904252273, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1467809117}
+    - targetCorrespondingSourceObject: {fileID: 3776708081199938043, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 19109276}
+    - targetCorrespondingSourceObject: {fileID: 3776708081199938043, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 19109275}
+    - targetCorrespondingSourceObject: {fileID: 2861178469202582429, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2012153146}
+    - targetCorrespondingSourceObject: {fileID: 2861178469202582429, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2012153145}
+    - targetCorrespondingSourceObject: {fileID: 7974927351437582413, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 955577368}
+    - targetCorrespondingSourceObject: {fileID: 7974927351437582413, guid: abbdd5b8ef50e3b46893cd6d0327d2ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 955577367}
   m_SourcePrefab: {fileID: 100100000, guid: abbdd5b8ef50e3b46893cd6d0327d2ee, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1763,3 +2771,4 @@ SceneRoots:
   - {fileID: 520458022938188153}
   - {fileID: 826485017}
   - {fileID: 11232359}
+  - {fileID: 1580672438}

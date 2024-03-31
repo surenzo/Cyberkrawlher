@@ -2,8 +2,12 @@ using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(HealthSystem))]
+
 public abstract class AbstractEntityBehaviour : MonoBehaviour
 {
+    
+    
     [SerializeField] protected float _attackFrequency;
     [SerializeField] protected float _attackDuration;
     private float _attackTimer;
@@ -16,7 +20,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     protected Rigidbody _rb;
 
     [SerializeField] protected int _lightLootQuantity;
-    private int _currentHealth;
+    private float _currentHealth;
 
     [SerializeField] protected int _speed;
     [SerializeField] public int _aggroRange = 40;
@@ -29,6 +33,8 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     protected NavMeshAgent agent;
     protected Animator animator;
     [SerializeField] private float angularSpeed = 10;
+    
+    private HealthSystem _healthSystem;
 
 
     public entityType Type { get; protected set; }
@@ -89,13 +95,23 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 
     public void Damage(int damage, Transform DamageSource, float knockback)
     {
+        
+
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
         if(_damageTimer < 0)
         {
             _damageTimer = _damageCooldown;
-            _rb.velocity += knockback * _knockbackCoeff * new Vector3(transform.position.x - DamageSource.position.x, 0, transform.position.y - DamageSource.position.y);
-            _currentHealth -= damage;
-
-            if (_currentHealth <= 0)
+            
+            if(other.gameObject.layer == 9)
+            {
+                var damage = other.gameObject.GetComponentInParent<Attack>().damage;
+                _healthSystem.Damage(damage);
+            }
+            
+            if (_healthSystem._isDead)
             {
                 EntityPool.Instance.MakeLum(transform.position);
                 Debug.Log("lum cr��e");
@@ -116,26 +132,22 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         _playerManager = _player.GetComponent<PlayerManager>();
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        _healthSystem = GetComponent<HealthSystem>();
+        
+        _healthSystem._maxLife = _maxHealth;
+        _healthSystem._health = _maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > _aggroRange)
+        /*if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > _aggroRange)
         {
             agent.isStopped = true;
             animator.SetFloat("Speed", 0f);
             return;
-        }
-
-
-        if (Vector3.Distance(transform.position, _player.transform.position) > 300)
-        {
-            if (Type == entityType.boxer) EntityPool.BoxerToSpawnWithBoss += 1;
-            else EntityPool.ShooterToSpawnWithBoss += 1;
-            EntityPool.Instance.GoBack(gameObject);
-        }
-
+        }*/
+        
         if (_betweenAttackTimer < 0)
         {
             Attacks();
@@ -154,15 +166,15 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         if(_damageTimer > -1) _damageTimer -= Time.deltaTime;
         if (_betweenAttackTimer > -1) _betweenAttackTimer -= Time.deltaTime;
         if (_attackTimer > -1) _attackTimer -= Time.deltaTime;
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject == _playerPunch)
+        
+        if (Vector3.Distance(transform.position, _player.transform.position) > 300)
         {
-            Damage(_playerManager.damage, _player.transform, 1);
+            if (Type == entityType.boxer) EntityPool.BoxerToSpawnWithBoss += 1;
+            else EntityPool.ShooterToSpawnWithBoss += 1;
+            EntityPool.Instance.GoBack(gameObject);
         }
+        _currentHealth = _healthSystem._health;
     }
+    
 
 }

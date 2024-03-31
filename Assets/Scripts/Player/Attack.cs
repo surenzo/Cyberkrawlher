@@ -13,6 +13,8 @@ public class Attack : MonoBehaviour
     private Animator _characterAnimator;
     public float activeHitBoxDuration = 1.1f;
     public float startUpDuration = 0.7f;
+    public float damage = 10;
+    public GameObject hitBox;
 
     private enum Side
     {
@@ -46,6 +48,7 @@ public class Attack : MonoBehaviour
         _characterAnimator = GetComponent<Animator>();
         _currentComboIndex = -1;
         combos[0].ResetCombo();
+        hitBox.SetActive(false);
     }
 
     void Update()
@@ -55,6 +58,8 @@ public class Attack : MonoBehaviour
             _currentSide = Side.Left;
             _currentAttack = HitType.LeftPunch;
             coucou();
+            if (_inCombat)
+                StartCoroutine(HitBoxCoroutine());
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -62,6 +67,8 @@ public class Attack : MonoBehaviour
             _currentSide = Side.Right;
             _currentAttack = HitType.RightPunch;
             coucou();
+            if (_inCombat)
+                StartCoroutine(HitBoxCoroutine());
         }
         
         if (Input.GetKeyDown(KeyCode.F))
@@ -70,6 +77,15 @@ public class Attack : MonoBehaviour
             _characterAnimator.SetBool("inCombat", _inCombat);
         }
     }
+    
+    IEnumerator HitBoxCoroutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        hitBox.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        hitBox.SetActive(false);
+    }
+    
 
     private void coucou()
     {
@@ -132,6 +148,8 @@ public class Attack : MonoBehaviour
     private void AchieveComboReward()
     {
         StartCoroutine(PlayAnimationWithDelayInSeconds(0.4f));
+        
+            
     }
     
     
@@ -139,20 +157,12 @@ public class Attack : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         _characterAnimator.SetTrigger(GetHitTypeHash(HitType.QuadPunch));
+        StartCoroutine(HitBoxCoroutine());
         _isAttacking = true;
         StartCoroutine(AttackCoroutine(0.9f));
     }
     
     
-    
-    /*IEnumerator AttackCoroutine()
-    {
-        _characterAnimator.SetTrigger(LeftPunch);
-        yield return new WaitForSeconds(startUpDuration);
-        _hitBox.SetActive(true);
-        yield return new WaitForSeconds(activeHitBoxDuration);
-        _hitBox.SetActive(false);
-    }*/
 
     private bool CanAttack()
     {
