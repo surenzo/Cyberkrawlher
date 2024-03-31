@@ -19,17 +19,17 @@ public class HUDSlider : MonoBehaviour
     public void ChangeValue()
     {
         var value = _slider.value;
-        while (_backgroundSlider.fillAmount <= value - 0.05f)
+
+        // Gradually interpolate towards the target value
+        _backgroundSlider.fillAmount = Mathf.Lerp(_backgroundSlider.fillAmount, value, Time.deltaTime);
+
+        // Reset timer when setting the fill amount
+        timerRegenCounter = 0f;
+
+        // Check if the fill amount is close enough to the target value
+        if (Mathf.Abs(_backgroundSlider.fillAmount - value) <= 0.05f)
         {
-            _backgroundSlider.fillAmount = Mathf.Lerp(_backgroundSlider.fillAmount, value, Time.deltaTime);
-            timerRegenCounter = 0f;
-        }
-        while (_backgroundSlider.fillAmount >= value - 0.05f){
-            timerRegenCounter += Time.deltaTime;
-            if (timerRegenCounter >= timerRegen)
-            {
-                _backgroundSlider.fillAmount = Mathf.Lerp(_backgroundSlider.fillAmount, value - 0.05f, Time.deltaTime);
-            }
+            // Perform additional actions if needed
         }
     }
 }
