@@ -7,6 +7,7 @@ namespace LightCurrencySystem
         [SerializeField] private Color disabledColor;
         [SerializeField] private Color highlightColor;
         [SerializeField] private Color enabledColor;
+        [SerializeField] private SphereCollider litArea;
         private Material _material;
         public bool isLitUp;
         public int lightCost = 100;
@@ -21,6 +22,10 @@ namespace LightCurrencySystem
         {
             _material.color = enabledColor;
             isLitUp = true;
+            litArea.enabled = true;
+            litArea.radius = lightCost / 20;
+            litArea.isTrigger = true;
+            litArea.center = transform.position;
         }
 
         public void Highlight()

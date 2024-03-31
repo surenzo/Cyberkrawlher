@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class AbstractEntityBehaviour : MonoBehaviour
 {
@@ -21,11 +22,16 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     private int _currentHealth;
 
     [SerializeField] protected int _speed;
+    [SerializeField] public int _aggroRange = 40;
     [SerializeField] protected float _distanceToPlayer;
 
     private GameObject _player;
     private GameObject _playerPunch;
     protected PlayerManager _playerManager;
+
+    protected NavMeshAgent agent;
+    protected Animator animator;
+    [SerializeField] private float angularSpeed = 10;
 
 
     public entityType Type { get; protected set; }
@@ -47,7 +53,36 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     /* Returns false when the action is finished */
     protected abstract bool Attacks();
 
-    protected abstract void Move();
+    protected void Move()
+    {
+
+        Vector3 direction = Vector3.Normalize(transform.position - FPSController.Instance.transform.position);
+
+        Vector3 dest = FPSController.Instance.transform.position + _distanceToPlayer * direction;
+
+        agent.SetDestination(dest);
+
+
+        float animationSpeed = (dest - transform.position).magnitude / (_rb.angularVelocity.magnitude + 1);
+        animator.SetFloat("Speed", animationSpeed);
+
+        if (_betweenAttackTimer < 0.5)
+        {
+            Vector3 targetDirection = FPSController.Instance.transform.position - transform.position;
+
+            // The step size is equal to speed times frame time.
+            float singleStep = angularSpeed * Time.deltaTime;
+
+            // Rotate the forward vector towards the target direction by one step
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+
+            // Draw a ray pointing at our target in
+            Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            // Calculate a rotation a step closer to the target and applies rotation to this object
+            transform.rotation = Quaternion.LookRotation(newDirection);
+        }
+    }
 
     public void Heal(int n)
     {
@@ -85,12 +120,21 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         _player = FPSController.Instance.gameObject;
         _playerManager = _player.GetComponent<PlayerManager>();
         //_playerPunch = _player.GetComponent<Attack>().hitBox; 
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_betweenAttackTimer);
+        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > _aggroRange)
+        {
+            agent.isStopped = true;
+            animator.SetFloat("Speed", 0f);
+            return;
+        }
+
+
         if (Vector3.Distance(transform.position, _player.transform.position) > 300) Destroy(gameObject);
 
         if (_betweenAttackTimer < 0)

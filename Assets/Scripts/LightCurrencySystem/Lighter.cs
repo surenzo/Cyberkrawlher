@@ -60,8 +60,8 @@ namespace LightCurrencySystem
                     (!isAimingAtLightable ||
                      _target != _raycastHit.collider.gameObject.GetComponent<LightableObjects>()))
                 {
-                    //Debug.Log("Found new target");
-                    //Debug.Log(_raycastHit.collider.gameObject.GetComponent<LightableObjects>());
+                    Debug.Log("Found new target");
+                    Debug.Log(_raycastHit.collider.gameObject.GetComponent<LightableObjects>());
                     if (_target != null)
                     {
                         _target.UnHighLight(); //stops highlighting the previous one in case there was a change between 2 neons without a pause 
