@@ -113,7 +113,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3e01bd842ab39e8498c765899435a4bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -328,6 +328,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 551680742955681317, guid: fa6c17d59922a06479ce39d672b1f3c3,
         type: 3}
+      propertyPath: m_Drag
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 551680742955681317, guid: fa6c17d59922a06479ce39d672b1f3c3,
+        type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
@@ -381,6 +386,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2878961928228611470, guid: fa6c17d59922a06479ce39d672b1f3c3,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450506776236780924, guid: fa6c17d59922a06479ce39d672b1f3c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4459274426386887454, guid: fa6c17d59922a06479ce39d672b1f3c3,
         type: 3}
       propertyPath: m_Name
@@ -389,12 +404,17 @@ PrefabInstance:
     - target: {fileID: 4459274426386887454, guid: fa6c17d59922a06479ce39d672b1f3c3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8124346058459224940, guid: fa6c17d59922a06479ce39d672b1f3c3,
         type: 3}
       propertyPath: chargeur
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8124346058459224940, guid: fa6c17d59922a06479ce39d672b1f3c3,
+        type: 3}
+      propertyPath: angularSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8124346058459224940, guid: fa6c17d59922a06479ce39d672b1f3c3,
         type: 3}

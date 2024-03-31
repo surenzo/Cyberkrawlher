@@ -7,9 +7,6 @@ using UnityEngine.UIElements;
 public class BoxeEntityBehaviour : AbstractEntityBehaviour
 {
     [SerializeField] private GameObject punchHitBox;
-    private NavMeshAgent agent;
-    private float animationSpeed;
-    private Animator animator;
 
     private float punchTimer;
 
@@ -34,7 +31,7 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
 
     protected override bool Attacks()
     {
-        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > 1) return true;
+        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > 3) return true;
         Debug.Log("kachow");
         agent.isStopped = true;
 
@@ -45,14 +42,4 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
         return true;
     }
 
-
-
-    protected override void Move()
-    {
-        agent.SetDestination(FPSController.Instance.transform.position);
-        agent.stoppingDistance = _distanceToPlayer;
-
-        animationSpeed = _rb.velocity.magnitude / (_rb.angularVelocity.magnitude * agent.speed);
-        animator.SetFloat("Speed", animationSpeed);
-    }
 }

@@ -21,9 +21,9 @@ public class FPSController : MonoBehaviour
     public float defBoost;
     public float lightEmissionBoost;
     public float lightObtentionBoost;
-    public int lightLightRegen = 100;
-    public int medLightRegen = 200;
-    public int bigLightRegen = 100;
+    public int lightLightRegen = 10;
+    public int medLightRegen = 20;
+    public int bigLightRegen = 30;
     public float walkSpeedBoost = 4f;
     public float runSpeedBoost = 3f;
     public float walkingSpeed = 7.5f;
@@ -142,9 +142,8 @@ public class FPSController : MonoBehaviour
                     StartCoroutine(StaminaBoost());
                     break;
             }
+            GameObject.Destroy(other.gameObject);
         }
-
-        GameObject.Destroy(other.gameObject);
     }
 
     #endregion

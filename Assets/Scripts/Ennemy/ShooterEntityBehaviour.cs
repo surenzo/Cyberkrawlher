@@ -7,16 +7,12 @@ using UnityEngine.UIElements;
 public class ShooterEntityBehaviour : AbstractEntityBehaviour
 {
     [SerializeField] private GameObject bullet;
-    private NavMeshAgent agent;
-    private float animationSpeed;
-    private Animator animator;
 
     [SerializeField] private int chargeur;
     private int currentChargeur;
 
     [SerializeField] private float shotFrequency;
     private float shotTimer;
-
 
     private void Start()
     {
@@ -61,14 +57,4 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
         return true;
     }
 
-
-
-    protected override void Move()
-    {
-        agent.SetDestination(FPSController.Instance.transform.position);
-        agent.stoppingDistance = _distanceToPlayer;
-
-        animationSpeed = _rb.velocity.magnitude / (_rb.angularVelocity.magnitude * agent.speed);
-        animator.SetFloat("Speed", animationSpeed);
-    }
 }

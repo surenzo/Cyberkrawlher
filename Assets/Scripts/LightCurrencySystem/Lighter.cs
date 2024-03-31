@@ -60,8 +60,8 @@ namespace LightCurrencySystem
                     (!isAimingAtLightable ||
                      _target != _raycastHit.collider.gameObject.GetComponent<LightableObjects>()))
                 {
-                    //Debug.Log("Found new target");
-                    //Debug.Log(_raycastHit.collider.gameObject.GetComponent<LightableObjects>());
+                    Debug.Log("Found new target");
+                    Debug.Log(_raycastHit.collider.gameObject.GetComponent<LightableObjects>());
                     if (_target != null)
                     {
                         _target.UnHighLight(); //stops highlighting the previous one in case there was a change between 2 neons without a pause 
@@ -81,9 +81,16 @@ namespace LightCurrencySystem
                     }
                     else
                     {
-                        _target.Highlight();
+                        _target.UnHighLight();
                         costDisplay.enabled = false;
                     }
+                }
+
+                if (_raycastHit.collider.gameObject.layer != 7 && isAimingAtLightable)
+                {
+                    _target.UnHighLight();
+                    costDisplay.enabled = false;
+                    isAimingAtLightable = false;
                 }
             }
             else
@@ -91,10 +98,9 @@ namespace LightCurrencySystem
                 if (isAimingAtLightable)
                 {
                     _target.UnHighLight();
-                    costDisplay.enabled = false;
+                    isAimingAtLightable = false;
                 }
-
-                isAimingAtLightable = false;
+                costDisplay.enabled = false;
             }
         }
 
