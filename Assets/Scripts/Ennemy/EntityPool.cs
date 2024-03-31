@@ -80,7 +80,7 @@ public class EntityPool : MonoBehaviour
     }
 
 
-    public void Make(AbstractEntityBehaviour.entityType type, Vector3 pos)
+    public GameObject Make(AbstractEntityBehaviour.entityType type, Vector3 pos)
     {
         if(ShooterPool.Count < 2 || BoxerPool.Count < 2)
         {
@@ -99,7 +99,7 @@ public class EntityPool : MonoBehaviour
             UsedShooterPool.Add(entity);
             entity.transform.position = pos;
             entity.gameObject.SetActive(true);
-            return;
+            return entity;
         }
         if (type == AbstractEntityBehaviour.entityType.boxer)
         {
@@ -109,8 +109,9 @@ public class EntityPool : MonoBehaviour
             UsedBoxerPool.Add(entity);
             entity.transform.position = pos;
             entity.gameObject.SetActive(true);
-            return;
+            return entity;
         }
+        return null;
     }
 
 

@@ -8,7 +8,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 {
     
     
-    [SerializeField] protected float _attackFrequency;
+    [SerializeField] public float _attackFrequency;
     [SerializeField] protected float _attackDuration;
     private float _attackTimer;
 
@@ -22,15 +22,15 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     [SerializeField] protected int _lightLootQuantity;
     private float _currentHealth;
 
-    [SerializeField] protected int _speed;
+    [SerializeField] public int _speed;
     [SerializeField] public int _aggroRange = 40;
-    [SerializeField] protected float _distanceToPlayer;
+    [SerializeField] public float _distanceToPlayer;
 
     private GameObject _player;
     private GameObject _playerPunch;
     protected PlayerManager _playerManager;
 
-    protected NavMeshAgent agent;
+    public NavMeshAgent agent;
     protected Animator animator;
     [SerializeField] private float angularSpeed = 10;
     
@@ -114,12 +114,13 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             if (_healthSystem._isDead)
             {
                 EntityPool.Instance.MakeLum(transform.position);
-                Debug.Log("lum cr��e");
+                Debug.Log("lum cr  e");
                 EntityPool.Instance.GoBack(gameObject);
-                Debug.Log("entit� rang�e");
+                Debug.Log("entit  rang e");
 
             }
         }
+
     }
 
 
