@@ -13,6 +13,10 @@ public class MainMenu : MonoBehaviour
     
     void Start()
     {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
         _mainMenuPanel.alpha = 1;
         _optionsPanel.alpha = 0;
         _creditsPanel.alpha = 0;
