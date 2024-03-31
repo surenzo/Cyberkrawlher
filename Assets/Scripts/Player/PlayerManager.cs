@@ -8,8 +8,10 @@ namespace Player
 {
     public class PlayerManager : MonoBehaviour
     {
-        [SerializeField] private Image hpBar;
-        [SerializeField] private Image staminaBar;
+        [SerializeField] private Slider hpBar;
+        [SerializeField] private Slider staminaBar;
+        
+        
         [SerializeField] private float minBarLength = 0.27f;
         [SerializeField] private float maxBarLength = 0.75f;
         [SerializeField] private float lightMultiplicator = 0.3f;
@@ -50,14 +52,14 @@ namespace Player
             {
                 _lastHealth = healthSystem._health;
                 if (hpBar.IsUnityNull()) return;
-                hpBar.fillAmount = healthSystem._health / healthSystem._maxLife * _barRange + minBarLength;
+                hpBar.value = healthSystem._health / healthSystem._maxLife * _barRange + minBarLength;
             }
 
             if (healthSystem.stamina != _lastStamina)
             {
                 _lastStamina = healthSystem.stamina;
                 if (staminaBar.IsUnityNull()) return;
-                staminaBar.fillAmount = healthSystem.stamina / healthSystem.maxStamina * _barRange + minBarLength;
+                staminaBar.value = healthSystem.stamina / healthSystem.maxStamina * _barRange + minBarLength;
             }
         }
 

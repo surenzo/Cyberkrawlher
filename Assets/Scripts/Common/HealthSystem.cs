@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         _health = _maxLife;
+        stamina = maxStamina;
     }
 
 
@@ -46,4 +46,24 @@ public class HealthSystem : MonoBehaviour
     {
         _maxLife = maxLife;
     }
+    
+    public void Running(float stamina)
+    {
+        this.stamina -= stamina;
+        if (this.stamina <= 0)
+        {
+            this.stamina = 0;
+        }
+    }
+    
+    public void Recovering(float stamina)
+    {
+        this.stamina += stamina;
+        if (this.stamina > maxStamina)
+        {
+            this.stamina = maxStamina;
+        }
+    }
+    
+    
 }
