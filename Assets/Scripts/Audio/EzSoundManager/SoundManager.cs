@@ -26,7 +26,7 @@ namespace EzSoundManager
             if (Instance == null)
             {
                 Instance = this;
-                // DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(gameObject);
 
                 _musicSource = gameObject.AddComponent<AudioSource>();
                 _musicSource.outputAudioMixerGroup = musicGroup;
@@ -226,17 +226,6 @@ namespace EzSoundManager
             return _audioSourcePool.Any(source => source.isPlaying && source.clip.name == clipName);
         }
 
-        private static AudioPlayer GetOrCreateAudioPlayer(GameObject obj)
-        {
-            AudioPlayer audioPlayer = obj.GetComponent<AudioPlayer>();
-            if (audioPlayer.IsUnityNull())
-            {
-                audioPlayer = obj.AddComponent<AudioPlayer>();
-            }
-
-            return audioPlayer;
-        }
-
         public void RaiseSoundAmongRandomList(
             List<string> clipNames, string category, Vector3 position,
             bool is3D = true
@@ -290,6 +279,17 @@ namespace EzSoundManager
             {
                 Debug.LogWarning($"No clips found in category {category}");
             }
+        }
+        
+        private static AudioPlayer GetOrCreateAudioPlayer(GameObject obj)
+        {
+            AudioPlayer audioPlayer = obj.GetComponent<AudioPlayer>();
+            if (audioPlayer.IsUnityNull())
+            {
+                audioPlayer = obj.AddComponent<AudioPlayer>();
+            }
+
+            return audioPlayer;
         }
 
         public static void RaiseRandomSoundAmongCategory(
