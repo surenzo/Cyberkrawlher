@@ -943,14 +943,9 @@ MonoBehaviour:
   staminaGainFactor: 15
   staminaRegenBoost: 5
   staminaLossBoost: 5
-  timeBetweenStepsWalk: 0.4
-  timeBetweenStepsRun: 0.3
-  _HUD: {fileID: 0}
-  deathScreen: {fileID: 0}
   ownedLights: {fileID: 11400000, guid: fb63f3fe06c7b42e7875100b413ecc5c, type: 2}
   attack: {fileID: 0}
   lightAmountDisplay: {fileID: 0}
-  chestPrompt: {fileID: 0}
   DeathVirtualCamera: {fileID: 3776412025497476724}
   canMove: 1
 --- !u!114 &226801654053930007
@@ -1091,7 +1086,7 @@ Transform:
   m_GameObject: {fileID: 2488937742515590112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.4947016, z: -0, w: 0.86906296}
-  m_LocalPosition: {x: 0, y: 2.2409089, z: 0}
+  m_LocalPosition: {x: 5.5378623, y: 2.2409089, z: -3.1516013}
   m_LocalScale: {x: 0.90909094, y: 0.90909094, z: 0.90909094}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2847,7 +2842,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.13
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 75
   orthographic: 0

@@ -288,7 +288,7 @@ public partial class @CyberCrawlerInputActions: IInputActionCollection2, IDispos
                 {
                     ""name"": """",
                     ""id"": ""a19dfcd8-c2f4-4f5e-b98e-ccfde68cd3ed"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
