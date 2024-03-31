@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
+using EzSoundManager;
 using LightCurrencySystem;
 using TMPro;
 
@@ -42,6 +43,16 @@ public class FPSController : MonoBehaviour
     public float staminaRegenBoost;
     public float staminaLossBoost;
     private bool _emptyStamina;
+    private bool _chestLooted;
+    private bool _canLootChest;
+    private Chest _chestFound;
+    
+    [Header("Audio")]
+    [SerializeField] private float timeBetweenStepsWalk = 0.4f;
+    [SerializeField] private float timeBetweenStepsRun = 0.3f;
+    private const float RandomAddedTime = 0;
+    private bool isLeftFootStepping = true;
+    private float _timerPlayerStepSfx;
     
     private float timeUntilStaminaRegen = 0.8f;
     private float timeUntilStaminaRegenCounter = 0;
@@ -108,6 +119,13 @@ public class FPSController : MonoBehaviour
     {
         PlayerMovement();
         DeathCheck();
+        if (_canLootChest && Input.GetKeyDown(KeyCode.Tab) && !_chestLooted)
+        {
+            _chestLooted = true;
+            chestPrompt.enabled = false;
+            _chestFound.isLooted = true;
+            ItemCollection(_chestFound.chestItem);
+        }
     }
 
     private void ItemCollection(Item collectedItem)
@@ -167,9 +185,18 @@ public class FPSController : MonoBehaviour
         
         else if (other.gameObject.layer == 10)
         {
-            Chest chestFound = other.gameObject.GetComponent<Chest>();
-            chestPrompt.enabled = true;
-            chestPrompt.text = "TAB to collect";
+            _chestFound = other.gameObject.GetComponent<Chest>();
+            if (!_chestFound.isOpen) return;
+            _canLootChest = true;
+            if (_chestFound.isLooted)
+            {
+                _chestLooted = true;
+            }
+            else
+            {
+                chestPrompt.enabled = true;
+                chestPrompt.text = "TAB to collect";
+            }
         }
     }
 
@@ -177,6 +204,8 @@ public class FPSController : MonoBehaviour
     {
         if (other.gameObject.layer == 10)
         {
+            _canLootChest = false;
+            _chestLooted = false;
             chestPrompt.enabled = false;
         }
     }
@@ -299,6 +328,17 @@ public class FPSController : MonoBehaviour
         {
             characterAnimator.SetFloat(Speed, 0);
         }
+
+
+        if (moveDirection.normalized.magnitude < 0.1f) return;
+        if (Time.time - (_timerPlayerStepSfx + RandomAddedTime) < (isRunning ? timeBetweenStepsRun : timeBetweenStepsWalk)) return;
+
+        SoundManager.RaiseRandomSoundAmongCategory(
+            "SFX/Player/Player" + (isLeftFootStepping ? "Left" : "Right") + "Steps",
+            gameObject, false);
+        _timerPlayerStepSfx = Time.time;
+        //randomAddedTime = Random.Range(-0.05f, 0.05f);
+        isLeftFootStepping = !isLeftFootStepping;
     }
 
     private void PlayerRotation()

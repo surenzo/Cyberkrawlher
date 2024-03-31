@@ -18,5 +18,6 @@ MonoBehaviour:
     volume: 1
     audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
       type: 2}
-  subCategories: []
-  parentCategory: {fileID: 0}
+  subCategories:
+  - {fileID: 11400000, guid: 559d9a9b4be3b1844bc57fc936559146, type: 2}
+  parentCategory: {fileID: 11400000, guid: b6ba43d0da1f1734d85f0df34cc226ad, type: 2}

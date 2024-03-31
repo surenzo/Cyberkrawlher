@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6945228deed94a879536925c96e1f83d, type: 3}
+  m_Name: PlayerRightSteps
+  m_EditorClassIdentifier: 
+  clips:
+  - clipName: player_right_step1
+    clip: {fileID: 8300000, guid: 8036640a66751424e9219784def72063, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  - clipName: player_right_step2
+    clip: {fileID: 8300000, guid: f684d08ef6159404da528f6b03712c2d, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  - clipName: player_right_step3
+    clip: {fileID: 8300000, guid: bed0675d5a914884aaa2e9bc6ef4c626, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  - clipName: player_right_step4
+    clip: {fileID: 8300000, guid: 25396a71e032ada4aa0928eb9e63d652, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  - clipName: player_right_step5
+    clip: {fileID: 8300000, guid: be222d3e44b6ce847ad35499bef6a729, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  subCategories: []
+  parentCategory: {fileID: 0}
