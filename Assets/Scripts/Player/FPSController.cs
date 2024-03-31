@@ -155,7 +155,7 @@ public class FPSController : MonoBehaviour
             case Item.ItemEffects.SpeedBoost:
                 StartCoroutine(SpeedBoost());
                 break;
-            case Item.ItemEffects.Defboost:
+            /*case Item.ItemEffects.Defboost:
                 StartCoroutine(DefBoost());
                 break;
             case Item.ItemEffects.AttackBoost:
@@ -166,7 +166,7 @@ public class FPSController : MonoBehaviour
                 break;
             case Item.ItemEffects.LightReceptionBoost:
                 StartCoroutine(LightObtentionBoost());
-                break;
+                break;*/
             case Item.ItemEffects.StaminaBoost:
                 StartCoroutine(StaminaBoost());
                 break;
