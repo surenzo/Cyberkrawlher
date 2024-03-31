@@ -31,7 +31,7 @@ public class FPSController : MonoBehaviour
     public float runningSpeed = 11.5f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public Camera playerCamera;
+    public CinemachineVirtualCamera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
     public float attackVal;
