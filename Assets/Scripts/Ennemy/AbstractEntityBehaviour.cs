@@ -88,8 +88,9 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        Debug.Log(_betweenAttackTimer);
         if (Vector3.Distance(transform.position, _player.transform.position) > 300) Destroy(gameObject);
 
         if (_betweenAttackTimer < 0)
@@ -101,6 +102,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         }
         else 
         {
+            Debug.Log("sh'movin");
             Move();
         }
         if (_attackTimer < 0)
