@@ -61,6 +61,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Neon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6776894687657730819, guid: 04af2b86387ca406099a8c1c349ff932,
+        type: 3}
+      propertyPath: lightCost
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7912988071355925449, guid: 04af2b86387ca406099a8c1c349ff932,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -166,6 +171,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Neon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6776894687657730819, guid: 04af2b86387ca406099a8c1c349ff932,
+        type: 3}
+      propertyPath: lightCost
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7912988071355925449, guid: 04af2b86387ca406099a8c1c349ff932,
         type: 3}

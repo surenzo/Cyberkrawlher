@@ -1,4 +1,6 @@
 using LightCurrencySystem;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Ennemy
@@ -29,6 +31,7 @@ namespace Ennemy
             {
                 firstPhase.gameObject.SetActive(false) ;
                 secondPhase.gameObject.SetActive(true) ;
+                FPSController.Instance.Win();
             }
         }
 
@@ -63,7 +66,12 @@ namespace Ennemy
             shooterGO.transform.localScale *= 2.5f;
 
             secondPhase.gameObject.SetActive(false);
+
+
+
         }
+
+
 
     }
 }
