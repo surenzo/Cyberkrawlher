@@ -16,7 +16,7 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
     [SerializeField] private float shotFrequency;
     private float shotTimer;
-    [SerializeField] private float angularSpeed;
+    [SerializeField] private float angularSpeed = 10;
 
     private void Start()
     {

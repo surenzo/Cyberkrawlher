@@ -1324,6 +1324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeHitBoxDuration: 1.1
   startUpDuration: 0.7
+  combos: []
   _hitBox: {fileID: 55274110}
 --- !u!114 &572012377
 MonoBehaviour:
@@ -4085,26 +4086,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2996835575338472468, guid: 375d7c259e9756246a2ed815b1e8a504,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3005871483768818294, guid: 375d7c259e9756246a2ed815b1e8a504,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3720438215701880038, guid: 375d7c259e9756246a2ed815b1e8a504,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 3720438215701880038, guid: 375d7c259e9756246a2ed815b1e8a504,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3918803207014671366, guid: 375d7c259e9756246a2ed815b1e8a504,
         type: 3}
       propertyPath: m_Name
@@ -4115,11 +4096,6 @@ PrefabInstance:
       propertyPath: manager
       value: 
       objectReference: {fileID: 572012383}
-    - target: {fileID: 7271905974675104260, guid: 375d7c259e9756246a2ed815b1e8a504,
-        type: 3}
-      propertyPath: angularSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7333220394224683183, guid: 375d7c259e9756246a2ed815b1e8a504,
         type: 3}
       propertyPath: m_LocalPosition.x
