@@ -6,9 +6,11 @@ namespace LightCurrencySystem
     {
         [SerializeField] private Color highlightColor;
         [SerializeField] private Color enabledColor;
+        [SerializeField] private SphereCollider litArea;
         [SerializeField] private GameObject enabledNeon;
         [SerializeField] private GameObject neonLight;
         [SerializeField] private bool isVariant;
+
         private Material _material;
         public bool isLitUp;
         public int lightCost = 100;
@@ -31,6 +33,12 @@ namespace LightCurrencySystem
         {
             _material.color = enabledColor;
             isLitUp = true;
+
+            litArea.enabled = true;
+            litArea.radius = lightCost / 20;
+            litArea.isTrigger = true;
+            litArea.center = transform.position;
+
             if (isVariant)
             {
                 GetComponent<MeshRenderer>().enabled = false;
