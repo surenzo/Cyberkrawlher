@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class BossBehaviour : AbstractEntityBehaviour
+public class BossBehaviour : AbstractBossBehaviour
 {
     [SerializeField] private GameObject bullet;
 
@@ -18,8 +18,13 @@ public class BossBehaviour : AbstractEntityBehaviour
 
     private float punchTimer;
 
+    [SerializeField] private float shockWaveDuration;
+    [SerializeField] private float shockWaveSpeed;
+    private float shockWaveTimer;
+    [SerializeField] private GameObject shockwave;
+    [SerializeField] private Vector3 shockScale;
 
-    private AbstractEntityBehaviour.entityType entityType;
+
 
 
     private void Start()
@@ -29,14 +34,19 @@ public class BossBehaviour : AbstractEntityBehaviour
     }
     private void LateUpdate()
     {
-        if (entityType == AbstractEntityBehaviour.entityType.shooter)
+        if (Type == entityType.shooter)
         { 
             ShooterUpdate();
             return;
         }
-        if (entityType == AbstractEntityBehaviour.entityType.boxer)
+        if (Type == entityType.boxer)
         {
             BoxerUpdate();
+            return;
+        }
+        if (Type == entityType.other)
+        {
+            OtherUpdate();
             return;
         }
 
@@ -50,11 +60,16 @@ public class BossBehaviour : AbstractEntityBehaviour
 
         if (shotTimer < 0 && currentChargeur < chargeur)
         {
-            animator.SetBool("IsAttacking", true);
+            animator.SetBool("IsShooting", true);
             GameObject go = Instantiate(bullet, bullet.transform);
             go.transform.SetParent(transform.parent, true);
             go.SetActive(true);
-            go.GetComponent<Bullet>().direction = FPSController.Instance.transform.position - transform.position;
+            go.GetComponent<Bullet>().direction = FPSController.Instance.transform.position - bullet.transform.position;
+
+            Debug.Log("-----------");
+            Debug.Log(FPSController.Instance.transform.position);
+            Debug.Log(go.transform.position);
+            Debug.Log(transform.position);
             go.GetComponent<Bullet>().manager = _playerManager;
 
             currentChargeur += 1;
@@ -64,7 +79,8 @@ public class BossBehaviour : AbstractEntityBehaviour
         else if (currentChargeur >= chargeur)
         {
             agent.isStopped = false;
-            animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsShooting", false);
+            isAttackFinished = false;
 
         }
     }
@@ -90,6 +106,7 @@ public class BossBehaviour : AbstractEntityBehaviour
             agent.isStopped = false;
             punchHitBox.SetActive(false);
             animator.SetBool("IsAttacking", false);
+            isAttackFinished = false;
         }
     }
 
@@ -107,15 +124,42 @@ public class BossBehaviour : AbstractEntityBehaviour
 
 
 
+    private void OtherUpdate()
+    {
+        shockWaveTimer -= Time.deltaTime;
+        shockwave.transform.localScale = shockWaveSpeed * (shockWaveDuration - shockWaveTimer) * shockScale;
+        if (shockWaveTimer < 0)
+        {
+            agent.isStopped = false;
+            shockwave.SetActive(false);
+            animator.SetBool("Shockwave", false);
+            isAttackFinished = false;
+        }
+    }
+
+    private bool OtherAttack()
+    {
+        agent.isStopped = true;
+
+        shockWaveTimer = shockWaveDuration;
+        shockwave.SetActive(true);
+        shockwave.transform.localScale = shockScale;
+        animator.SetBool("Shockwave", true);
+
+        return true;
+    }
+
+
 
 
     protected override bool Attacks()
     {
-        int r = Random.Range(0, 3);
-        if (r == 0) return BoxerAttack();
-        if (r == 1) return ShooterAttack();
-        //if (r == 2) return OtherAttack();
-
+        switch (Type)
+        {
+            case entityType.shooter: ShooterAttack(); break;
+            case entityType.boxer: BoxerAttack(); break;
+            case entityType.other: OtherAttack(); break;
+        }
 
         return true;
     }

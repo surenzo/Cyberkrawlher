@@ -23,8 +23,5 @@ public class Punch : MonoBehaviour
         {
             manager.healthSystem.Damage(damage);
         }
-        {
-            manager.healthSystem.Damage(damage);
-        }
     }
 }
