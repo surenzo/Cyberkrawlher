@@ -91,10 +91,9 @@ namespace LightCurrencySystem
                 if (isAimingAtLightable)
                 {
                     _target.UnHighLight();
-                    costDisplay.enabled = false;
+                    isAimingAtLightable = false;
                 }
-
-                isAimingAtLightable = false;
+                costDisplay.enabled = false;
             }
         }
 
