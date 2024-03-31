@@ -3,6 +3,7 @@ using System.Linq;
 using LevelGenerator.Scripts.Exceptions;
 using LevelGenerator.Scripts.Helpers;
 using LevelGenerator.Scripts.Structure;
+using Unity.AI.Navigation;
 using UnityEngine;
 
 namespace LevelGenerator.Scripts
@@ -13,6 +14,8 @@ namespace LevelGenerator.Scripts
         /// LevelGenerator seed
         /// </summary>
         public int Seed;
+        
+        public NavMeshSurface  NavMeshSurface;
 
         /// <summary>
         /// Container for all sections in hierarchy
@@ -69,6 +72,8 @@ namespace LevelGenerator.Scripts
             LevelSize = MaxLevelSize;
             CreateInitialSection();
             DeactivateBounds();
+            if (NavMeshSurface != null)
+                NavMeshSurface.BuildNavMesh();
         }
 
         protected void CheckRuleIntegrity()

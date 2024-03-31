@@ -259,14 +259,13 @@ public class FPSController : MonoBehaviour
     private void Move()
     {
         // Move the controller
-        characterController.Move(moveDirection.normalized * Time.deltaTime);
+        characterController.Move(moveDirection.normalized * (Time.deltaTime * (isRunning ? runningSpeed : walkingSpeed)));
 
         // Animation
         if (curSpeedX != 0 || curSpeedY != 0)
         {
             float speed = Math.Abs((moveDirection.x + moveDirection.z) / runningSpeed);
             characterAnimator.SetFloat(Speed, speed);
-            Debug.Log(speed);
         }
         else
         {

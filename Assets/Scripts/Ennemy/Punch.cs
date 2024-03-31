@@ -19,7 +19,10 @@ public class Punch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == manager.gameObject)
+        if(other.gameObject == FPSController.Instance.gameObject)
+        {
+            manager.healthSystem.Damage(damage);
+        }
         {
             manager.healthSystem.Damage(damage);
         }

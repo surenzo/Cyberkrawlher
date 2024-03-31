@@ -28,4 +28,12 @@ public class Bullet : MonoBehaviour
         }
         Destroy(gameObject);
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject == manager.gameObject)
+        {
+            manager.healthSystem.Damage(damage);
+        }
+        Destroy(gameObject);
+    }
 }
