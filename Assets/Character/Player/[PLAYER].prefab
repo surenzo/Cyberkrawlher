@@ -940,6 +940,8 @@ MonoBehaviour:
   lightObtention: 0
   staminaLossFactor: 15
   staminaGainFactor: 15
+  staminaRegenBoost: 5
+  staminaLossBoost: 5
   ownedLights: {fileID: 11400000, guid: fb63f3fe06c7b42e7875100b413ecc5c, type: 2}
   attack: {fileID: 0}
   lightAmountDisplay: {fileID: 0}

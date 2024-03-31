@@ -37,10 +37,12 @@ public class FPSController : MonoBehaviour
     public float defVal;
     public float lightEmission;
     public float lightObtention;
-    private float movementDirectionY;
     public float staminaLossFactor;
     public float staminaGainFactor;
+    public float staminaRegenBoost;
+    public float staminaLossBoost;
     private bool _emptyStamina;
+    private float movementDirectionY;
 
 
     float curSpeedX = 0;
@@ -135,6 +137,9 @@ public class FPSController : MonoBehaviour
                     break;
                 case Item.ItemEffects.LightReceptionBoost:
                     StartCoroutine(LightObtentionBoost());
+                    break;
+                case Item.ItemEffects.StaminaBoost:
+                    StartCoroutine(StaminaBoost());
                     break;
             }
         }
@@ -312,6 +317,19 @@ public class FPSController : MonoBehaviour
         lightObtention += lightEmissionBoost;
         yield return new WaitForSeconds(boostDuration);
         lightObtention -= lightEmissionBoost;
+    }
+
+    IEnumerator StaminaBoost()
+    {
+        staminaGainFactor += staminaRegenBoost;
+        if (staminaLossFactor > staminaLossBoost)
+        {
+            staminaLossFactor -= staminaLossBoost;
+            yield return new WaitForSeconds(boostDuration);
+        }
+
+        staminaLossFactor += staminaLossBoost;
+        staminaGainFactor -= staminaRegenBoost;
     }
 
     #endregion
