@@ -13,7 +13,7 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
 
     private void Start()
     {
-        Type = entityType.shooter;
+        Type = entityType.boxer;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }

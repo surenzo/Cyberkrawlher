@@ -124,21 +124,13 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > _aggroRange)
+        /*if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > _aggroRange)
         {
             agent.isStopped = true;
             animator.SetFloat("Speed", 0f);
             return;
-        }
-
-
-        if (Vector3.Distance(transform.position, _player.transform.position) > 300)
-        {
-            if (Type == entityType.boxer) EntityPool.BoxerToSpawnWithBoss += 1;
-            else EntityPool.ShooterToSpawnWithBoss += 1;
-            EntityPool.Instance.GoBack(gameObject);
-        }
-
+        }*/
+        
         if (_betweenAttackTimer < 0)
         {
             Attacks();
@@ -157,6 +149,13 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         if(_damageTimer > -1) _damageTimer -= Time.deltaTime;
         if (_betweenAttackTimer > -1) _betweenAttackTimer -= Time.deltaTime;
         if (_attackTimer > -1) _attackTimer -= Time.deltaTime;
+        
+        if (Vector3.Distance(transform.position, _player.transform.position) > 300)
+        {
+            if (Type == entityType.boxer) EntityPool.BoxerToSpawnWithBoss += 1;
+            else EntityPool.ShooterToSpawnWithBoss += 1;
+            EntityPool.Instance.GoBack(gameObject);
+        }
     }
 
 
