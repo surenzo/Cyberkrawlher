@@ -11,9 +11,6 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
     private float animationSpeed;
     private Animator animator;
 
-    [SerializeField] private int chargeur;
-
-    [SerializeField] private float punchDuration;
     private float punchTimer;
 
 
@@ -31,17 +28,19 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
         {
             agent.isStopped = false;
             punchHitBox.SetActive(false);
-            animator.SetBool("isAttacking", false);
+            animator.SetBool("IsAttacking", false);
         }
     }
 
     protected override bool Attacks()
     {
+        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > 1) return true;
+        Debug.Log("kachow");
         agent.isStopped = true;
 
-        punchTimer = punchDuration;
+        punchTimer = _attackDuration;
         punchHitBox.SetActive(true);
-        animator.SetBool("isAttacking", true);
+        animator.SetBool("IsAttacking", true);
 
         return true;
     }

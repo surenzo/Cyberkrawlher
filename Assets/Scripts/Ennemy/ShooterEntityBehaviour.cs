@@ -30,6 +30,7 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
         if (shotTimer<0 && currentChargeur < chargeur)
         {
+            animator.SetBool("IsAttacking", true);
             GameObject go = Instantiate(bullet, bullet.transform);
             go.transform.SetParent(transform.parent, true);
             go.SetActive(true);
@@ -40,11 +41,12 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
             currentChargeur += 1;
             shotTimer = shotFrequency;
+
         }
         else if (currentChargeur >= chargeur)
         {
             agent.isStopped = false;
-            //Debug.Log(agent.destination);
+            animator.SetBool("IsAttacking", false);
 
         }
     }

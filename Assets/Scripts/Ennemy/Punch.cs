@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Punch : MonoBehaviour
 {
-    public Vector3 direction;
-    [SerializeField] private float speed;
     public PlayerManager manager;
     [SerializeField] private float damage;
 
@@ -15,7 +13,6 @@ public class Punch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.Normalize(direction) * speed * Time.deltaTime;
         duration -= Time.deltaTime;
         if(duration < 0) gameObject.SetActive(false);
     }

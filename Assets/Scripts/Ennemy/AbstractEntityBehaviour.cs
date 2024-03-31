@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class AbstractEntityBehaviour : MonoBehaviour
 {
     [SerializeField] protected float _attackFrequency;
-    [SerializeField] private float _attackDuration;
+    [SerializeField] protected float _attackDuration;
     private float _attackTimer;
 
     [SerializeField] protected int _maxHealth;

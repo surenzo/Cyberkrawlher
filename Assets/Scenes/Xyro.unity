@@ -4085,16 +4085,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2996835575338472468, guid: 375d7c259e9756246a2ed815b1e8a504,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005871483768818294, guid: 375d7c259e9756246a2ed815b1e8a504,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3918803207014671366, guid: 375d7c259e9756246a2ed815b1e8a504,
         type: 3}
       propertyPath: m_Name
       value: Pool
       objectReference: {fileID: 0}
-    - target: {fileID: 4677231198138059758, guid: 375d7c259e9756246a2ed815b1e8a504,
-        type: 3}
-      propertyPath: manager
-      value: 
-      objectReference: {fileID: 572012383}
     - target: {fileID: 7268488643284099287, guid: 375d7c259e9756246a2ed815b1e8a504,
         type: 3}
       propertyPath: manager
