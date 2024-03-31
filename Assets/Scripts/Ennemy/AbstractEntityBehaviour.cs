@@ -31,7 +31,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     public entityType Type { get; protected set; }
 
     public bool isAttacking = false;
-    private float _betweenAttackTimer;
+    protected float _betweenAttackTimer;
 
 
 

@@ -16,7 +16,7 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
     [SerializeField] private float shotFrequency;
     private float shotTimer;
-
+    [SerializeField] private float angularSpeed;
 
     private void Start()
     {
@@ -49,6 +49,15 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
             animator.SetBool("IsAttacking", false);
 
         }
+
+        /*
+        animationSpeed = _rb.velocity.magnitude / ((_rb.angularVelocity.magnitude +1) * agent.speed);
+        Debug.Log("anim speed = " + animationSpeed);
+        Debug.Log("rb vel" + _rb.velocity.magnitude);
+        Debug.Log("ag speed" + agent.speed);
+        Debug.Log("angl speed" + _rb.angularVelocity.magnitude);
+
+        animator.SetFloat("Speed", animationSpeed); */
     }
 
     protected override bool Attacks()
@@ -65,10 +74,32 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
     protected override void Move()
     {
-        agent.SetDestination(FPSController.Instance.transform.position);
-        agent.stoppingDistance = _distanceToPlayer;
+        Vector3 direction = Vector3.Normalize(transform.position - FPSController.Instance.transform.position);
 
-        animationSpeed = _rb.velocity.magnitude / (_rb.angularVelocity.magnitude * agent.speed);
+        Vector3 dest = FPSController.Instance.transform.position + _distanceToPlayer * direction;
+
+        agent.SetDestination(dest);
+        Debug.Log(dest);
+
+
+        animationSpeed = (dest - transform.position).magnitude / (_rb.angularVelocity.magnitude +1);
         animator.SetFloat("Speed", animationSpeed);
+
+        if (_betweenAttackTimer < 0.5) {
+            Vector3 targetDirection = FPSController.Instance.transform.position - transform.position;
+
+            // The step size is equal to speed times frame time.
+            float singleStep = angularSpeed * Time.deltaTime;
+
+            // Rotate the forward vector towards the target direction by one step
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
+
+            // Draw a ray pointing at our target in
+            Debug.DrawRay(transform.position, newDirection, Color.red);
+
+            // Calculate a rotation a step closer to the target and applies rotation to this object
+            transform.rotation = Quaternion.LookRotation(newDirection);
+        }
+
     }
 }

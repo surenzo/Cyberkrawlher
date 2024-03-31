@@ -109,7 +109,7 @@ public class EntityPool : MonoBehaviour
 
 
     /* ============== DEBUG POOL =============== */
-    /*
+    
     private void Update()
     {
         if (Input.GetButtonDown("Jump"))
@@ -123,5 +123,5 @@ public class EntityPool : MonoBehaviour
             Debug.Log("killed");
         }
     }
-    */
+    
 }
