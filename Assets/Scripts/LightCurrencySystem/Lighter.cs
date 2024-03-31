@@ -81,9 +81,16 @@ namespace LightCurrencySystem
                     }
                     else
                     {
-                        _target.Highlight();
+                        _target.UnHighLight();
                         costDisplay.enabled = false;
                     }
+                }
+
+                if (_raycastHit.collider.gameObject.layer != 7 && isAimingAtLightable)
+                {
+                    _target.UnHighLight();
+                    costDisplay.enabled = false;
+                    isAimingAtLightable = false;
                 }
             }
             else
@@ -91,10 +98,9 @@ namespace LightCurrencySystem
                 if (isAimingAtLightable)
                 {
                     _target.UnHighLight();
-                    costDisplay.enabled = false;
+                    isAimingAtLightable = false;
                 }
-
-                isAimingAtLightable = false;
+                costDisplay.enabled = false;
             }
         }
 
