@@ -32,7 +32,6 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
     protected override bool Attacks()
     {
         if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > 3) return true;
-        Debug.Log("kachow");
         agent.isStopped = true;
 
         punchTimer = _attackDuration;

@@ -40,13 +40,13 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     protected float _betweenAttackTimer;
 
 
-
     public bool isRunning;
 
 
     public enum entityType {
         shooter,
-        boxer
+        boxer,
+        other
     }
 
 
@@ -146,7 +146,6 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         }
         else 
         {
-            Debug.Log("sh'movin");
             Move();
         }
         if (_attackTimer < 0)
