@@ -70,6 +70,7 @@ public class FPSController : MonoBehaviour
     [SerializeField] private OwnedLights ownedLights;
     [SerializeField] private Attack attack;
     [SerializeField] private TMP_Text lightAmountDisplay;
+    [SerializeField] private TMP_Text chestPrompt;
 
     [SerializeField] private CinemachineVirtualCamera DeathVirtualCamera;
     [HideInInspector] public bool canMove = true;
@@ -109,54 +110,74 @@ public class FPSController : MonoBehaviour
         DeathCheck();
     }
 
+    private void ItemCollection(Item collectedItem)
+    {
+        switch (collectedItem.effect)
+        {
+            case Item.ItemEffects.SmallHealthRegen:
+                _healthSystem.Heal(smallRegenAmount);
+                break;
+            case Item.ItemEffects.MedHealthRegen:
+                _healthSystem.Heal(medRegenAmount);
+                break;
+            case Item.ItemEffects.BigHealthRegen:
+                _healthSystem.Heal(bigRegenAmount);
+                break;
+            case Item.ItemEffects.LightLightRegen:
+                ownedLights.lightsInPossession += lightLightRegen;
+                lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
+                break;
+            case Item.ItemEffects.MedLightRegen:
+                ownedLights.lightsInPossession += medLightRegen;
+                lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
+                break;
+            case Item.ItemEffects.BigLightRegen:
+                ownedLights.lightsInPossession += bigLightRegen;
+                lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
+                break;
+            case Item.ItemEffects.SpeedBoost:
+                StartCoroutine(SpeedBoost());
+                break;
+            case Item.ItemEffects.Defboost:
+                StartCoroutine(DefBoost());
+                break;
+            case Item.ItemEffects.AttackBoost:
+                StartCoroutine(AtkBoost());
+                break;
+            case Item.ItemEffects.LightEmissionBoost:
+                StartCoroutine(LightEmissionBoost());
+                break;
+            case Item.ItemEffects.LightReceptionBoost:
+                StartCoroutine(LightObtentionBoost());
+                break;
+            case Item.ItemEffects.StaminaBoost:
+                StartCoroutine(StaminaBoost());
+                break;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 8)
         {
             Item collectedItem = other.GetComponent<Item>();
-            switch (collectedItem.effect)
-            {
-                case Item.ItemEffects.SmallHealthRegen:
-                    _healthSystem.Heal(smallRegenAmount);
-                    break;
-                case Item.ItemEffects.MedHealthRegen:
-                    _healthSystem.Heal(medRegenAmount);
-                    break;
-                case Item.ItemEffects.BigHealthRegen:
-                    _healthSystem.Heal(bigRegenAmount);
-                    break;
-                case Item.ItemEffects.LightLightRegen:
-                    ownedLights.lightsInPossession += lightLightRegen;
-                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
-                    break;
-                case Item.ItemEffects.MedLightRegen:
-                    ownedLights.lightsInPossession += medLightRegen;
-                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
-                    break;
-                case Item.ItemEffects.BigLightRegen:
-                    ownedLights.lightsInPossession += bigLightRegen;
-                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
-                    break;
-                case Item.ItemEffects.SpeedBoost:
-                    StartCoroutine(SpeedBoost());
-                    break;
-                case Item.ItemEffects.Defboost:
-                    StartCoroutine(DefBoost());
-                    break;
-                case Item.ItemEffects.AttackBoost:
-                    StartCoroutine(AtkBoost());
-                    break;
-                case Item.ItemEffects.LightEmissionBoost:
-                    StartCoroutine(LightEmissionBoost());
-                    break;
-                case Item.ItemEffects.LightReceptionBoost:
-                    StartCoroutine(LightObtentionBoost());
-                    break;
-                case Item.ItemEffects.StaminaBoost:
-                    StartCoroutine(StaminaBoost());
-                    break;
-            }
+            ItemCollection(collectedItem);
             GameObject.Destroy(other.gameObject);
+        }
+        
+        else if (other.gameObject.layer == 10)
+        {
+            Chest chestFound = other.gameObject.GetComponent<Chest>();
+            chestPrompt.enabled = true;
+            chestPrompt.text = "TAB to collect";
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 10)
+        {
+            chestPrompt.enabled = false;
         }
     }
 

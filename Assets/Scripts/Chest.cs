@@ -38,6 +38,7 @@ public class Chest : MonoBehaviour
     private float initialY;
     private static readonly int FresnelColor = Shader.PropertyToID("FresnelColor");
     private static readonly int MainColor = Shader.PropertyToID("MainColor");
+    public bool isLooted;
 
     private void OnValidate()
     {
@@ -68,7 +69,7 @@ public class Chest : MonoBehaviour
     
     private void Update()
     {
-        if (!isOpen)
+        if (!isOpen || isLooted)
         {
             hologram.SetActive(false);
             chestItem.enabled = false;

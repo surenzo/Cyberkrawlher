@@ -946,6 +946,7 @@ MonoBehaviour:
   ownedLights: {fileID: 11400000, guid: fb63f3fe06c7b42e7875100b413ecc5c, type: 2}
   attack: {fileID: 0}
   lightAmountDisplay: {fileID: 0}
+  chestPrompt: {fileID: 0}
   DeathVirtualCamera: {fileID: 3776412025497476724}
   canMove: 1
 --- !u!114 &226801654053930007
