@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;   
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.Serialization;
+using System.Collections.Generic;
 
 public class Chest : MonoBehaviour
 {
     [Header("Hologram")]
     [SerializeField] private Mesh hologramMesh;
+    [SerializeField] private List<Mesh> itemMeshes;
     [ColorUsage(true,true)] [SerializeField] private Color hologramColor;
     [ColorUsage(true,true)] [SerializeField] private Color hologramOutlineColor;
     
@@ -30,10 +27,14 @@ public class Chest : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject hologram;
     [SerializeField] private GameObject rayHologram;
+    [SerializeField] private Item chestItem;
 
     private GameObject hologramMeshObject;
-    
 
+    private Mesh _itemMesh;
+    private Array _itemTypes;
+    private int _itemTypeAmount;
+    private int _selectedItem;
     private float initialY;
     private static readonly int FresnelColor = Shader.PropertyToID("FresnelColor");
     private static readonly int MainColor = Shader.PropertyToID("MainColor");
@@ -46,7 +47,7 @@ public class Chest : MonoBehaviour
         hologramMeshObject = hologram.GetComponentInChildren<MeshFilter>().gameObject;
         hologramMeshObject.transform.localRotation = Quaternion.Euler(hologramRotation);
         hologram.transform.localPosition = hologramPosition;
-        hologram.GetComponentInChildren<MeshFilter>().mesh = hologramMesh;
+        hologram.GetComponentInChildren<MeshFilter>().mesh = _itemMesh;
         hologram.GetComponentInChildren<Light>().color = hologramColor.gamma;
         hologram.GetComponentInChildren<Light>().intensity = hologramColor.maxColorComponent/5;
         hologram.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("_FresnelColor", hologramOutlineColor); 
@@ -57,8 +58,12 @@ public class Chest : MonoBehaviour
 
     void Start()
     {
-        OnValidate();
         initialY = hologram.transform.position.y;
+        _itemTypes = Enum.GetValues(typeof(Item.ItemEffects));
+        _selectedItem = UnityEngine.Random.Range(0, _itemTypes.Length - 1);
+        chestItem.effect = (Item.ItemEffects)_itemTypes.GetValue(_selectedItem);
+        _itemMesh = itemMeshes[_selectedItem];// /!\ meshes must be in the same order as in the enum
+        OnValidate();
     }
     
     private void Update()
@@ -66,6 +71,7 @@ public class Chest : MonoBehaviour
         if (!isOpen)
         {
             hologram.SetActive(false);
+            chestItem.enabled = false;
             return;
         }
         hologram.transform.localScale = hologramSize;
@@ -78,11 +84,13 @@ public class Chest : MonoBehaviour
     {
         isOpen = true;
         hologram.SetActive(true);
+        chestItem.enabled = true;
     }
     
     public void Close()
     {
         isOpen = false;
         hologram.SetActive(false);
+        chestItem.enabled = false;
     }
 }
