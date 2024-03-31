@@ -550,16 +550,6 @@ PrefabInstance:
       propertyPath: staminaBar
       value: 
       objectReference: {fileID: 2050962674}
-    - target: {fileID: 2712415024033822122, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
-        type: 3}
-      propertyPath: maxBarLength
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2712415024033822122, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
-        type: 3}
-      propertyPath: minBarLength
-      value: 0.001
-      objectReference: {fileID: 0}
     - target: {fileID: 2853145397573310605, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: costDisplay
@@ -570,16 +560,6 @@ PrefabInstance:
       propertyPath: lightAmountDisplay
       value: 
       objectReference: {fileID: 125859670}
-    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
-        type: 3}
-      propertyPath: staminaGainFactor
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
-        type: 3}
-      propertyPath: staminaLossFactor
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: lightAmountDisplay

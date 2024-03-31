@@ -939,7 +939,7 @@ MonoBehaviour:
   defVal: 0
   lightEmission: 0
   lightObtention: 0
-  staminaLossFactor: 15
+  staminaLossFactor: 30
   staminaGainFactor: 15
   staminaRegenBoost: 5
   staminaLossBoost: 5
@@ -962,6 +962,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeHitBoxDuration: 1.1
   startUpDuration: 0.7
+  damage: 10
+  hitBox: {fileID: 4026667918258236768}
   combos:
   - combo: 000000000100000000000000
   - combo: 000000000100000000000000
@@ -1555,7 +1557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2099138649430583157
 Transform:
   m_ObjectHideFlags: 0
@@ -1565,7 +1567,7 @@ Transform:
   m_GameObject: {fileID: 4026667918258236768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.149, z: 0.938}
+  m_LocalPosition: {x: 0, y: 1.41, z: 0.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1586,11 +1588,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 1, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4048583981991536032
 GameObject:
