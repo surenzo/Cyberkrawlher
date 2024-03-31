@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class BoxeEntityBehaviour : AbstractEntityBehaviour
 {
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject punchHitBox;
     private NavMeshAgent agent;
     private float animationSpeed;
     private Animator animator;
+
+    [SerializeField] private int chargeur;
+
+    [SerializeField] private float punchDuration;
+    private float punchTimer;
 
 
     private void Start()
@@ -17,21 +23,30 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
+    private void LateUpdate()
+    {
+        punchTimer -= Time.deltaTime;
+
+        if (punchTimer < 0)
+        {
+            agent.isStopped = false;
+            punchHitBox.SetActive(false);
+            animator.SetBool("isAttacking", false);
+        }
+    }
 
     protected override bool Attacks()
     {
-        GameObject go = Instantiate(bullet, bullet.transform);
-        animator.SetFloat("Speed", 0);
+        agent.isStopped = true;
 
-
-        go.transform.SetParent(transform.parent, true);
-        go.SetActive(true);
-        go.GetComponent<Bullet>().direction = FPSController.Instance.transform.position - transform.position;
-        go.GetComponent<Bullet>().manager = _playerManager;
-
+        punchTimer = punchDuration;
+        punchHitBox.SetActive(true);
         animator.SetBool("isAttacking", true);
+
         return true;
     }
+
+
 
     protected override void Move()
     {

@@ -84,9 +84,6 @@ public class EntityPool : MonoBehaviour
             }
         }
 
-        
-
-
         GameObject entity;
         if (type == AbstractEntityBehaviour.entityType.shooter)
         {
@@ -100,7 +97,7 @@ public class EntityPool : MonoBehaviour
         }
         if (type == AbstractEntityBehaviour.entityType.boxer)
         {
-            entity = ShooterPool[0];
+            entity = BoxerPool[0];
 
             BoxerPool.Remove(entity);
             UsedBoxerPool.Add(entity);
@@ -111,16 +108,18 @@ public class EntityPool : MonoBehaviour
     }
 
 
+    /* ============== DEBUG POOL =============== */
+
     private void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Make(AbstractEntityBehaviour.entityType.shooter, Vector3.zero);
+            Make(AbstractEntityBehaviour.entityType.boxer, Vector3.zero);
             Debug.Log("made");
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            UsedShooterPool[0].GetComponent<ShooterEntityBehaviour>().Damage(5, FPSController.Instance.transform, 1);
+            UsedBoxerPool[0].GetComponent<ShooterEntityBehaviour>().Damage(5, FPSController.Instance.transform, 1);
             Debug.Log("killed");
         }
     }

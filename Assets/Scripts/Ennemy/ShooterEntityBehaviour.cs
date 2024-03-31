@@ -24,7 +24,7 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
-    private void Update()
+    private void LateUpdate()
     {
         shotTimer -= Time.deltaTime;
 
