@@ -8,10 +8,10 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 {
     [SerializeField] private GameObject bullet;
 
-    [SerializeField] public int chargeur;
+    [SerializeField] private int chargeur;
     private int currentChargeur;
 
-    [SerializeField] public float shotFrequency;
+    [SerializeField] private float shotFrequency;
     private float shotTimer;
     
     private HealthSystem _healthSystem;
