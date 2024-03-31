@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class ShooterEntityBehaviour : AbstractEntityBehaviour
 {
@@ -10,6 +11,12 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
     private float animationSpeed;
     private Animator animator;
 
+    [SerializeField] private int chargeur;
+    private int currentChargeur;
+
+    [SerializeField] private float shotFrequency;
+    private float shotTimer;
+
 
     private void Start()
     {
@@ -17,15 +24,42 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
+    private void Update()
+    {
+        shotTimer -= Time.deltaTime;
+
+        if (shotTimer<0 && currentChargeur < chargeur)
+        {
+            GameObject go = Instantiate(bullet, bullet.transform);
+            go.transform.SetParent(transform.parent, true);
+            go.SetActive(true);
+            go.GetComponent<Bullet>().direction = FPSController.Instance.transform.position - transform.position;
+            go.GetComponent<Bullet>().manager = _playerManager;
+
+            Debug.Log("Bang");
+
+            currentChargeur += 1;
+            shotTimer = shotFrequency;
+        }
+        else if (currentChargeur >= chargeur)
+        {
+            agent.isStopped = false;
+            //Debug.Log(agent.destination);
+
+        }
+    }
 
     protected override bool Attacks()
     {
-        GameObject go = Instantiate(bullet, bullet.transform);
-        go.transform.SetParent(transform.parent, true);
-        go.SetActive(true);
-        go.GetComponent<Bullet>().direction = FPSController.Instance.transform.position - transform.position;
+        agent.isStopped = true;
+
+        shotTimer = shotFrequency;
+        currentChargeur = 0;
+
         return true;
     }
+
+
 
     protected override void Move()
     {

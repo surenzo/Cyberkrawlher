@@ -14,7 +14,8 @@ public class Item : MonoBehaviour
         SpeedBoost,
         SmallHealthRegen,
         MedHealthRegen,
-        BigHealthRegen
+        BigHealthRegen,
+        StaminaBoost
     }
 
     public ItemEffects effect;

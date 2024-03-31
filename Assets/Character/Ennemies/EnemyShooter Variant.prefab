@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3745234813666598984}
   - component: {fileID: 8109678562739132863}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
-  speed: 10
+  speed: 20
+  manager: {fileID: 0}
+  damage: 10
+  duration: 5
 --- !u!1001 &7759732013063769127
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -301,7 +304,7 @@ MonoBehaviour:
   _damageCooldown: 0
   _knockbackCoeff: 1
   _lightLootQuantity: 10
-  _speed: 5
+  _speed: 3
   _distanceToPlayer: 8
   isAttacking: 0
   isRunning: 0
@@ -360,7 +363,7 @@ Rigidbody:
   m_GameObject: {fileID: 4459274426386887454}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

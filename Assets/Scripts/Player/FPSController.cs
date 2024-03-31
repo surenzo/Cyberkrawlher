@@ -9,7 +9,7 @@ using TMPro;
 public class FPSController : MonoBehaviour
 {
     #region Variables
-    
+
     public static FPSController Instance;
     public float boostDuration = 10f;
     public float smallRegenAmount = 5f;
@@ -24,6 +24,7 @@ public class FPSController : MonoBehaviour
     public int lightLightRegen = 100;
     public int medLightRegen = 200;
     public int bigLightRegen = 100;
+    public float walkSpeedBoost = 4f;
     public float runSpeedBoost = 3f;
     public float walkingSpeed = 7.5f;
     public float runningSpeed = 11.5f;
@@ -36,9 +37,14 @@ public class FPSController : MonoBehaviour
     public float defVal;
     public float lightEmission;
     public float lightObtention;
+    public float staminaLossFactor;
+    public float staminaGainFactor;
+    public float staminaRegenBoost;
+    public float staminaLossBoost;
+    private bool _emptyStamina;
     private float movementDirectionY;
-    
-    
+
+
     float curSpeedX = 0;
     float curSpeedY = 0;
 
@@ -66,6 +72,7 @@ public class FPSController : MonoBehaviour
     {
         Instance = this;
     }
+
     void Start()
     {
         // Get Components
@@ -131,8 +138,12 @@ public class FPSController : MonoBehaviour
                 case Item.ItemEffects.LightReceptionBoost:
                     StartCoroutine(LightObtentionBoost());
                     break;
+                case Item.ItemEffects.StaminaBoost:
+                    StartCoroutine(StaminaBoost());
+                    break;
             }
         }
+
         GameObject.Destroy(other.gameObject);
     }
 
@@ -156,15 +167,38 @@ public class FPSController : MonoBehaviour
 
         // Press Left Shift to run
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
-        curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-        curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
+        curSpeedX = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
+        curSpeedY = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
         movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        if (isRunning && !_emptyStamina && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) ||
+                                            Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) ||
+                                            Input.GetKey(KeyCode.W)         || Input.GetKey(KeyCode.S) || 
+                                            Input.GetKey(KeyCode.A)         || Input.GetKey(KeyCode.D)))
+        {
+            _healthSystem.stamina -= staminaLossFactor * Time.deltaTime;
+            if (_healthSystem.stamina < 0)
+            {
+                _healthSystem.stamina = 0;
+                _emptyStamina = true;
+            }
+        }
+        else
+        {
+            _healthSystem.stamina += staminaGainFactor * Time.deltaTime;
+            if (_healthSystem.stamina > _healthSystem.staminaThreshold)
+            {
+                _emptyStamina = false;
+                if (_healthSystem.stamina > _healthSystem.maxStamina)
+                {
+                    _healthSystem.stamina = _healthSystem.maxStamina;
+                }
+            }
+        }
     }
 
     private void JumpAndGravity()
     {
-        
         // Jump
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
@@ -242,16 +276,19 @@ public class FPSController : MonoBehaviour
     {
         jumpSpeed += runSpeedBoost;
         runningSpeed += jumpSpeedBoost;
+        walkingSpeed += walkSpeedBoost;
         if (attack.startUpDuration > attackSpeedBoost && attack.activeHitBoxDuration > attackSpeedBoost)
         {
             attack.startUpDuration -= attackSpeedBoost;
             attack.activeHitBoxDuration -= attackSpeedBoost;
             yield return new WaitForSeconds(boostDuration);
-            jumpSpeed -= runSpeedBoost;
-            runningSpeed -= runSpeedBoost;
             attack.startUpDuration += attackSpeedBoost;
             attack.activeHitBoxDuration += attackSpeedBoost;
         }
+
+        walkingSpeed -= walkSpeedBoost;
+        jumpSpeed -= runSpeedBoost;
+        runningSpeed -= runSpeedBoost;
     }
 
     IEnumerator DefBoost()
@@ -273,7 +310,6 @@ public class FPSController : MonoBehaviour
         lightEmission += lightEmissionBoost;
         yield return new WaitForSeconds(boostDuration);
         lightEmission -= lightEmissionBoost;
-
     }
 
     IEnumerator LightObtentionBoost()
@@ -281,6 +317,19 @@ public class FPSController : MonoBehaviour
         lightObtention += lightEmissionBoost;
         yield return new WaitForSeconds(boostDuration);
         lightObtention -= lightEmissionBoost;
+    }
+
+    IEnumerator StaminaBoost()
+    {
+        staminaGainFactor += staminaRegenBoost;
+        if (staminaLossFactor > staminaLossBoost)
+        {
+            staminaLossFactor -= staminaLossBoost;
+            yield return new WaitForSeconds(boostDuration);
+        }
+
+        staminaLossFactor += staminaLossBoost;
+        staminaGainFactor -= staminaRegenBoost;
     }
 
     #endregion

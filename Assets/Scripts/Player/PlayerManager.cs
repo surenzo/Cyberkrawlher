@@ -15,14 +15,16 @@ namespace Player
         [SerializeField] private new Light light;
         [SerializeField] private float maxIntensity;
         [SerializeField] private float intensitySpeed;
-        [SerializeField] private HealthSystem healthSystem;
+        [SerializeField] public HealthSystem healthSystem;
         [SerializeField] private OwnedLights ownedLights;
         [SerializeField] private FPSController FPSController;
         [SerializeField] private float remainingHealthWarning = 0.2f;
         [SerializeField] private Color normalColor;
         [SerializeField] private Color warningColor;
+        [SerializeField] public int damage { get; private set; }
         private float _startTime;
-        private float _lastHealth = 0;
+        private float _lastHealth;
+        private float _lastStamina;
         private float _barRange;
 
         private void Start()
@@ -48,8 +50,14 @@ namespace Player
                 _lastHealth = healthSystem._health;
                 hpBar.fillAmount = healthSystem._health / healthSystem._maxLife * _barRange + minBarLength;
             }
-            
-            //TODO implement the same for stamina when it exists;
+
+            if (healthSystem.stamina != _lastStamina)
+            {
+                _lastStamina = healthSystem.stamina;
+                staminaBar.fillAmount = healthSystem.stamina / healthSystem.maxStamina * _barRange + minBarLength;
+            }
         }
+
+
     }
 }
