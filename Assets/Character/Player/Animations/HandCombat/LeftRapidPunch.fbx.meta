@@ -56,7 +56,31 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0
+        functionName: PunchStartEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c8a60b4b8dcbc2f40bbdc82865aea2ea,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.31268436
+        functionName: PunchEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c8a60b4b8dcbc2f40bbdc82865aea2ea,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6662847
+        functionName: PunchEndEvent
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: c8a60b4b8dcbc2f40bbdc82865aea2ea,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

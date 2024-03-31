@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/_Menu.unity
     guid: f0bc6640a982d734881ea8542c8c694d
   - enabled: 1
-    path: Assets/Scenes/_Main.unity
-    guid: 1a4e2f4327ded9a47a797c26bf47f6e1
+    path: Assets/Scenes/Maigah.unity
+    guid: adebe62f3c7ca964c903e9d61a4db37c
   m_configObjects: {}

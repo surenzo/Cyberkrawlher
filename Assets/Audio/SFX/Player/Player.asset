@@ -15,7 +15,7 @@ MonoBehaviour:
   clips:
   - clipName: punch
     clip: {fileID: 8300000, guid: bf1be30cd8a5c3e4284cf97f6832d57b, type: 3}
-    volume: 1
+    volume: 0.5
     audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
       type: 2}
   subCategories:

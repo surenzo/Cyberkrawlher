@@ -1,20 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using EzSoundManager;
 using Player;
 using UnityEngine;
+
 
 
 public class Attack : MonoBehaviour
 {
     private bool _inCombat;
-    private bool _isAttacking;
     private bool _isLeftSideAttacking;
     private bool _isRightSideAttacking;
+
+    private bool _canLeftAttack;
+    private bool _canRightAttack;
+    
     private Animator _characterAnimator;
     public float activeHitBoxDuration = 1.1f;
     public float startUpDuration = 0.7f;
     public float damage = 10;
     public GameObject hitBox;
+    
+    private readonly int LEFT = 0;
+    private readonly int RIGHT = 1;
 
     private enum Side
     {
@@ -49,26 +57,27 @@ public class Attack : MonoBehaviour
         _currentComboIndex = -1;
         combos[0].ResetCombo();
         hitBox.SetActive(false);
+        
+        _canLeftAttack = true;
+        _canRightAttack = true;
     }
 
     void Update()
     {
+        _currentSide = Side.None;
+        
         if (Input.GetMouseButtonDown(0))
         {
             _currentSide = Side.Left;
             _currentAttack = HitType.LeftPunch;
-            coucou();
-            if (_inCombat)
-                StartCoroutine(HitBoxCoroutine());
+            ProceedAttack();
         }
 
         if (Input.GetMouseButtonDown(1))
         {
             _currentSide = Side.Right;
             _currentAttack = HitType.RightPunch;
-            coucou();
-            if (_inCombat)
-                StartCoroutine(HitBoxCoroutine());
+            ProceedAttack();
         }
         
         if (Input.GetKeyDown(KeyCode.F))
@@ -87,10 +96,26 @@ public class Attack : MonoBehaviour
     }
     
 
-    private void coucou()
+    private void ProceedAttack()
     {
-        if (!CanAttack()) return;
+        if (_inCombat)
+            StartCoroutine(HitBoxCoroutine());
+        
+        if (!CanAttack(_currentSide)) return;
 
+        if (_currentSide == Side.Left)
+        {
+            _isLeftSideAttacking = true;
+        }
+        
+        if (_currentSide == Side.Right)
+        {
+            _isRightSideAttacking = true;
+        }
+        
+        _canLeftAttack = false;
+        _canRightAttack = false;
+        
         if (IsPerformingCombo() && combos[_currentComboIndex].CheckNextHit(_currentAttack))
         {
             ContinueCombo();
@@ -104,9 +129,7 @@ public class Attack : MonoBehaviour
         }
         
         combos[0].ResetCombo();
-        _isAttacking = true;
-        _characterAnimator.SetTrigger(GetHitTypeHash(_currentAttack));
-        StartCoroutine(AttackCoroutine(0.2f));
+        PlayPunchAnimation(_currentAttack);
         
     }
     
@@ -119,54 +142,36 @@ public class Attack : MonoBehaviour
     
     private void ContinueCombo()
     {
-        _characterAnimator.SetTrigger(GetHitTypeHash(combos[_currentComboIndex].NextHit()));
-        _isAttacking = true;
-        StartCoroutine(AttackCoroutine(0.2f));
+        PlayPunchAnimation(combos[_currentComboIndex].NextHit());
     }
     
-    IEnumerator AttackCoroutine(float timeToWaitSecond)
+    
+    private void PlayPunchAnimation(HitType hitType)
     {
-        float startTime = Time.time;
-        
-        startTime = Time.time;
-        
-        while (Time.time - startTime <= timeToWaitSecond)
-        {
-            yield return null;
-        }
-        
-        _isAttacking = false;
-        if (IsPerformingCombo() && combos[_currentComboIndex].IsComboFinished())
-        {
-            Debug.Log("Combo Finished!");
-            combos[_currentComboIndex].ResetCombo();
-            _currentComboIndex = -1;
-            AchieveComboReward();
-        }
+        _characterAnimator.SetTrigger(GetHitTypeHash(hitType));
     }
     
     private void AchieveComboReward()
     {
         StartCoroutine(PlayAnimationWithDelayInSeconds(0.4f));
-        
-            
     }
     
     
     IEnumerator PlayAnimationWithDelayInSeconds(float delay)
     {
         yield return new WaitForSeconds(delay);
-        _characterAnimator.SetTrigger(GetHitTypeHash(HitType.QuadPunch));
+        PlayPunchAnimation(HitType.QuadPunch);
         StartCoroutine(HitBoxCoroutine());
-        _isAttacking = true;
-        StartCoroutine(AttackCoroutine(0.9f));
     }
     
-    
-
-    private bool CanAttack()
+    private bool CanAttack(Side side)
     {
-        return _inCombat && !_isAttacking;
+        if (!_inCombat) return false;
+
+        if (side == Side.Left) return _canLeftAttack;
+        if (side == Side.Right) return _canRightAttack;
+
+        return false;
     }
     
     private int GetHitTypeHash(HitType hitType)
@@ -177,5 +182,49 @@ public class Attack : MonoBehaviour
     private bool IsPerformingCombo()
     {
         return _currentComboIndex != -1;
+    }
+    
+    
+    public void PunchStartEvent(int side)
+    {
+        SoundManager.PlaySoundOnGameObject("punch", "SFX/Player", gameObject, false);
+        SoundManager.RaiseRandomSoundAmongCategory("SFX/Player/Voice/PunchVoice", gameObject, false);
+    }
+
+    public void PunchEvent(int side)
+    {
+        if (side == LEFT && !_isRightSideAttacking)
+        {
+            _canRightAttack = true;
+        }
+
+        if (side == RIGHT && !_isLeftSideAttacking)
+        {
+            _canLeftAttack = true;
+        }
+    }
+    
+    public void PunchEndEvent(int side)
+    {
+        if (IsPerformingCombo() && combos[_currentComboIndex].IsComboFinished())
+        {
+            Debug.Log("Combo Finished!");
+            combos[_currentComboIndex].ResetCombo();
+            _currentComboIndex = -1;
+            AchieveComboReward();
+        }
+        
+        if(side == LEFT)
+        {
+            _isLeftSideAttacking = false;
+            _canLeftAttack = true;
+        }
+
+        if (side == RIGHT)
+        {
+            _isRightSideAttacking = false;
+            _canRightAttack = true;
+        }
+
     }
 }
