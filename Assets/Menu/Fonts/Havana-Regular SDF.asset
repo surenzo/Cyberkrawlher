@@ -8,8 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Havana-Regular SDF Material
-  m_Shader: {fileID: -6465566751694194690, guid: a3d800b099a06e0478fb790c5e79057a,
-    type: 3}
+  m_Shader: {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -79,6 +78,7 @@ Material:
     - _CullModeForward: 2
     - _DepthOffsetEnable: 0
     - _Diffuse: 0.5
+    - _DiffusePower: 1
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
@@ -112,9 +112,9 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _ScaleRatioA: 0.8333333
+    - _ScaleRatioA: 0.5
     - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.6770833
+    - _ScaleRatioC: 0.40625
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
