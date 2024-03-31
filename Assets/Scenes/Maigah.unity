@@ -4340,7 +4340,7 @@ PrefabInstance:
     - target: {fileID: 4668366864329169988, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.30551735
+      value: 0.3055174
       objectReference: {fileID: 0}
     - target: {fileID: 4668366864329169988, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
@@ -4350,7 +4350,7 @@ PrefabInstance:
     - target: {fileID: 4668366864329169988, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15917584
+      value: 0.15917587
       objectReference: {fileID: 0}
     - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
@@ -4367,6 +4367,11 @@ PrefabInstance:
       propertyPath: deathScreen
       value: 
       objectReference: {fileID: 1982407452}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: walkingSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: lightAmountDisplay
@@ -5842,7 +5847,7 @@ PrefabInstance:
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3285877
+      value: 0.32858777
       objectReference: {fileID: 0}
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
@@ -5852,7 +5857,7 @@ PrefabInstance:
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.103479065
+      value: -0.10347909
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

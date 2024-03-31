@@ -223,20 +223,11 @@ public class FPSController : MonoBehaviour
 
     private void MoveCalcul()
     {
-        // We are grounded, so recalculate move direction based on axes
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
-
-        // Press Left Shift to run
-        isRunning = Input.GetKey(KeyCode.LeftShift);
-        curSpeedX = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-        curSpeedY = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
-        movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
         bool condition = isRunning && !_emptyStamina && (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow) ||
                                                          Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.UpArrow) ||
                                                          Input.GetKey(KeyCode.W)         || Input.GetKey(KeyCode.S) || 
                                                          Input.GetKey(KeyCode.A)         || Input.GetKey(KeyCode.D));
+        
         if ( condition )
         {
             _healthSystem.stamina -= staminaLossFactor * Time.deltaTime;
@@ -263,9 +254,24 @@ public class FPSController : MonoBehaviour
                 }
             }
             
-            
-            
         }
+        
+        
+        // We are grounded, so recalculate move direction based on axes
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        Vector3 right = transform.TransformDirection(Vector3.right);
+
+        // Press Left Shift to run
+        isRunning = Input.GetKey(KeyCode.LeftShift);
+        curSpeedX = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
+        curSpeedY = canMove ? ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
+        movementDirectionY = moveDirection.y;
+        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        
+        
+        
+        
+        Debug.Log(_emptyStamina);
     }
 
     IEnumerator StaminaModifying()
@@ -322,7 +328,6 @@ public class FPSController : MonoBehaviour
         {
             float speed = (Math.Abs(moveDirection.x) + Math.Abs(moveDirection.z)) / runningSpeed;
             characterAnimator.SetFloat("Speed", speed);
-            Debug.Log(speed);
         }
         else
         {
