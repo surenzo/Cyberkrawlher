@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EntityPool : MonoBehaviour
 {
+    public static int BoxerToSpawnWithBoss;
+    public static int ShooterToSpawnWithBoss;
+    
     public static EntityPool Instance;
 
     [SerializeField] private GameObject _lum;

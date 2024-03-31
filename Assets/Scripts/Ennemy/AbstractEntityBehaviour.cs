@@ -1,7 +1,4 @@
 using Player;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -101,9 +98,9 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             if (_currentHealth <= 0)
             {
                 EntityPool.Instance.MakeLum(transform.position);
-                Debug.Log("lum créée");
+                Debug.Log("lum crï¿½ï¿½e");
                 EntityPool.Instance.GoBack(gameObject);
-                Debug.Log("entité rangée");
+                Debug.Log("entitï¿½ rangï¿½e");
 
             }
         }
@@ -135,7 +132,12 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         }
 
 
-        if (Vector3.Distance(transform.position, _player.transform.position) > 300) Destroy(gameObject);
+        if (Vector3.Distance(transform.position, _player.transform.position) > 300)
+        {
+            if (Type == entityType.boxer) EntityPool.BoxerToSpawnWithBoss += 1;
+            else EntityPool.ShooterToSpawnWithBoss += 1;
+            EntityPool.Instance.GoBack(gameObject);
+        }
 
         if (_betweenAttackTimer < 0)
         {
