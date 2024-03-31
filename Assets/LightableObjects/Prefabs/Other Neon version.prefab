@@ -441,8 +441,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.9
-  m_Height: 2.39
+  m_Radius: 4
+  m_Height: 4
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &6776894687657730819
@@ -459,7 +459,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 0.023584902, b: 0.023584902, a: 0}
   enabledColor: {r: 0.504717, g: 1, b: 0.8711718, a: 0}
-  litArea: {fileID: 6031061980284571115}
   enabledNeon: {fileID: 3960621453936722370}
   neonLight: {fileID: 5100423500126235670}
   isVariant: 1

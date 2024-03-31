@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
+using EzSoundManager;
 using LightCurrencySystem;
 using TMPro;
 
@@ -42,14 +43,29 @@ public class FPSController : MonoBehaviour
     public float staminaRegenBoost;
     public float staminaLossBoost;
     private bool _emptyStamina;
+    private bool _chestLooted;
+    private bool _canLootChest;
+    private Chest _chestFound;
+    
+    [Header("Audio")]
+    [SerializeField] private float timeBetweenStepsWalk = 0.4f;
+    [SerializeField] private float timeBetweenStepsRun = 0.3f;
+    private const float RandomAddedTime = 0;
+    private bool isLeftFootStepping = true;
+    private float _timerPlayerStepSfx;
     
     private float timeUntilStaminaRegen = 0.8f;
     private float timeUntilStaminaRegenCounter = 0;
     
     
+    
     private float movementDirectionY;
     private bool isRunning = false;
     private bool staminaCoroutineOnGoing = false;
+
+    private bool isDead;
+    [SerializeField] private CanvasGroup _HUD;
+    [SerializeField] private CanvasGroup deathScreen;
 
 
     float curSpeedX = 0;
@@ -65,11 +81,11 @@ public class FPSController : MonoBehaviour
     [SerializeField] private OwnedLights ownedLights;
     [SerializeField] private Attack attack;
     [SerializeField] private TMP_Text lightAmountDisplay;
+    [SerializeField] private TMP_Text chestPrompt;
 
     [SerializeField] private CinemachineVirtualCamera DeathVirtualCamera;
     [HideInInspector] public bool canMove = true;
     private static readonly int IsDead = Animator.StringToHash("isDead");
-    private static readonly int Speed = Animator.StringToHash("Speed");
 
     #endregion
 
@@ -90,6 +106,8 @@ public class FPSController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        deathScreen.alpha = 0;
+        deathScreen.gameObject.SetActive(false);
     }
 
     #endregion
@@ -100,6 +118,59 @@ public class FPSController : MonoBehaviour
     {
         PlayerMovement();
         DeathCheck();
+        if (_canLootChest && Input.GetKeyDown(KeyCode.Tab) && !_chestLooted)
+        {
+            _chestLooted = true;
+            chestPrompt.enabled = false;
+            _chestFound.isLooted = true;
+            ItemCollection(_chestFound.chestItem);
+        }
+    }
+
+    private void ItemCollection(Item collectedItem)
+    {
+        switch (collectedItem.effect)
+        {
+            case Item.ItemEffects.SmallHealthRegen:
+                _healthSystem.Heal(smallRegenAmount);
+                break;
+            case Item.ItemEffects.MedHealthRegen:
+                _healthSystem.Heal(medRegenAmount);
+                break;
+            case Item.ItemEffects.BigHealthRegen:
+                _healthSystem.Heal(bigRegenAmount);
+                break;
+            case Item.ItemEffects.LightLightRegen:
+                ownedLights.lightsInPossession += lightLightRegen;
+                lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
+                break;
+            case Item.ItemEffects.MedLightRegen:
+                ownedLights.lightsInPossession += medLightRegen;
+                lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
+                break;
+            case Item.ItemEffects.BigLightRegen:
+                ownedLights.lightsInPossession += bigLightRegen;
+                lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
+                break;
+            case Item.ItemEffects.SpeedBoost:
+                StartCoroutine(SpeedBoost());
+                break;
+            case Item.ItemEffects.Defboost:
+                StartCoroutine(DefBoost());
+                break;
+            case Item.ItemEffects.AttackBoost:
+                StartCoroutine(AtkBoost());
+                break;
+            case Item.ItemEffects.LightEmissionBoost:
+                StartCoroutine(LightEmissionBoost());
+                break;
+            case Item.ItemEffects.LightReceptionBoost:
+                StartCoroutine(LightObtentionBoost());
+                break;
+            case Item.ItemEffects.StaminaBoost:
+                StartCoroutine(StaminaBoost());
+                break;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -107,49 +178,34 @@ public class FPSController : MonoBehaviour
         if (other.gameObject.layer == 8)
         {
             Item collectedItem = other.GetComponent<Item>();
-            switch (collectedItem.effect)
-            {
-                case Item.ItemEffects.SmallHealthRegen:
-                    _healthSystem.Heal(smallRegenAmount);
-                    break;
-                case Item.ItemEffects.MedHealthRegen:
-                    _healthSystem.Heal(medRegenAmount);
-                    break;
-                case Item.ItemEffects.BigHealthRegen:
-                    _healthSystem.Heal(bigRegenAmount);
-                    break;
-                case Item.ItemEffects.LightLightRegen:
-                    ownedLights.lightsInPossession += lightLightRegen;
-                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
-                    break;
-                case Item.ItemEffects.MedLightRegen:
-                    ownedLights.lightsInPossession += medLightRegen;
-                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
-                    break;
-                case Item.ItemEffects.BigLightRegen:
-                    ownedLights.lightsInPossession += bigLightRegen;
-                    lightAmountDisplay.text = $"Lights: {ownedLights.lightsInPossession}";
-                    break;
-                case Item.ItemEffects.SpeedBoost:
-                    StartCoroutine(SpeedBoost());
-                    break;
-                case Item.ItemEffects.Defboost:
-                    StartCoroutine(DefBoost());
-                    break;
-                case Item.ItemEffects.AttackBoost:
-                    StartCoroutine(AtkBoost());
-                    break;
-                case Item.ItemEffects.LightEmissionBoost:
-                    StartCoroutine(LightEmissionBoost());
-                    break;
-                case Item.ItemEffects.LightReceptionBoost:
-                    StartCoroutine(LightObtentionBoost());
-                    break;
-                case Item.ItemEffects.StaminaBoost:
-                    StartCoroutine(StaminaBoost());
-                    break;
-            }
+            ItemCollection(collectedItem);
             GameObject.Destroy(other.gameObject);
+        }
+        
+        else if (other.gameObject.layer == 10)
+        {
+            _chestFound = other.gameObject.GetComponent<Chest>();
+            if (!_chestFound.isOpen) return;
+            _canLootChest = true;
+            if (_chestFound.isLooted)
+            {
+                _chestLooted = true;
+            }
+            else
+            {
+                chestPrompt.enabled = true;
+                chestPrompt.text = "TAB to collect";
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 10)
+        {
+            _canLootChest = false;
+            _chestLooted = false;
+            chestPrompt.enabled = false;
         }
     }
 
@@ -264,13 +320,27 @@ public class FPSController : MonoBehaviour
         // Animation
         if (curSpeedX != 0 || curSpeedY != 0)
         {
-            float speed = Math.Abs((moveDirection.x + moveDirection.z) / runningSpeed);
-            characterAnimator.SetFloat(Speed, speed);
+            float speed = (Math.Abs(moveDirection.x) + Math.Abs(moveDirection.z)) / runningSpeed;
+            characterAnimator.SetFloat("Speed", speed);
+            //Debug.Log(speed);
         }
         else
         {
-            characterAnimator.SetFloat(Speed, 0);
+            characterAnimator.SetFloat("Speed", 0);
         }
+        
+        
+
+
+        if (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized.magnitude < 0.1f) return;
+        if (Time.time - (_timerPlayerStepSfx + RandomAddedTime) < (isRunning ? timeBetweenStepsRun : timeBetweenStepsWalk)) return;
+
+        SoundManager.RaiseRandomSoundAmongCategory(
+            "SFX/Player/Player" + (isLeftFootStepping ? "Left" : "Right") + "Steps",
+            gameObject, false);
+        _timerPlayerStepSfx = Time.time;
+        //randomAddedTime = Random.Range(-0.05f, 0.05f);
+        isLeftFootStepping = !isLeftFootStepping;
     }
 
     private void PlayerRotation()
@@ -291,7 +361,7 @@ public class FPSController : MonoBehaviour
 
     private void DeathCheck()
     {
-        if (_healthSystem._isDead)
+        if (_healthSystem._isDead && !isDead)
         {
             StartCoroutine(Death());
         }
@@ -299,11 +369,28 @@ public class FPSController : MonoBehaviour
 
     IEnumerator Death()
     {
+        deathScreen.GetComponentInParent<Pause>().enabled = false;
+        isDead = true;
         characterAnimator.SetTrigger(IsDead);
         canMove = false;
-        _healthSystem._isDead = false;
+        gameObject.GetComponent<CharacterController>().enabled = false;
+        
         DeathVirtualCamera.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
+        
+        canMove = false;
+        _HUD.LeanAlpha(0, 0.2f);
+        deathScreen.gameObject.SetActive(true);
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        deathScreen.LeanAlpha(1, 0.7f).setOnComplete(() => Time.timeScale = 0); 
+
+
+
+
+
+
     }
 
     #endregion

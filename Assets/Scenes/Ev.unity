@@ -208,7 +208,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 3b715921036cf46468e4f88ceee08274, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4120428309103249617, guid: 7aaf0ffc74c409f43be0ab487fbe9e97,
         type: 3}
       propertyPath: m_Layer
@@ -570,6 +570,54 @@ Material:
     - _HologramTiling: {r: 80, g: 80, b: 0, a: 0}
     - _MainColor: {r: 0, g: 2.6422381, b: 4.7593803, a: 1}
   m_BuildTextureStacks: []
+--- !u!1 &1187246343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1187246345}
+  - component: {fileID: 1187246344}
+  m_Layer: 0
+  m_Name: '[AUDIO]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1187246344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187246343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b4875fadbf491699cb6a09fec0354a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: 7bec162ac8a77fd498579a25d0af2db1, type: 2}
+  musicGroup: {fileID: -5815921436505767575, guid: 7bec162ac8a77fd498579a25d0af2db1,
+    type: 2}
+  poolSize: 10
+--- !u!4 &1187246345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187246343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -722.8409, y: -177.8365, z: 26.589642}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1368723900
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,3 +957,4 @@ SceneRoots:
   - {fileID: 1971884211}
   - {fileID: 200658632}
   - {fileID: 41085438}
+  - {fileID: 1187246345}
