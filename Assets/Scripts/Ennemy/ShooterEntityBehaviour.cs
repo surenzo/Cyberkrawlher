@@ -13,12 +13,16 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
     [SerializeField] private float shotFrequency;
     private float shotTimer;
+    
+    private HealthSystem _healthSystem;
+    
 
     private void Start()
     {
         Type = entityType.shooter;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        _healthSystem = GetComponent<HealthSystem>();
     }
     private void LateUpdate()
     {
@@ -53,6 +57,15 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
         currentChargeur = 0;
 
         return true;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 9)
+        {
+            var damage = other.gameObject.GetComponentInParent<Attack>().damage;
+            _healthSystem.Damage(damage);
+        }
     }
 
 }

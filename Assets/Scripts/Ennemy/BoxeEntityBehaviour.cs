@@ -7,15 +7,18 @@ using UnityEngine.UIElements;
 public class BoxeEntityBehaviour : AbstractEntityBehaviour
 {
     [SerializeField] private GameObject punchHitBox;
-
+    
     private float punchTimer;
-
+    private HealthSystem _healthSystem;
 
     private void Start()
     {
         Type = entityType.boxer;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        _healthSystem = GetComponent<HealthSystem>();
+        
+        
     }
     private void LateUpdate()
     {
@@ -39,6 +42,15 @@ public class BoxeEntityBehaviour : AbstractEntityBehaviour
         animator.SetBool("IsAttacking", true);
 
         return true;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 9)
+        {
+            var damage = other.gameObject.GetComponentInParent<Attack>().damage;
+            _healthSystem.Damage(damage);
+        }
     }
 
 }

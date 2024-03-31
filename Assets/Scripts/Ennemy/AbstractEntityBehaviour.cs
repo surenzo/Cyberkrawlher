@@ -126,6 +126,9 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         _healthSystem = GetComponent<HealthSystem>();
+        
+        _healthSystem._maxLife = _maxHealth;
+        _healthSystem._health = _maxHealth;
     }
 
     // Update is called once per frame
@@ -164,14 +167,6 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             EntityPool.Instance.GoBack(gameObject);
         }
     }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == 9)
-        {
-            _healthSystem.Damage(other.GetComponent<Attack>().damage);
-        }
-    }
+    
 
 }
