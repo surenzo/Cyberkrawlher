@@ -13,6 +13,7 @@ public class Attack : MonoBehaviour
     private Animator _characterAnimator;
     public float activeHitBoxDuration = 1.1f;
     public float startUpDuration = 0.7f;
+    public float damage = 10;
 
     private enum Side
     {

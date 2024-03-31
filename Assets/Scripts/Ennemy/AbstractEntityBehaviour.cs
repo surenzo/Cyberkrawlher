@@ -2,8 +2,12 @@ using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(HealthSystem))]
+
 public abstract class AbstractEntityBehaviour : MonoBehaviour
 {
+    
+    
     [SerializeField] protected float _attackFrequency;
     [SerializeField] protected float _attackDuration;
     private float _attackTimer;
@@ -29,6 +33,8 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     protected NavMeshAgent agent;
     protected Animator animator;
     [SerializeField] private float angularSpeed = 10;
+    
+    private HealthSystem _healthSystem;
 
 
     public entityType Type { get; protected set; }
@@ -119,6 +125,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         //_playerPunch = _player.GetComponent<Attack>().hitBox; 
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        _healthSystem = GetComponent<HealthSystem>();
     }
 
     // Update is called once per frame
@@ -161,9 +168,9 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == _playerPunch)
+        if(other.gameObject.layer == 9)
         {
-            Damage(_playerManager.damage, _player.transform, 1);
+            _healthSystem.Damage(other.GetComponent<Attack>().damage);
         }
     }
 
