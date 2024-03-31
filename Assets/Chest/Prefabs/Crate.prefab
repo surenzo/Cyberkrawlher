@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 6085896215333849443}
   - component: {fileID: 12405174128839370}
   - component: {fileID: 5142374251136679980}
-  m_Layer: 0
+  - component: {fileID: 7599969847377371511}
+  m_Layer: 10
   m_Name: Crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,6 +130,27 @@ MonoBehaviour:
   hologram: {fileID: 4366168123594391986}
   rayHologram: {fileID: 4294658979980828460}
   chestItem: {fileID: 3535458711568100429}
+--- !u!135 &7599969847377371511
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6830579541325509221}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &6268131003820816678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -509,7 +531,12 @@ PrefabInstance:
     - target: {fileID: 8668704123547518863, guid: f46a4c732cbdf447caaac16894019ed0,
         type: 3}
       propertyPath: m_Radius
-      value: 1
+      value: 0.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668704123547518863, guid: f46a4c732cbdf447caaac16894019ed0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
