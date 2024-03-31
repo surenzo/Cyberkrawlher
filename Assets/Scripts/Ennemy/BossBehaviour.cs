@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
-public class ShooterEntityBehaviour : AbstractEntityBehaviour
+public class BossBehaviour : AbstractEntityBehaviour
 {
     [SerializeField] private GameObject bullet;
 
@@ -14,17 +14,41 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
     [SerializeField] private float shotFrequency;
     private float shotTimer;
 
+    [SerializeField] private GameObject punchHitBox;
+
+    private float punchTimer;
+
+
+    private AbstractEntityBehaviour.entityType entityType;
+
+
     private void Start()
     {
-        Type = entityType.shooter;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
     private void LateUpdate()
     {
+        if (entityType == AbstractEntityBehaviour.entityType.shooter)
+        { 
+            ShooterUpdate();
+            return;
+        }
+        if (entityType == AbstractEntityBehaviour.entityType.boxer)
+        {
+            BoxerUpdate();
+            return;
+        }
+
+    }
+
+
+
+    private void ShooterUpdate()
+    {
         shotTimer -= Time.deltaTime;
 
-        if (shotTimer<0 && currentChargeur < chargeur)
+        if (shotTimer < 0 && currentChargeur < chargeur)
         {
             animator.SetBool("IsAttacking", true);
             GameObject go = Instantiate(bullet, bullet.transform);
@@ -44,6 +68,43 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
         }
     }
+
+
+    private bool ShooterAttack()
+    {
+        agent.isStopped = true;
+
+        shotTimer = shotFrequency;
+        currentChargeur = 0;
+
+        return true;
+    }
+
+
+    private void BoxerUpdate()
+    {
+        punchTimer -= Time.deltaTime;
+
+        if (punchTimer < 0)
+        {
+            agent.isStopped = false;
+            punchHitBox.SetActive(false);
+            animator.SetBool("IsAttacking", false);
+        }
+    }
+
+    private bool BoxerAttack()
+    {
+        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > 3) return true;
+        agent.isStopped = true;
+
+        punchTimer = _attackDuration;
+        punchHitBox.SetActive(true);
+        animator.SetBool("IsAttacking", true);
+
+        return true;
+    }
+
 
     protected override bool Attacks()
     {

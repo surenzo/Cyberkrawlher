@@ -37,7 +37,6 @@ namespace LightCurrencySystem
             litArea.enabled = true;
             litArea.radius = lightCost / 20;
             litArea.isTrigger = true;
-            litArea.center = transform.position;
 
             if (isVariant)
             {
