@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup _creditsPanel;
     
     [SerializeField] private CanvasGroup _blackerScreen;
+    [SerializeField] private CanvasGroup _loadingScreen;
+    [SerializeField] private Slider slider;
     
     void Start()
     {
@@ -20,6 +23,7 @@ public class MainMenu : MonoBehaviour
         _mainMenuPanel.alpha = 1;
         _optionsPanel.alpha = 0;
         _creditsPanel.alpha = 0;
+        _loadingScreen.alpha = 0;
         
         _blackerScreen.alpha = 0;
         
@@ -31,7 +35,8 @@ public class MainMenu : MonoBehaviour
     
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(LoadSceneAsync("Maigah"));
     }
     
     public void QuitGame()
@@ -79,5 +84,22 @@ public class MainMenu : MonoBehaviour
         });
     }
     
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+        _mainMenuPanel.gameObject.SetActive(false);
+        _mainMenuPanel.alpha = 0;
+        
+        _loadingScreen.gameObject.SetActive(true);
+        _loadingScreen.alpha = 1;
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+            slider.value = progress;
+            
+            yield return null;
+        }
+    }
         
 }
