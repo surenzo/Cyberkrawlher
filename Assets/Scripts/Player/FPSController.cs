@@ -47,9 +47,14 @@ public class FPSController : MonoBehaviour
     private float timeUntilStaminaRegenCounter = 0;
     
     
+    
     private float movementDirectionY;
     private bool isRunning = false;
     private bool staminaCoroutineOnGoing = false;
+
+    private bool isDead;
+    [SerializeField] private CanvasGroup _HUD;
+    [SerializeField] private CanvasGroup deathScreen;
 
 
     float curSpeedX = 0;
@@ -90,6 +95,8 @@ public class FPSController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        deathScreen.alpha = 0;
+        deathScreen.gameObject.SetActive(false);
     }
 
     #endregion
@@ -291,7 +298,7 @@ public class FPSController : MonoBehaviour
 
     private void DeathCheck()
     {
-        if (_healthSystem._isDead)
+        if (_healthSystem._isDead && !isDead)
         {
             StartCoroutine(Death());
         }
@@ -299,11 +306,28 @@ public class FPSController : MonoBehaviour
 
     IEnumerator Death()
     {
+        deathScreen.GetComponentInParent<Pause>().enabled = false;
+        isDead = true;
         characterAnimator.SetTrigger(IsDead);
         canMove = false;
-        _healthSystem._isDead = false;
+        gameObject.GetComponent<CharacterController>().enabled = false;
+        
         DeathVirtualCamera.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
+        
+        canMove = false;
+        _HUD.LeanAlpha(0, 0.2f);
+        deathScreen.gameObject.SetActive(true);
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        deathScreen.LeanAlpha(1, 0.7f).setOnComplete(() => Time.timeScale = 0); 
+
+
+
+
+
+
     }
 
     #endregion
