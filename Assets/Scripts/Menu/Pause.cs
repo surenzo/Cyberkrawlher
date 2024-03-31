@@ -27,6 +27,11 @@ public class Pause : MonoBehaviour
                     _HUDPanel.gameObject.SetActive(true);
                     _HUDPanel.LeanAlpha(1, 0.4f);
                 });
+                FPSController.Instance.canMove = true;
+                
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                
             }
             else
             {
@@ -39,6 +44,10 @@ public class Pause : MonoBehaviour
                 {
                     Time.timeScale = 0;
                 });
+                FPSController.Instance.canMove = false;
+                
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
