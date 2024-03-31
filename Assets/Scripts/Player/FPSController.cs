@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Cinemachine;
+using EzSoundManager;
 using LightCurrencySystem;
 using TMPro;
 
@@ -42,6 +43,13 @@ public class FPSController : MonoBehaviour
     public float staminaRegenBoost;
     public float staminaLossBoost;
     private bool _emptyStamina;
+    
+    [Header("Audio")]
+    [SerializeField] private float timeBetweenStepsWalk = 0.4f;
+    [SerializeField] private float timeBetweenStepsRun = 0.3f;
+    private const float RandomAddedTime = 0;
+    private bool isLeftFootStepping = true;
+    private float _timerPlayerStepSfx;
     
     private float timeUntilStaminaRegen = 0.8f;
     private float timeUntilStaminaRegenCounter = 0;
@@ -299,6 +307,17 @@ public class FPSController : MonoBehaviour
         {
             characterAnimator.SetFloat(Speed, 0);
         }
+
+
+        if (moveDirection.normalized.magnitude < 0.1f) return;
+        if (Time.time - (_timerPlayerStepSfx + RandomAddedTime) < (isRunning ? timeBetweenStepsRun : timeBetweenStepsWalk)) return;
+
+        SoundManager.RaiseRandomSoundAmongCategory(
+            "SFX/Player/Player" + (isLeftFootStepping ? "Left" : "Right") + "Steps",
+            gameObject, false);
+        _timerPlayerStepSfx = Time.time;
+        //randomAddedTime = Random.Range(-0.05f, 0.05f);
+        isLeftFootStepping = !isLeftFootStepping;
     }
 
     private void PlayerRotation()

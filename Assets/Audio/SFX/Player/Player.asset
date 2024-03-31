@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   clips: []
-  subCategories: []
-  parentCategory: {fileID: 0}
+  subCategories:
+  - {fileID: 11400000, guid: 80a65ce7f66201848b66705fcdef80d2, type: 2}
+  parentCategory: {fileID: 11400000, guid: 9f851eaaa81436045b9da84aa2e4b52c, type: 2}

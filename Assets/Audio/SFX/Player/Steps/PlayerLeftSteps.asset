@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6945228deed94a879536925c96e1f83d, type: 3}
-  m_Name: player_right_steps
+  m_Name: PlayerLeftSteps
   m_EditorClassIdentifier: 
   clips:
-  - clipName: player_right_step1
-    clip: {fileID: 8300000, guid: 8036640a66751424e9219784def72063, type: 3}
+  - clipName: player_left_step1
+    clip: {fileID: 8300000, guid: 639685ae0776344449807a759ebb9e7f, type: 3}
     volume: 1
     audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
       type: 2}
-  - clipName: player_right_step2
-    clip: {fileID: 8300000, guid: f684d08ef6159404da528f6b03712c2d, type: 3}
+  - clipName: player_left_step2
+    clip: {fileID: 8300000, guid: aee906fe40e86da4084c758248ea46aa, type: 3}
     volume: 1
     audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
       type: 2}
-  - clipName: player_right_step3
-    clip: {fileID: 8300000, guid: bed0675d5a914884aaa2e9bc6ef4c626, type: 3}
+  - clipName: player_left_step3
+    clip: {fileID: 8300000, guid: 55e14645eb51d4b4395ad5395bf69392, type: 3}
     volume: 1
     audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
       type: 2}
-  - clipName: player_right_step4
-    clip: {fileID: 8300000, guid: 25396a71e032ada4aa0928eb9e63d652, type: 3}
+  - clipName: player_left_step4
+    clip: {fileID: 8300000, guid: d7694248936c08a469b97b4fe2d5aa0e, type: 3}
     volume: 1
     audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
       type: 2}
-  - clipName: player_right_step5
-    clip: {fileID: 8300000, guid: be222d3e44b6ce847ad35499bef6a729, type: 3}
+  - clipName: player_left_step5
+    clip: {fileID: 8300000, guid: 64ae3adb39b20ce409759ee62bd2b207, type: 3}
     volume: 1
     audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
       type: 2}
