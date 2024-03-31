@@ -20,7 +20,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     protected Rigidbody _rb;
 
     [SerializeField] protected int _lightLootQuantity;
-    private int _currentHealth;
+    private float _currentHealth;
 
     [SerializeField] protected int _speed;
     [SerializeField] public int _aggroRange = 40;
@@ -95,13 +95,23 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 
     public void Damage(int damage, Transform DamageSource, float knockback)
     {
+        
+
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
         if(_damageTimer < 0)
         {
             _damageTimer = _damageCooldown;
-            _rb.velocity += knockback * _knockbackCoeff * new Vector3(transform.position.x - DamageSource.position.x, 0, transform.position.y - DamageSource.position.y);
-            _currentHealth -= damage;
-
-            if (_currentHealth <= 0)
+            
+            if(other.gameObject.layer == 9)
+            {
+                var damage = other.gameObject.GetComponentInParent<Attack>().damage;
+                _healthSystem.Damage(damage);
+            }
+            
+            if (_healthSystem._isDead)
             {
                 EntityPool.Instance.MakeLum(transform.position);
                 Debug.Log("lum cr��e");
@@ -110,7 +120,6 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 
             }
         }
-
     }
 
 
@@ -166,6 +175,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             else EntityPool.ShooterToSpawnWithBoss += 1;
             EntityPool.Instance.GoBack(gameObject);
         }
+        _currentHealth = _healthSystem._health;
     }
     
 

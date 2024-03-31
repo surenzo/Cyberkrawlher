@@ -58,14 +58,5 @@ public class ShooterEntityBehaviour : AbstractEntityBehaviour
 
         return true;
     }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.layer == 9)
-        {
-            var damage = other.gameObject.GetComponentInParent<Attack>().damage;
-            _healthSystem.Damage(damage);
-        }
-    }
 
 }
