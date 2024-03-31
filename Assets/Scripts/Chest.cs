@@ -22,12 +22,12 @@ public class Chest : MonoBehaviour
     [SerializeField] private float hologramSpeedMovement = 2f;
     
     [Header("Chest Settings")]
-    [SerializeField] public bool isOpen = false;
+    [SerializeField] private bool isOpen = false;
     
     [Header("References")]
     [SerializeField] private GameObject hologram;
     [SerializeField] private GameObject rayHologram;
-    [SerializeField] public Item chestItem;
+    [SerializeField] private Item chestItem;
 
     private GameObject hologramMeshObject;
 
@@ -38,7 +38,6 @@ public class Chest : MonoBehaviour
     private float initialY;
     private static readonly int FresnelColor = Shader.PropertyToID("FresnelColor");
     private static readonly int MainColor = Shader.PropertyToID("MainColor");
-    public bool isLooted;
 
     private void OnValidate()
     {
@@ -69,7 +68,7 @@ public class Chest : MonoBehaviour
     
     private void Update()
     {
-        if (!isOpen || isLooted)
+        if (!isOpen)
         {
             hologram.SetActive(false);
             chestItem.enabled = false;
