@@ -130,6 +130,7 @@ MonoBehaviour:
   hologram: {fileID: 4366168123594391986}
   rayHologram: {fileID: 4294658979980828460}
   chestItem: {fileID: 3535458711568100429}
+  isLooted: 0
 --- !u!135 &7599969847377371511
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -3300,6 +3300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1047589435886532669, guid: 0453e3267431d1a4e88771dc06d8f59e,
         type: 3}
+      propertyPath: spawnRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047589435886532669, guid: 0453e3267431d1a4e88771dc06d8f59e,
+        type: 3}
       propertyPath: shooterProbability
       value: 8
       objectReference: {fileID: 0}
