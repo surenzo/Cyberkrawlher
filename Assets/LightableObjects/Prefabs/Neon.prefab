@@ -167,8 +167,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.9
-  m_Height: 2.78
+  m_Radius: 4
+  m_Height: 4
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &5120101255600586297
@@ -183,9 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73f3689beb4348468ee2bb61242fd77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disabledColor: {r: 0, g: 0, b: 0, a: 0}
   highlightColor: {r: 1, g: 0.023584902, b: 0.023584902, a: 0}
   enabledColor: {r: 0.504717, g: 1, b: 0.8711718, a: 0}
-  litArea: {fileID: 7605056172228828888}
+  enabledNeon: {fileID: 0}
+  neonLight: {fileID: 0}
+  isVariant: 0
   isLitUp: 0
   lightCost: 100
