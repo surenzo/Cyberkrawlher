@@ -4073,6 +4073,26 @@ PrefabInstance:
       propertyPath: lightAmountDisplay
       value: 
       objectReference: {fileID: 1441610775}
+    - target: {fileID: 3365953904680047393, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: m_Lens.FarClipPlane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365953904680047393, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365953904680047393, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3365953904680047393, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.y
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 3966634190986865243, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: m_Range
@@ -4142,6 +4162,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FocalLength
       value: 18.678574
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824533037936593292, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8824533037936593292, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5594,6 +5624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.32858777
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.28199095
       objectReference: {fileID: 0}
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
