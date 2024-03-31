@@ -416,6 +416,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 148385090}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &218566007 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 1373899485812591671, guid: cc2fbd4cb6d188f47b67344b6967f2f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 760095744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &235565330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3265,11 +3271,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9154963121925836363, guid: 375d7c259e9756246a2ed815b1e8a504,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3760,6 +3761,16 @@ PrefabInstance:
       propertyPath: _health
       value: 10000000
       objectReference: {fileID: 0}
+    - target: {fileID: 1029822717013897393, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029822717013897393, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2008843108975865781, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: m_Name
@@ -3785,6 +3796,16 @@ PrefabInstance:
       propertyPath: lightAmountDisplay
       value: 
       objectReference: {fileID: 1441610775}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: _HUD
+      value: 
+      objectReference: {fileID: 218566007}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 1982407452}
     - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: lightAmountDisplay
@@ -4658,6 +4679,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5602255036858632926, guid: 838f8c78b9334a449980ef3f8bb26484,
     type: 3}
   m_PrefabInstance: {fileID: 1951893716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1982407452 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 584453748471119797, guid: cc2fbd4cb6d188f47b67344b6967f2f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 760095744}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1990539403
 PrefabInstance:

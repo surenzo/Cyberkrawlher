@@ -2850,10 +2850,15 @@ PrefabInstance:
       propertyPath: spawnDelay
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 1047589435886532669, guid: 0453e3267431d1a4e88771dc06d8f59e,
+        type: 3}
+      propertyPath: spawnRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1159321330774967535, guid: 0453e3267431d1a4e88771dc06d8f59e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.1
+      value: 11.5
       objectReference: {fileID: 0}
     - target: {fileID: 1159321330774967535, guid: 0453e3267431d1a4e88771dc06d8f59e,
         type: 3}
@@ -2863,7 +2868,7 @@ PrefabInstance:
     - target: {fileID: 1159321330774967535, guid: 0453e3267431d1a4e88771dc06d8f59e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.8
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1159321330774967535, guid: 0453e3267431d1a4e88771dc06d8f59e,
         type: 3}
