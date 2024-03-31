@@ -13,25 +13,25 @@ MonoBehaviour:
   m_Name: PunchHit
   m_EditorClassIdentifier: 
   clips:
-  - clipName: 
+  - clipName: punch_hit1
     clip: {fileID: 8300000, guid: a313f5f64d860c44c9e41de01b700b9c, type: 3}
-    volume: 0
-    audioMixerGroup: {fileID: 0}
-  - clipName: 
-    clip: {fileID: 0}
-    volume: 0
-    audioMixerGroup: {fileID: 0}
-  - clipName: 
-    clip: {fileID: 0}
-    volume: 0
-    audioMixerGroup: {fileID: 0}
-  - clipName: 
-    clip: {fileID: 0}
-    volume: 0
-    audioMixerGroup: {fileID: 0}
-  - clipName: 
-    clip: {fileID: 0}
-    volume: 0
-    audioMixerGroup: {fileID: 0}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  - clipName: punch_hit2
+    clip: {fileID: 8300000, guid: 293d8d12373ed1d47a4e73ba9b698d1e, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  - clipName: punch_hit3
+    clip: {fileID: 8300000, guid: d26bd4e3df6b08048814b9d2376bbf10, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
+  - clipName: punch_hit4
+    clip: {fileID: 8300000, guid: 01a4100b187735149bf5465d83cc581e, type: 3}
+    volume: 1
+    audioMixerGroup: {fileID: -1787721221492025687, guid: 7bec162ac8a77fd498579a25d0af2db1,
+      type: 2}
   subCategories: []
-  parentCategory: {fileID: 0}
+  parentCategory: {fileID: 11400000, guid: b6ba43d0da1f1734d85f0df34cc226ad, type: 2}
