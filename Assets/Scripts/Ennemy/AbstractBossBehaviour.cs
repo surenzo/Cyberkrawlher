@@ -2,7 +2,7 @@ using Player;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class AbstractEntityBehaviour : MonoBehaviour
+public abstract class AbstractBossBehaviour : MonoBehaviour
 {
     [SerializeField] protected float _attackFrequency;
     [SerializeField] protected float _attackDuration;
@@ -19,8 +19,9 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     private int _currentHealth;
 
     [SerializeField] protected int _speed;
-    [SerializeField] public int _aggroRange = 40;
-    [SerializeField] protected float _distanceToPlayer;
+    [SerializeField] public int _shootingRange = 40;
+    [SerializeField] public int _boxingRange = 40;
+   // [SerializeField] protected float _distanceToPlayer;
 
     private GameObject _player;
     private GameObject _playerPunch;
@@ -31,16 +32,17 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     [SerializeField] private float angularSpeed = 10;
 
 
-    public entityType Type { get; protected set; }
+    protected entityType Type;
 
-    public bool isAttacking = false;
+    public bool isAttackFinished = false;
     protected float _betweenAttackTimer;
 
 
     public bool isRunning;
 
 
-    public enum entityType {
+    public enum entityType
+    {
         shooter,
         boxer,
         other
@@ -50,18 +52,19 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
     /* Returns false when the action is finished */
     protected abstract bool Attacks();
 
-    protected void Move()
+    protected void Move(Vector3 target, float distance)
     {
 
-        Vector3 direction = Vector3.Normalize(transform.position - FPSController.Instance.transform.position);
+        Vector3 direction = Vector3.Normalize(transform.position - target);
 
-        Vector3 dest = FPSController.Instance.transform.position + _distanceToPlayer * direction;
+        Vector3 dest = target + distance * direction;
 
         agent.SetDestination(dest);
 
 
         float animationSpeed = (dest - transform.position).magnitude / (_rb.angularVelocity.magnitude + 1);
         animator.SetFloat("Speed", animationSpeed);
+
 
         if (_betweenAttackTimer < 0.5)
         {
@@ -79,6 +82,8 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             // Calculate a rotation a step closer to the target and applies rotation to this object
             transform.rotation = Quaternion.LookRotation(newDirection);
         }
+
+
     }
 
     public void Heal(int n)
@@ -89,7 +94,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
 
     public void Damage(int damage, Transform DamageSource, float knockback)
     {
-        if(_damageTimer < 0)
+        if (_damageTimer < 0)
         {
             _damageTimer = _damageCooldown;
             _rb.velocity += knockback * _knockbackCoeff * new Vector3(transform.position.x - DamageSource.position.x, 0, transform.position.y - DamageSource.position.y);
@@ -98,68 +103,70 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
             if (_currentHealth <= 0)
             {
                 EntityPool.Instance.MakeLum(transform.position);
-                Debug.Log("lum cr��e");
                 EntityPool.Instance.GoBack(gameObject);
-                Debug.Log("entit� rang�e");
+                _playerManager.healthSystem.Heal(5000);
             }
         }
+
     }
 
 
 
     // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
         _rb = GetComponent<Rigidbody>();
         _currentHealth = _maxHealth;
         _player = FPSController.Instance.gameObject;
         _playerManager = _player.GetComponent<PlayerManager>();
+        //_playerPunch = _player.GetComponent<Attack>().hitBox; 
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
 
+
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, FPSController.Instance.transform.position) > _aggroRange)
+        Vector3 target = FPSController.Instance.transform.position;
+        float distance = 0;
+
+        if (isAttackFinished)
         {
-            agent.isStopped = true;
-            animator.SetFloat("Speed", 0f);
-            return;
+            int r = Random.Range(0, 3);
+            Debug.Log(r);
+            if (r == 0)
+            {
+                Type = entityType.shooter;
+                distance = _shootingRange;
+            }
+            else if (r == 1)
+            {
+                Type = entityType.other;
+                distance = 0.5f * (_shootingRange + _boxingRange);
+            }
+            else
+            {
+                Type = entityType.boxer;
+                distance = _boxingRange;
+            }
+            isAttackFinished = false;
         }
-
-
-        if (Vector3.Distance(transform.position, _player.transform.position) > 300)
+        
+        if(Mathf.Abs(Vector3.Distance(transform.position, target) - distance) > 0.5)
         {
-            if (Type == entityType.boxer) EntityPool.BoxerToSpawnWithBoss += 1;
-            else EntityPool.ShooterToSpawnWithBoss += 1;
-            EntityPool.Instance.GoBack(gameObject);
+            Move(target, distance);
         }
-
-        if (_betweenAttackTimer < 0)
+        else
         {
             Attacks();
-            _betweenAttackTimer = _attackFrequency + _attackDuration;
-            _attackTimer = _attackDuration;
-            isAttacking = true;
         }
-        else 
-        {
-            Move();
-        }
-        if (_attackTimer < 0)
-        {
-            isAttacking = false;
-        }
-        if(_damageTimer > -1) _damageTimer -= Time.deltaTime;
-        if (_betweenAttackTimer > -1) _betweenAttackTimer -= Time.deltaTime;
-        if (_attackTimer > -1) _attackTimer -= Time.deltaTime;
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject == _playerPunch)
+        if (other.gameObject == _playerPunch)
         {
             Damage(_playerManager.damage, _player.transform, 1);
         }
