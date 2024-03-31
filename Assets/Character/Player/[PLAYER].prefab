@@ -961,6 +961,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeHitBoxDuration: 1.1
   startUpDuration: 0.7
+  combos:
+  - combo: 000000000100000000000000
+  - combo: 000000000100000000000000
   _hitBox: {fileID: 4026667918258236768}
 --- !u!114 &2712415024033822122
 MonoBehaviour:
