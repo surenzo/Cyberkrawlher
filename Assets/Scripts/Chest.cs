@@ -22,12 +22,12 @@ public class Chest : MonoBehaviour
     [SerializeField] private float hologramSpeedMovement = 2f;
     
     [Header("Chest Settings")]
-    [SerializeField] private bool isOpen = false;
+    [SerializeField] public bool isOpen = false;
     
     [Header("References")]
     [SerializeField] private GameObject hologram;
     [SerializeField] private GameObject rayHologram;
-    [SerializeField] private Item chestItem;
+    [SerializeField] public Item chestItem;
 
     private GameObject hologramMeshObject;
 

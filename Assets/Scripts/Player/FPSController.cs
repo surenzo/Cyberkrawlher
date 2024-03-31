@@ -43,6 +43,9 @@ public class FPSController : MonoBehaviour
     public float staminaRegenBoost;
     public float staminaLossBoost;
     private bool _emptyStamina;
+    private bool _chestLooted;
+    private bool _canLootChest;
+    private Chest _chestFound;
     
     [Header("Audio")]
     [SerializeField] private float timeBetweenStepsWalk = 0.4f;
@@ -116,6 +119,13 @@ public class FPSController : MonoBehaviour
     {
         PlayerMovement();
         DeathCheck();
+        if (_canLootChest && Input.GetKeyDown(KeyCode.Tab) && !_chestLooted)
+        {
+            _chestLooted = true;
+            chestPrompt.enabled = false;
+            _chestFound.isLooted = true;
+            ItemCollection(_chestFound.chestItem);
+        }
     }
 
     private void ItemCollection(Item collectedItem)
@@ -175,9 +185,18 @@ public class FPSController : MonoBehaviour
         
         else if (other.gameObject.layer == 10)
         {
-            Chest chestFound = other.gameObject.GetComponent<Chest>();
-            chestPrompt.enabled = true;
-            chestPrompt.text = "TAB to collect";
+            _chestFound = other.gameObject.GetComponent<Chest>();
+            if (!_chestFound.isOpen) return;
+            _canLootChest = true;
+            if (_chestFound.isLooted)
+            {
+                _chestLooted = true;
+            }
+            else
+            {
+                chestPrompt.enabled = true;
+                chestPrompt.text = "TAB to collect";
+            }
         }
     }
 
@@ -185,6 +204,8 @@ public class FPSController : MonoBehaviour
     {
         if (other.gameObject.layer == 10)
         {
+            _canLootChest = false;
+            _chestLooted = false;
             chestPrompt.enabled = false;
         }
     }
