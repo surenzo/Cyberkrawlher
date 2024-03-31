@@ -117,8 +117,10 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
                 Debug.Log("lum cr��e");
                 EntityPool.Instance.GoBack(gameObject);
                 Debug.Log("entit� rang�e");
+
             }
         }
+
     }
 
 
@@ -130,6 +132,7 @@ public abstract class AbstractEntityBehaviour : MonoBehaviour
         _currentHealth = _maxHealth;
         _player = FPSController.Instance.gameObject;
         _playerManager = _player.GetComponent<PlayerManager>();
+        //_playerPunch = _player.GetComponent<Attack>().hitBox; 
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         _healthSystem = GetComponent<HealthSystem>();
