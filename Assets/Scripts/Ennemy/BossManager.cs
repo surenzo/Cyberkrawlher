@@ -44,6 +44,7 @@ namespace Ennemy
             shooter._attackFrequency = 0.3f;
             shooter.chargeur = 1;
             shooterGO.transform.GetChild(1).gameObject.SetActive(false);
+            shooterGO.transform.localScale *= 2.5f;
 
             firstPhase.gameObject.SetActive(true);
 
@@ -51,14 +52,15 @@ namespace Ennemy
 
         private void MakeSecondPhaseBoss()
         {
-            GameObject shooterGO = EntityPool.Instance.Make(AbstractEntityBehaviour.entityType.shooter, firstPhase.transform.position);
-            shooterGO.transform.parent = firstPhase.transform;
+            GameObject shooterGO = EntityPool.Instance.Make(AbstractEntityBehaviour.entityType.shooter, secondPhase.transform.position);
+            shooterGO.transform.parent = secondPhase.transform;
             shooter = shooterGO.GetComponent<ShooterEntityBehaviour>();
             shooter._speed = 0;
             shooter.agent.speed = 0;
             shooter._attackFrequency = 0.15f;
             shooter.chargeur = 1;
             shooterGO.transform.GetChild(1).gameObject.SetActive(false);
+            shooterGO.transform.localScale *= 2.5f;
 
             secondPhase.gameObject.SetActive(false);
         }
