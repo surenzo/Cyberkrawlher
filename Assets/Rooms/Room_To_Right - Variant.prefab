@@ -204,14 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed874b023a43dbaf8a4a73ced13dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tags:
-  - upward
-  CreatesTags:
-  - forward
-  - upward
-  - boss
+  Tags: []
+  CreatesTags: []
   Exits: {fileID: 6406826202568706641}
-  Bounds: {fileID: 3296367074725457177}
+  Bounds: {fileID: 0}
   DeadEndChance: 0
 --- !u!1 &2812167799164827413
 GameObject:

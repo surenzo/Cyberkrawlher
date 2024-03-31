@@ -6,7 +6,7 @@ public class Chest : MonoBehaviour
 {
     [Header("Hologram")]
     [SerializeField] private Mesh hologramMesh;
-    [SerializeField] private List<GameObject> itemMeshes;
+    [SerializeField] private List<Mesh> itemMeshes;
     [ColorUsage(true,true)] [SerializeField] private Color hologramColor;
     [ColorUsage(true,true)] [SerializeField] private Color hologramOutlineColor;
     
@@ -30,7 +30,6 @@ public class Chest : MonoBehaviour
     [SerializeField] private Item chestItem;
 
     private GameObject hologramMeshObject;
-    private Vector3 holoScale;
 
     private Mesh _itemMesh;
     private Array _itemTypes;
@@ -44,7 +43,7 @@ public class Chest : MonoBehaviour
     {
         hologram.SetActive(isOpen);
         rayHologram.SetActive(isOpen);
-        hologram.transform.localScale = holoScale;
+        hologram.transform.localScale = hologramSize;
         hologramMeshObject = hologram.GetComponentInChildren<MeshFilter>().gameObject;
         hologramMeshObject.transform.localRotation = Quaternion.Euler(hologramRotation);
         hologram.transform.localPosition = hologramPosition;
@@ -63,9 +62,7 @@ public class Chest : MonoBehaviour
         _itemTypes = Enum.GetValues(typeof(Item.ItemEffects));
         _selectedItem = UnityEngine.Random.Range(0, _itemTypes.Length - 1);
         chestItem.effect = (Item.ItemEffects)_itemTypes.GetValue(_selectedItem);
-        _itemMesh = itemMeshes[_selectedItem].GetComponent<MeshFilter>().sharedMesh;// /!\ meshes must be in the same order as in the enum
-        holoScale = itemMeshes[_selectedItem].GetComponent<Transform>().localScale;
-        //Debug.Log(holoScale);
+        _itemMesh = itemMeshes[_selectedItem];// /!\ meshes must be in the same order as in the enum
         OnValidate();
     }
     
@@ -77,7 +74,7 @@ public class Chest : MonoBehaviour
             chestItem.enabled = false;
             return;
         }
-        hologram.transform.localScale = holoScale;
+        hologram.transform.localScale = hologramSize;
         hologram.transform.Rotate(Vector3.up, hologramSpeedRotation * Time.deltaTime);
         var position = hologram.transform.position;
         hologram.transform.position = new Vector3(position.x, initialY + Mathf.Sin(Time.time * hologramSpeedMovement) * hologramAmplitudeMovement, position.z);

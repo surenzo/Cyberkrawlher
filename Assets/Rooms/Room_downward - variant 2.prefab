@@ -1994,11 +1994,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tags:
-  - downward
+  - room1
   CreatesTags:
-  - forward
-  - downward
-  - boss
+  - room1
   Exits: {fileID: 88852583494602152}
   Bounds: {fileID: 2468232763669816640}
   DeadEndChance: 0

@@ -4,13 +4,13 @@ public class Item : MonoBehaviour
 {
     public enum ItemEffects
     {
-        //AttackBoost,
-        //Defboost,
-        //LightReceptionBoost,
+        AttackBoost,
+        Defboost,
+        LightReceptionBoost,
         LightLightRegen,
         MedLightRegen,
         BigLightRegen,
-        //LightEmissionBoost,
+        LightEmissionBoost,
         SpeedBoost,
         SmallHealthRegen,
         MedHealthRegen,

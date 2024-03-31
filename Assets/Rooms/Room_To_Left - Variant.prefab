@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6965703889127075656}
-  - component: {fileID: 5874555629944695114}
+  - component: {fileID: 4045984280622423295}
   m_Layer: 0
   m_Name: Room_To_Left - Variant
   m_TagString: Untagged
@@ -221,7 +221,7 @@ Transform:
   - {fileID: 1269514468420057288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5874555629944695114
+--- !u!114 &4045984280622423295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,14 +233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93ed874b023a43dbaf8a4a73ced13dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tags:
-  - upward
-  CreatesTags:
-  - forward
-  - upward
-  - boss
+  Tags: []
+  CreatesTags: []
   Exits: {fileID: 5704868258203046095}
-  Bounds: {fileID: 2737793510997351696}
+  Bounds: {fileID: 0}
   DeadEndChance: 0
 --- !u!1 &3582091781303128684
 GameObject:
