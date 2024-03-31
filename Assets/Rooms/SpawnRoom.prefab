@@ -256,7 +256,7 @@ MonoBehaviour:
   Tags:
   - spawn
   CreatesTags:
-  - forward
+  - downward
   Exits: {fileID: 3484317203857507346}
   Bounds: {fileID: 3173366464883022496}
   DeadEndChance: 0

@@ -3085,7 +3085,6 @@ MonoBehaviour:
   - {fileID: 2687563119816679365, guid: bf673f3034d3e2c438177d2ad4a9dfbc, type: 3}
   - {fileID: 3065867325054326121, guid: e109b14b5b942984a9963e0a42ec24d6, type: 3}
   - {fileID: 7743161093378757175, guid: 2b0ff63cb56921c478171c05a341c067, type: 3}
-  - {fileID: 5874555629944695114, guid: 36df7ab685381e94d94d327b0d8b1605, type: 3}
   - {fileID: 2181466304444953601, guid: a65cf2f906b426140adfc26cddc9b26f, type: 3}
   - {fileID: 3060243167848594663, guid: 2cf40e41638001342805116aa5e8f567, type: 3}
   - {fileID: 6705675340183879208, guid: f394864252a6a854aa5b1dc1fc100596, type: 3}
@@ -3097,6 +3096,12 @@ MonoBehaviour:
   InitialSectionTags:
   - spawn
   SpecialRules:
+  - Tag: downward
+    MinAmount: 2
+    MaxAmount: 7
+  - Tag: forward
+    MinAmount: 4
+    MaxAmount: 8
   - Tag: boss
     MinAmount: 1
     MaxAmount: 1
@@ -4335,7 +4340,7 @@ PrefabInstance:
     - target: {fileID: 4668366864329169988, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.83256567
+      value: 0.8325657
       objectReference: {fileID: 0}
     - target: {fileID: 4668366864329169988, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
@@ -5842,7 +5847,7 @@ PrefabInstance:
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.89543474
+      value: 0.8954347
       objectReference: {fileID: 0}
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
