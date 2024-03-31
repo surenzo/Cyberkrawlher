@@ -106,10 +106,16 @@ public class BossBehaviour : AbstractEntityBehaviour
     }
 
 
+
+
+
     protected override bool Attacks()
     {
         int r = Random.Range(0, 3);
-        if()
+        if (r == 0) return BoxerAttack();
+        if (r == 1) return ShooterAttack();
+        //if (r == 2) return OtherAttack();
+
 
         return true;
     }
