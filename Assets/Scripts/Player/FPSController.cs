@@ -86,7 +86,6 @@ public class FPSController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera DeathVirtualCamera;
     [HideInInspector] public bool canMove = true;
     private static readonly int IsDead = Animator.StringToHash("isDead");
-    private static readonly int Speed = Animator.StringToHash("Speed");
 
     #endregion
 
@@ -321,16 +320,19 @@ public class FPSController : MonoBehaviour
         // Animation
         if (curSpeedX != 0 || curSpeedY != 0)
         {
-            float speed = Math.Abs((moveDirection.x + moveDirection.z) / runningSpeed);
-            characterAnimator.SetFloat(Speed, speed);
+            float speed = (Math.Abs(moveDirection.x) + Math.Abs(moveDirection.z)) / runningSpeed;
+            characterAnimator.SetFloat("Speed", speed);
+            Debug.Log(speed);
         }
         else
         {
-            characterAnimator.SetFloat(Speed, 0);
+            characterAnimator.SetFloat("Speed", 0);
         }
+        
+        
 
 
-        if (moveDirection.normalized.magnitude < 0.1f) return;
+        if (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized.magnitude < 0.1f) return;
         if (Time.time - (_timerPlayerStepSfx + RandomAddedTime) < (isRunning ? timeBetweenStepsRun : timeBetweenStepsWalk)) return;
 
         SoundManager.RaiseRandomSoundAmongCategory(

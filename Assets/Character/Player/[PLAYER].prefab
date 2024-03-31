@@ -943,6 +943,8 @@ MonoBehaviour:
   staminaGainFactor: 15
   staminaRegenBoost: 5
   staminaLossBoost: 5
+  timeBetweenStepsWalk: 0.4
+  timeBetweenStepsRun: 0.3
   _HUD: {fileID: 0}
   deathScreen: {fileID: 0}
   ownedLights: {fileID: 11400000, guid: fb63f3fe06c7b42e7875100b413ecc5c, type: 2}
@@ -2845,7 +2847,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.13
   far clip plane: 1000
   field of view: 75
   orthographic: 0
