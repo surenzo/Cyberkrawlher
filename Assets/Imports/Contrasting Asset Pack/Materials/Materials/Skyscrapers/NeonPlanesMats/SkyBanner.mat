@@ -89,7 +89,7 @@ Material:
     m_Floats:
     - AdsSpeed: -0.05
     - AdsTilingAmount: 0.83
-    - EmissionStrength: 10
+    - EmissionStrength: 100
     - GradientFalloff: 4.75
     - LineSpeed: 1.7
     - ScanningLines: 400
