@@ -62,7 +62,7 @@ public class Chest : MonoBehaviour
     {
         initialY = hologram.transform.position.y;
         _itemTypes = Enum.GetValues(typeof(Item.ItemEffects));
-        _selectedItem = UnityEngine.Random.Range(0, _itemTypes.Length - 1);
+        _selectedItem = UnityEngine.Random.Range(0, _itemTypes.Length);
         chestItem.effect = (Item.ItemEffects)_itemTypes.GetValue(_selectedItem);
         _itemMesh = itemMeshes[_selectedItem].GetComponent<MeshFilter>().sharedMesh;// /!\ meshes must be in the same order as in the enum
         holoScale = itemMeshes[_selectedItem].GetComponent<Transform>().localScale;

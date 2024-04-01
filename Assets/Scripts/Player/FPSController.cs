@@ -45,7 +45,9 @@ public class FPSController : MonoBehaviour
     private bool _emptyStamina;
     private bool _chestLooted;
     private bool _canLootChest;
+    private bool _founEasterEgg; 
     private Chest _chestFound;
+    private VendingMachine _easterEgg;
     
     [Header("Audio")]
     [SerializeField] private float timeBetweenStepsWalk = 0.4f;
@@ -125,6 +127,15 @@ public class FPSController : MonoBehaviour
             _chestFound.isLooted = true;
             ItemCollection(_chestFound.chestItem);
         }
+
+        if (_founEasterEgg && Input.GetKeyDown(KeyCode.Tab))
+        {
+            _easterEgg.amountChecked += 1;
+            if (_easterEgg.amountChecked >= _easterEgg.eggAmount)
+            {
+                chestPrompt.enabled = false;
+            }
+        }
     }
 
     private void ItemCollection(Item collectedItem)
@@ -197,6 +208,15 @@ public class FPSController : MonoBehaviour
                 chestPrompt.text = "TAB to collect";
             }
         }
+        
+        else if (other.gameObject.layer == 12)
+        {
+            _easterEgg = other.gameObject.GetComponent<VendingMachine>();
+            if (_easterEgg.isLooted) return;
+            _founEasterEgg = true;
+            chestPrompt.enabled = true;
+            chestPrompt.text = "TAB to collect";
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -205,6 +225,11 @@ public class FPSController : MonoBehaviour
         {
             _canLootChest = false;
             _chestLooted = false;
+            chestPrompt.enabled = false;
+        }
+        else if (other.gameObject.layer == 12)
+        {
+            _founEasterEgg = false;
             chestPrompt.enabled = false;
         }
     }

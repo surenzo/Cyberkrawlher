@@ -29,6 +29,7 @@ public class VendingMachine : MonoBehaviour
     [SerializeField] private GameObject rayHologram;
     [SerializeField] public EasterEggItem Egg;
 
+    public int eggAmount = 2;
     private GameObject hologramMeshObject;
     private Vector3 holoScale;
 
@@ -40,6 +41,7 @@ public class VendingMachine : MonoBehaviour
     private static readonly int FresnelColor = Shader.PropertyToID("FresnelColor");
     private static readonly int MainColor = Shader.PropertyToID("MainColor");
     public bool isLooted;
+    public int amountChecked;
 
     private void OnValidate()
     {
@@ -60,7 +62,7 @@ public class VendingMachine : MonoBehaviour
 
     void Start()
     {
-        _selectedItem = UnityEngine.Random.Range(0, 2);
+        _selectedItem = UnityEngine.Random.Range(0, eggAmount);
         initialY = hologram.transform.position.y;
         _itemTypes = Enum.GetValues(typeof(EasterEggItem.EasterEggs));
         //_selectedItem = UnityEngine.Random.Range(0, _itemTypes.Length);
@@ -69,10 +71,15 @@ public class VendingMachine : MonoBehaviour
         holoScale = itemMeshes[_selectedItem].GetComponent<Transform>().localScale;
         //Debug.Log(holoScale);
         OnValidate();
+        if (_selectedItem == 0)
+        {
+            hologramMeshObject.transform.Rotate(Vector3.left, 90);
+        }
     }
     
     private void Update()
     {
+        if (amountChecked >= eggAmount) isLooted = true;
         if (!isOpen || isLooted)
         {
             hologram.SetActive(false);
