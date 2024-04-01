@@ -130,10 +130,18 @@ public class FPSController : MonoBehaviour
 
         if (_founEasterEgg && Input.GetKeyDown(KeyCode.Tab))
         {
-            _easterEgg.amountChecked += 1;
-            if (_easterEgg.amountChecked >= _easterEgg.eggAmount)
+            if (_easterEgg.isOpen)
             {
-                chestPrompt.enabled = false;
+                _easterEgg.amountChecked += 1;
+                if (_easterEgg.amountChecked >= _easterEgg.eggAmount)
+                {
+                    chestPrompt.enabled = false;
+                }
+            }
+            else
+            {
+                _easterEgg.Open();
+                chestPrompt.text = "TAB to collect";
             }
         }
     }
@@ -215,7 +223,14 @@ public class FPSController : MonoBehaviour
             if (_easterEgg.isLooted) return;
             _founEasterEgg = true;
             chestPrompt.enabled = true;
-            chestPrompt.text = "TAB to collect";
+            if (_easterEgg.isOpen)
+            {
+                chestPrompt.text = "TAB to collect";
+            }
+            else
+            {
+                chestPrompt.text = "TAB to activate";
+            }
         }
     }
 

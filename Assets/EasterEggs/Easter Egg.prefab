@@ -116,7 +116,7 @@ MonoBehaviour:
   hologramSpeedRotation: 50
   hologramAmplitudeMovement: 0.2
   hologramSpeedMovement: 2
-  isOpen: 1
+  isOpen: 0
   hologram: {fileID: 4478418611139317067}
   rayHologram: {fileID: 2989569979577750735}
   Egg: {fileID: 3548098156672047112}
@@ -403,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 7882828110191191562, guid: 3abe8901b4571b040b1b9d2e5ca21eec,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -553,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 6859205601807187031, guid: 0d105982411ab0648b8ba6693f8bd099,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
