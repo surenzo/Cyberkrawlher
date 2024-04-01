@@ -296,7 +296,7 @@ public class FPSController : MonoBehaviour
         
         
         
-        Debug.Log(_emptyStamina);
+        //Debug.Log(_emptyStamina);
     }
 
     IEnumerator StaminaModifying()

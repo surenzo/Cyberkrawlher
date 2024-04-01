@@ -43,9 +43,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2966315419326948110}
   - component: {fileID: 8138415319115364330}
-  - component: {fileID: 7522742783403413477}
   - component: {fileID: 3909694339716444108}
-  m_Layer: 10
+  - component: {fileID: 4375246734322575209}
+  m_Layer: 12
   m_Name: Easter Egg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,41 +92,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6489106948762979556, guid: 21c0b22c279d3a94888afe0e7a8a5924, type: 3}
---- !u!114 &7522742783403413477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6331893657752334481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86360f95df50e1e49b8fb8fd142f5362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hologramMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  itemMeshes:
-  - {fileID: 1889521764167429711, guid: d8a020753e2fe4cadbde26442f59cc0a, type: 3}
-  - {fileID: 3447131144810373883, guid: 20005f0d840ee49f3b94c41e97bcf465, type: 3}
-  - {fileID: 4190569516115425513, guid: a7289fbc145874914b0bf222038588e2, type: 3}
-  - {fileID: 8176140075555713834, guid: 76f244fe162884e8798940faf2f27caa, type: 3}
-  - {fileID: 217071573177670405, guid: 3209d823b843045b99fc12e21a2317ec, type: 3}
-  - {fileID: 6425299901342344239, guid: 212465c6551784173b00a5b3e76d86f2, type: 3}
-  - {fileID: 3989689482405607237, guid: be2d59f41219f497ba738e4cd3b1b04f, type: 3}
-  - {fileID: 2670118034550686682, guid: f5b7426529fe843a5ada32075effab74, type: 3}
-  hologramColor: {r: 0, g: 3.5558214, b: 4.759381, a: 1}
-  hologramOutlineColor: {r: 0, g: 16.966568, b: 12.408158, a: 1}
-  hologramSize: {x: 1, y: 1, z: 1}
-  hologramRotation: {x: 0, y: 0, z: 0}
-  hologramPosition: {x: 0, y: 0, z: 0}
-  hologramSpeedRotation: 50
-  hologramAmplitudeMovement: 0.04
-  hologramSpeedMovement: 1
-  isOpen: 1
-  hologram: {fileID: 4478418611139317067}
-  rayHologram: {fileID: 2989569979577750735}
-  chestItem: {fileID: 4465680358494942146}
-  isLooted: 0
 --- !u!135 &3909694339716444108
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -148,6 +113,37 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.5
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &4375246734322575209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331893657752334481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614e7fa3e5aa74d0aa45e0a884f77703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hologramMesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  itemMeshes:
+  - {fileID: 8583588641917292585, guid: ff13279fe95f54ff7995ad941945213a, type: 3}
+  - {fileID: 2527460377172944337, guid: 319d14920c6864dbaa4d1995b688f88d, type: 3}
+  hologramColor: {r: 1, g: 0, b: 0.58447266, a: 0}
+  hologramOutlineColor: {r: 1, g: 0, b: 0.69943285, a: 0}
+  hologramSize: {x: 1, y: 1, z: 1}
+  hologramRotation: {x: 0, y: 0, z: 0}
+  hologramPosition: {x: 0, y: 0, z: 0}
+  hologramSpeedRotation: 50
+  hologramAmplitudeMovement: 0.2
+  hologramSpeedMovement: 2
+  isOpen: 1
+  hologram: {fileID: 4478418611139317067}
+  rayHologram: {fileID: 2989569979577750735}
+  Egg: {fileID: 3548098156672047112}
+  eggAmount: 2
+  isLooted: 0
+  amountChecked: 0
 --- !u!1001 &3548996765156498205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -302,18 +298,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2945212329407906981, guid: 3abe8901b4571b040b1b9d2e5ca21eec,
         type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945212329407906981, guid: 3abe8901b4571b040b1b9d2e5ca21eec,
+        type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 4.759381
+      value: 0.58447266
       objectReference: {fileID: 0}
     - target: {fileID: 2945212329407906981, guid: 3abe8901b4571b040b1b9d2e5ca21eec,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 3.5558214
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945212329407906981, guid: 3abe8901b4571b040b1b9d2e5ca21eec,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7882828110191191562, guid: 3abe8901b4571b040b1b9d2e5ca21eec,
         type: 3}
       propertyPath: m_Name
       value: RayHologram
+      objectReference: {fileID: 0}
+    - target: {fileID: 7882828110191191562, guid: 3abe8901b4571b040b1b9d2e5ca21eec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -417,23 +428,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2980861944275379183, guid: 0d105982411ab0648b8ba6693f8bd099,
         type: 3}
-      propertyPath: m_Color.b
-      value: 2.0322516
-      objectReference: {fileID: 0}
-    - target: {fileID: 2980861944275379183, guid: 0d105982411ab0648b8ba6693f8bd099,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1.7800298
-      objectReference: {fileID: 0}
-    - target: {fileID: 2980861944275379183, guid: 0d105982411ab0648b8ba6693f8bd099,
-        type: 3}
-      propertyPath: m_Color.r
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2980861944275379183, guid: 0d105982411ab0648b8ba6693f8bd099,
         type: 3}
+      propertyPath: m_Color.b
+      value: 0.7884723
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980861944275379183, guid: 0d105982411ab0648b8ba6693f8bd099,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980861944275379183, guid: 0d105982411ab0648b8ba6693f8bd099,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980861944275379183, guid: 0d105982411ab0648b8ba6693f8bd099,
+        type: 3}
       propertyPath: m_Intensity
-      value: 0.95187616
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4338016796761580531, guid: 0d105982411ab0648b8ba6693f8bd099,
         type: 3}
@@ -454,6 +470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hologram
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859205601807187031, guid: 0d105982411ab0648b8ba6693f8bd099,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -550,10 +571,15 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5486928535616009210, guid: f46a4c732cbdf447caaac16894019ed0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3464139464108958121, guid: f46a4c732cbdf447caaac16894019ed0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3548098156672047112}
   m_SourcePrefab: {fileID: 100100000, guid: f46a4c732cbdf447caaac16894019ed0, type: 3}
 --- !u!4 &3817672055712538669 stripped
 Transform:
@@ -561,15 +587,22 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8204490683111637048}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4465680358494942146 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5486928535616009210, guid: f46a4c732cbdf447caaac16894019ed0,
+--- !u!1 &4742058083100877201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3464139464108958121, guid: f46a4c732cbdf447caaac16894019ed0,
     type: 3}
   m_PrefabInstance: {fileID: 8204490683111637048}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &3548098156672047112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742058083100877201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4721a6b52ffe44a089da413df8ed4fdb, type: 3}
+  m_Script: {fileID: 11500000, guid: dd77dc4063da54b7db7d84ab36383f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Egg: 0

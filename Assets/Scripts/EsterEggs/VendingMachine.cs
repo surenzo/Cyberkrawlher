@@ -42,6 +42,7 @@ public class VendingMachine : MonoBehaviour
     private static readonly int MainColor = Shader.PropertyToID("MainColor");
     public bool isLooted;
     public int amountChecked;
+    private int _prevAmountChecked;
 
     private void OnValidate()
     {
@@ -58,6 +59,7 @@ public class VendingMachine : MonoBehaviour
         hologram.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("_MainColor", hologramColor);
         var mainModule = rayHologram.GetComponent<ParticleSystem>().main;
         mainModule.startColor = hologramColor;
+        Debug.Log("validating hologram");
     }
 
     void Start()
@@ -85,6 +87,18 @@ public class VendingMachine : MonoBehaviour
             hologram.SetActive(false);
             Egg.enabled = false;
             return;
+        }
+
+        if (_prevAmountChecked != amountChecked)
+        {
+            _prevAmountChecked = amountChecked;
+            _itemMesh = itemMeshes[(_selectedItem + amountChecked) % eggAmount].GetComponent<MeshFilter>().sharedMesh;
+            holoScale = itemMeshes[(_selectedItem + amountChecked) % eggAmount].GetComponent<Transform>().localScale;
+            OnValidate();
+            if ((_selectedItem + amountChecked) % eggAmount == 0)
+            {
+                hologramMeshObject.transform.Rotate(Vector3.left, 90);
+            }
         }
         hologram.transform.localScale = holoScale;
         hologram.transform.Rotate(Vector3.up, hologramSpeedRotation * Time.deltaTime);
