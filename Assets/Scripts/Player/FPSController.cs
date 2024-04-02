@@ -133,9 +133,22 @@ public class FPSController : MonoBehaviour
             if (_easterEgg.isOpen)
             {
                 _easterEgg.amountChecked += 1;
-                if (_easterEgg.amountChecked >= _easterEgg.eggAmount)
+                if (_easterEgg.amountChecked == _easterEgg.eggAmount)
+                {
+                    chestPrompt.text = "What are you doing here?";
+                }
+                else if (_easterEgg.amountChecked == _easterEgg.eggAmount + 1)
+                {
+                    chestPrompt.text = "We can't keep you, they wouldn't accept it.";
+                }
+                else if (_easterEgg.amountChecked == _easterEgg.eggAmount + 2)
+                {
+                    chestPrompt.text = "GoodBye";
+                }
+                else if (_easterEgg.amountChecked == _easterEgg.eggAmount + 3)
                 {
                     chestPrompt.enabled = false;
+                    _healthSystem.Damage(_healthSystem._maxLife);
                 }
             }
             else
@@ -143,6 +156,12 @@ public class FPSController : MonoBehaviour
                 _easterEgg.Open();
                 chestPrompt.text = "TAB to collect";
             }
+        }
+
+        if (transform.position.y < -60)
+        {
+            transform.position = new Vector3(150f, 33f, -304f);
+            ownedLights.lightsInPossession += 100;
         }
     }
 
