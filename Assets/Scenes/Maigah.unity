@@ -4433,7 +4433,7 @@ PrefabInstance:
     - target: {fileID: 4668366864329169988, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8325657
+      value: 0.83256567
       objectReference: {fileID: 0}
     - target: {fileID: 4668366864329169988, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
@@ -4468,7 +4468,17 @@ PrefabInstance:
     - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
       propertyPath: walkingSpeed
-      value: 1
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: staminaGainFactor
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
+        type: 3}
+      propertyPath: staminaLossFactor
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7479049395452208335, guid: 1cda7b10d037efc4ba40e18eb1de1a47,
         type: 3}
@@ -5940,12 +5950,12 @@ PrefabInstance:
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8954347
+      value: 0.89543474
       objectReference: {fileID: 0}
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.32858774
+      value: 0.32858777
       objectReference: {fileID: 0}
     - target: {fileID: 7870050087509182406, guid: d03623e1152b86f449d97d44fa4f6f38,
         type: 3}
