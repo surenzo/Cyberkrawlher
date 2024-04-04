@@ -241,12 +241,24 @@ public class FPSController : MonoBehaviour
         else if (other.gameObject.layer == 12)
         {
             _easterEgg = other.gameObject.GetComponent<VendingMachine>();
-            if (_easterEgg.isLooted) return;
+            //if (_easterEgg.isLooted) return;
             _founEasterEgg = true;
             chestPrompt.enabled = true;
             if (_easterEgg.isOpen)
             {
-                chestPrompt.text = "TAB to collect";
+                if (_easterEgg.amountChecked == _easterEgg.eggAmount)
+                {
+                    chestPrompt.text = "What are you doing here?";
+                }
+                else if (_easterEgg.amountChecked == _easterEgg.eggAmount + 1)
+                {
+                    chestPrompt.text = "Don't expect help from us.";
+                }
+                else if (_easterEgg.amountChecked == _easterEgg.eggAmount + 2)
+                {
+                    chestPrompt.text = "GoodBye";
+                }
+                else chestPrompt.text = "TAB to collect";
             }
             else
             {
