@@ -158,7 +158,7 @@ public class FPSController : MonoBehaviour
             }
         }
 
-        if (transform.position.y < -60)
+        if (transform.position.y < -40)
         {
             transform.position = new Vector3(150f, 33f, -304f);
             ownedLights.lightsInPossession += 100;
@@ -375,11 +375,17 @@ public class FPSController : MonoBehaviour
         {
             moveDirection.y -= gravity * Time.deltaTime;
         }
+        else if(!Input.GetButton("Jump") && canMove)
+        {
+            moveDirection.y = 0;
+            movementDirectionY = 0;
+        }
     }
 
     private void Move()
     {
         // Move the controller
+        //Debug.Log($"{Vector3.Magnitude(moveDirection.normalized * (Time.deltaTime * (isRunning ? runningSpeed : walkingSpeed)))}");
         characterController.Move(moveDirection.normalized * (Time.deltaTime * (isRunning ? runningSpeed : walkingSpeed)));
 
         // Animation
