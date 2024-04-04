@@ -139,7 +139,7 @@ public class FPSController : MonoBehaviour
                 }
                 else if (_easterEgg.amountChecked == _easterEgg.eggAmount + 1)
                 {
-                    chestPrompt.text = "We can't keep you, they wouldn't accept it.";
+                    chestPrompt.text = "Don't expect help from us.";
                 }
                 else if (_easterEgg.amountChecked == _easterEgg.eggAmount + 2)
                 {
@@ -162,6 +162,8 @@ public class FPSController : MonoBehaviour
         {
             transform.position = new Vector3(150f, 33f, -304f);
             ownedLights.lightsInPossession += 100;
+            playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 269, 0);
+            transform.rotation = Quaternion.Euler(0, 269, 0);
         }
     }
 
@@ -385,8 +387,7 @@ public class FPSController : MonoBehaviour
     private void Move()
     {
         // Move the controller
-        //Debug.Log($"{Vector3.Magnitude(moveDirection.normalized * (Time.deltaTime * (isRunning ? runningSpeed : walkingSpeed)))}");
-        characterController.Move(moveDirection.normalized * (Time.deltaTime * (isRunning ? runningSpeed : walkingSpeed)));
+        characterController.Move(moveDirection.normalized * (Time.deltaTime * ((isRunning && !_emptyStamina) ? runningSpeed : walkingSpeed)));
 
         // Animation
         if (curSpeedX != 0 || curSpeedY != 0)
