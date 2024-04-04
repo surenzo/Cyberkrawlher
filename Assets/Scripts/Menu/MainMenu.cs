@@ -1,4 +1,5 @@
 using System.Collections;
+using LightCurrencySystem;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup _blackerScreen;
     [SerializeField] private CanvasGroup _loadingScreen;
     [SerializeField] private Slider slider;
+    [SerializeField] private OwnedLights OwnedLights;
     
     void Start()
     {
@@ -36,6 +38,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        OwnedLights.lightsInPossession = 500;
         StartCoroutine(LoadSceneAsync("Maigah"));
     }
     
